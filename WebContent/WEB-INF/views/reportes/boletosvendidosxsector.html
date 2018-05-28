@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+	<title>Sorteos Anáhuac | Red de Universidades Anáhuac</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	
+
+	
+	<!-- ================== BEGIN BASE CSS STYLE ================== -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+	<link href="assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />
+	<link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+	<link href="assets/css/animate.min.css" rel="stylesheet" />
+	<link href="assets/css/style.min.css" rel="stylesheet" />
+	<link href="assets/css/style-responsive.min.css" rel="stylesheet" />
+	<link href="assets/css/theme/default.css" rel="stylesheet" id="theme" />
+	<!-- ================== END BASE CSS STYLE ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
+		<link href="assets/plugins/parsley/src/parsley.css" rel="stylesheet" />
+	<!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
+	<link href="assets/plugins/DataTables/css/data-table.css" rel="stylesheet" />
+	<!-- ================== END PAGE LEVEL STYLE ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
+	<link href="assets/plugins/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" />
+	<link href="assets/plugins/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet" />
+    <link href="assets/plugins/gritter/css/jquery.gritter.css" rel="stylesheet" />
+	<!-- ================== END PAGE LEVEL STYLE ================== -->
+	
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="assets/plugins/pace/pace.min.js"></script>
+	<!-- ================== END BASE JS ================== -->
+</head>
+<body>
+	<!-- begin #page-loader -->
+	<div id="page-loader" class="fade in"><span class="spinner"></span></div>
+	<!-- end #page-loader -->
+	
+	<!-- begin #page-container -->
+	<div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+		<!-- begin #header -->
+		<div id="header" class="header navbar navbar-default navbar-fixed-top">
+			<!-- begin container-fluid -->
+			<div class="container-fluid">
+				<!-- begin mobile sidebar expand / collapse button -->
+				<div class="navbar-header">
+					<a href="Dashboard.do" class="navbar-brand"><span class="navbar-logo"><img src="assets/img/logo_red.png" width="55" height="55"/></span> Anáhuac	</a>
+					<button type="button" class="navbar-toggle" data-click="sidebar-toggled">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				<!-- end mobile sidebar expand / collapse button -->
+				
+				<!-- begin header navigation right -->
+				<ul class="nav navbar-nav navbar-right">
+					
+					#NOTIFICACIONES#
+					
+				</ul>
+				<!-- end header navigation right -->
+			</div>
+			<!-- end container-fluid -->
+		</div>
+		<!-- end #header -->
+		
+		<!-- begin #sidebar -->
+		<div id="sidebar" class="sidebar">
+			<!-- begin sidebar scrollbar -->
+			<div data-scrollbar="true" data-height="100%">
+				<!-- begin sidebar user -->
+				<ul class="nav">
+					<li class="nav-profile">
+						#INFOUSER#
+					</li>
+				</ul>
+				<!-- end sidebar user -->
+				<!-- begin sidebar nav -->
+				#MENU#
+				<!-- end sidebar nav -->
+			</div>
+			<!-- end sidebar scrollbar -->
+		</div>
+		<div class="sidebar-bg"></div>
+		<!-- end #sidebar -->
+		
+		<!-- begin #content -->
+		<div class="content" id="content">
+		 <!-- begin breadcrumb -->
+    <ol class="breadcrumb hidden-print pull-right">
+        <li><a href="Sorteos.do">Sorteos</a></li>
+        
+    </ol>
+    <!-- end breadcrumb -->
+    <!-- begin page-header -->
+    <h1 class="page-header hidden-print">BOLETOS VENDIDOS <small>Reporte</small></h1>
+    <!-- end page-header -->
+    
+     <!-- modalDetalleBoleto -->
+							<div class="modal" id="modalDetalleBoleto">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+											<h4 class="modal-title">Boleto: <small>COSTO:</small>
+											<span id="montoboleto"> - </span> <small>ABONO:</small><span id="abonoboleto">- </span>
+
+											</h4>
+										</div>
+										<div class="modal-body">
+										<input type="hidden" name="pkboleto" id="pkboleto"/>
+										<input type="hidden" name="pktalonario" id="pktalonario"/>
+										<input type="hidden" name="pksector" id="pksector"/>
+										<input type="hidden" name="pknicho" id="pknicho"/>
+										<input type="hidden" name="pkcolaborador" id="pkcolaborador"/>
+										
+										<input type="hidden" name="pkabono" id="pkabono"/>
+										<input type="hidden" name="pkcosto" id="pkcosto"/>
+										
+										<input type="hidden" name="boleto" id="boleto"/>
+										<input type="hidden" name="sorteo" id="sorteo"/>
+										<input type="hidden" name="costo" id="costo"/>
+										<input type="hidden" name="talonario" id="talonario"/>
+										
+										<!-- BOLETO -->
+										
+										<div class="result-info" id="boleto-info" style="display:block;">
+										
+										
+<h4 class="title">
+
+<a href="javascript:;">BOLETO FOLIO:</a> <span class="badge badge-primary badge-square" id="boletofolio">-</span>
+<a href="javascript:;">TALONARIO FOLIO:</a> <span class="badge badge-warning badge-square" id="talonariofolio">-</span>
+<span class="badge badge-inverse badge-square" id="estatusboleto">NO VENDIDO</span>
+</h4>
+<!--  
+<p class="location"> ASIGNACION: 
+<span id="bsector">Sector</span> / <span id="bnicho">Nicho</span> / <span id="bcolaborador">Colaborador</span> </p>-->
+
+<h3>Comprador: <span id="comprador"></span></h3>
+
+<span style="font-weight:700; font-size:18px;">Contacto:</span><br>
+<span style="font-weight:600;"> Telefono Fijo:</span>&nbsp;<span id="telefonofijo"></span>
+<span style="font-weight:600;"> Telefono Movil:</span>&nbsp;<span id="telefonomovil"></span><br>
+<span style="font-weight:600;"> Correo Electrónico:</span>&nbsp;<span id="correo"></span><br>
+
+<span style="font-weight:700; font-size:18px;">Dirección:</span><br>
+<span style="font-weight:600;"> Calle:</span>&nbsp;<span id="calle"></span>
+<span style="font-weight:600;"> Numero:</span>&nbsp;<span id="numero"></span>
+<span style="font-weight:600;"> Colonia:</span>&nbsp;<span id="colonia"></span>
+<span style="font-weight:600;"> Estado:</span>&nbsp;<span id="estado"></span>
+<span style="font-weight:600;"> Municipio o Delegación::</span>&nbsp;<span id="municipio"></span><br>
+
+
+<div id="divincidencia" style="display:none;">
+<span style="font-weight:700; font-size:18px; color:red;">INCIDENCIA:</span>&nbsp;<span id="tincidencia"></span>
+<span style="font-weight:600;"> Formato FC8:</span>&nbsp;<span id="tformatoincidencia"></span>
+<span style="font-weight:600;"> Folio MP:</span>&nbsp;<span id="tfoliomp"></span><br/>
+<span style="font-weight:600;"> Detalles:</span><br/><span id="tdetallesincidencia"></span>
+</div>
+
+<br/><br/>
+<a class="btn btn-success btn-block" style="display:none;" href="javascript:void(0)" onClick="AbonarBoleto();"><i class="fa fa-barcode"></i> Abonar venta de boleto</a>
+
+<a class="btn btn-success btn-block" style="display:none;" href="javascript:void(0)" onClick="ReportedeExtravioBoleto()"><i class="fa fa-barcode"></i> FC8 Reporte de extravio o Robo de Boleto</a>
+
+<a class="btn btn-inverse btn-block" id="linkseguimientoboleto" href="#" target="_blank">Ver Detalle de Seguimiento</a>
+
+</div>
+
+										<!-- BOLETO -->
+										
+											<!-- VENTA BOLETO -->
+											
+											<div class="venta-boleto" id="boleto-venta" style="display:none;">
+<h4 class="title">
+<a href="javascript:;">BOLETO FOLIO:</a> <span class="badge badge-primary badge-square" id="boletofolioabono">-</span>
+<a href="javascript:;">TALONARIO FOLIO:</a> <span class="badge badge-warning badge-square" id="talonariofolioabono">-</span>
+</h4>
+
+
+<p class="desc">
+<table>
+
+<tr>
+<td align="right"><span style="font-weight:500; font-size:18px;">*ABONO: $</span></td>
+<td><input type="text" name="abono" id="iabono"/></td>
+<td></td>
+<td></td>
+</tr>
+
+
+
+<tr>
+<td colspan="4" ><span style="font-weight:500; font-size:18px;">Comprador:</span></td>
+</tr>
+
+
+<tr>
+<td align="right"><span style="font-weight:500;"> *Nombre: &nbsp;</span></td>
+<td><input type="text" name="nombre" id="inombre"/></td>
+<td align="right"><span style="font-weight:500;"> *Apellidos:&nbsp;</span></td>
+<td><input type="text" name="apellidos" id="iapellidos"></td>
+</tr>
+
+<tr>
+<td colspan="4"><span style="font-weight:500; font-size:16px;">Contacto:</span></td>
+</tr>
+
+
+<tr>
+<td align="right"><span style="font-weight:500;"> *Telefono Fijo:&nbsp;</span></td>
+<td><input type="text" name="telefonofijo" id="itelefonofijo"></td>
+<td align="right"><span style="font-weight:500;"> *Telefono Movil:&nbsp;</span></td>
+<td><input type="text" name="telefonomovil" id="itelefonomovil"></td>
+</tr>
+
+
+<tr>
+<td align="right"><span style="font-weight:500;"> *Correo Electrónico:&nbsp;</span></td>
+<td colspan="3"><input type="text" name="correo" id="icorreo"></td>
+</tr>
+
+<tr>
+<td colspan="4"><span style="font-weight:500; font-size:16px;">Dirección:</span></td>
+</tr>
+
+<tr>
+<td align="right"><span style="font-weight:500;"> *Calle:&nbsp;</span></td>
+<td><input type="text" name="calle" id="icalle"></td>
+<td align="right"><span style="font-weight:500;"> *Numero:&nbsp;</span></td>
+<td><input type="text" name="numero" id="inumero"></td>
+</tr>
+
+
+<tr>
+<td align="right"><span style="font-weight:500;"> *Colonia:&nbsp;</span></td>
+<td><input type="text" name="colonia" id="icolonia"></td>
+<td align="right"><span style="font-weight:500;"> *Estado:&nbsp;</span></td>
+<td><input type="text" name="estado" id="iestado"></td>
+</tr>
+
+<tr>
+<td align="right"><span style="font-weight:500;"> *Municipio o Delegación:&nbsp;</span></td>
+<td><input type="text" name="municipio" id="imunicipio"></td>
+<td></td>
+<td></td>
+</tr>
+
+</table>
+
+
+</p>
+
+<a class="btn btn-success btn-block" style="display:none;" href="javascript:void(0)" onClick="InsertarVentaComprador()"><i class="fa fa-save"></i> Registar Venta de Boleto</a>
+<a class="btn btn-inverse btn-block" style="display:none;" href="javascript:void(0)" onClick="CancelarventaBoleto()">Cancelar</a>
+
+</div>
+											
+											<!-- VENTA BOLETO -->
+											
+											
+											
+											<!-- EXTRAVIO BOLETO -->
+											
+											<div class="venta-boleto" id="boleto-extravio" style="display:none;">
+<h4 class="title">
+<a href="javascript:;">BOLETO FOLIO:</a> <span class="badge badge-primary badge-square" id="incidenciaboletofolio">-</span>
+<a href="javascript:;">TALONARIO FOLIO:</a> <span class="badge badge-warning badge-square" id="incidenciatalonariofolio">-</span>
+</h4>
+
+
+
+<table>
+
+
+<tr>
+<td><span style="font-weight:500; font-size:18px;">Incidencia:</span></td>
+<td><select name="incidencia" id="incidencia">
+<option value="N">Ninguna</option>
+<option value="E">Extravío</option>
+<option value="R">Robo</option>
+</select>
+</td>
+<td></td>
+<td></td>
+</tr>
+
+
+<tr>
+<td><span style="font-weight:500; font-size:18px;">Formato FC8:</span></td>
+<td><input type="text" name="formatofc8" id="formatofc8"/></td>
+<td></td>
+<td></td>
+</tr>
+
+
+<tr>
+<td><span style="font-weight:500; font-size:18px;">Folio Acta MP:</span></td>
+<td><input type="text" name="folioactamp" id="folioactamp"/></td>
+<td></td>
+<td></td>
+</tr>
+
+
+
+<tr>
+<td colspan="4"><span style="font-weight:500; font-size:18px;">Detalles:</span></td>
+</tr>
+
+
+<tr>
+<td colspan="4">
+<textarea name="detallesincidencia" id="detallesincidencia" cols="8" style="width:200%; height:150px;"></textarea>
+</td>
+</tr>
+
+</table>
+
+
+
+<a class="btn btn-success btn-block" style="display:none;" href="javascript:void(0)" onClick="RegistrarIncidenciaBoleto()"><i class="fa fa-save"></i> Registar Reporte de Incidencia</a>
+<a class="btn btn-inverse btn-block" style="display:none;" href="javascript:void(0)" onClick="CancelarventaBoleto()">Cancelar</a>
+
+</div>
+											
+											<!-- EXTRAVIO BOLETO -->
+										
+										
+										</div>
+										<div class="modal-footer">
+											<a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cerrar</a>
+										</div>
+									</div>
+								</div>
+							</div>
+    
+    
+                  <!-- modalDetalleTalonario -->
+							<div class="modal" id="modalDetalleTalonario">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+											<h4 class="modal-title">Talonario: <small>MONTO:</small><span id="montototalonario"> - </span> <small>ABONO:</small><span id="abonototaltalonario"> - </span></h4>
+										</div>
+										<div class="modal-body">
+										
+										<!-- TALONARIO -->
+										
+										<div class="result-info">
+<h4 class="title">
+<a href="javascript:;">TALONARIO FOLIO: <span class="badge badge-warning badge-square" id="foliotalonariomodal">-</span></a>
+
+</h4>
+<p class="location"> BOLETOS: 
+<span class="badge badge-danger pull" id="totalboletostalonario"> - </span> </p>
+<p class="desc" id="boletostalonario">
+
+
+ 
+
+</p>
+
+<a class="btn btn-success btn-block" style="display:none;" href="#"><i class="fa fa-barcode"></i> FC4 Retornar Talonario totalmente Vendido</a>
+
+<a class="btn btn-success btn-block" style="display:none;" href="#"><i class="fa fa-barcode"></i> FC5 Devolver Talonario sin vender un solo boleto</a>
+
+<a class="btn btn-inverse btn-block" id="linkseguimientotalonario" href="#" target="_blank">Ver Detalle de Seguimiento</a>
+
+</div>
+
+
+
+									
+
+										<!-- END TALONARIO -->
+										
+										</div>
+										<div class="modal-footer">
+											<a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cerrar</a>
+										</div>
+									</div>
+								</div>
+							</div>
+    
+    
+    
+    <!-- modalDetalleSector -->
+							<div class="modal" id="modalDetalleSector">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+											<h4 class="modal-title">Seguimiento Sector: <span id="titlesector">-</span></h4>
+										</div>
+										<div class="modal-body">
+											
+											
+		<div class="invoice-header">
+            <div class="invoice-from">
+                
+                <address class="m-t-5 m-b-5">
+                   <strong>Talonarios.</strong>
+                    Total: <span class="badge badge-primary" id="totaldetalonariossector">-</span><br/>
+                    Asignados: <span class="badge badge-info" id="totaldetalonariosasignadossector">-</span><br/>
+                    Parcialmente Vendidos: <span class="badge badge-default" id="totaldetalonariosparcialvendidossector">-</span><br/>
+                    Vendidos: <span class="badge badge-success" id="totaldetalonariosvendidossector">-</span><br/>
+                    
+                    
+                </address>
+            </div>
+            <div class="invoice-to">
+                
+                <address class="m-t-5 m-b-5">
+                    <strong>Boletos</strong>
+                    Total: <span class="badge badge-primary" id="totaldeboletossector">-</span><br/>
+                    Asignados: <span class="badge badge-info" id="totaldeboletosasignadossector">-</span><br/>
+                    Parcialmente Vendidos: <span class="badge badge-default" id="totaldeboletosparcialvendidossector">-</span><br/>
+                    Vendidos: <span class="badge badge-success" id="totaldeboletosvendidossector">-</span><br/>
+                    Extraviados: <span class="badge badge-warning" id="totaldeboletosextraviadossector">-</span><br/>
+                    Robados: <span class="badge badge-danger" id="totaldeboletosrobadossector">-</span><br/>
+                    
+                </address>
+            </div>
+            
+            
+        </div>
+											
+											
+											
+										</div>
+										<div class="modal-footer">
+											<a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cerrar</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							
+     <!-- modalDetalleNicho -->
+							<div class="modal" id="modalDetalleNicho">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+											<h4 class="modal-title">Seguimiento Nicho: <span id="titlenicho">-</span></h4>
+										</div>
+										<div class="modal-body">
+											
+											<div class="invoice-header">
+            <div class="invoice-from">
+                
+                <address class="m-t-5 m-b-5">
+                   <strong>Talonarios.</strong>
+                    Total: <span class="badge badge-primary" id="totaldetalonariosnicho">-</span><br/>
+                    Asignados: <span class="badge badge-info" id="totaldetalonariosasignadosnicho">-</span><br/>
+                    Parcialmente Vendidos: <span class="badge badge-default" id="totaldetalonariosparcialvendidosnicho">-</span><br/>
+                    Vendidos: <span class="badge badge-success" id="totaldetalonariosvendidosnicho">-</span><br/>
+                    
+                    
+                </address>
+            </div>
+            <div class="invoice-to">
+                
+                <address class="m-t-5 m-b-5">
+                    <strong>Boletos</strong>
+                    Total: <span class="badge badge-primary" id="totaldeboletosnicho">-</span><br/>
+                    Asignados: <span class="badge badge-info" id="totaldeboletosasignadosnicho">-</span><br/>
+                    Parcialmente Vendidos: <span class="badge badge-default" id="totaldeboletosparcialvendidosnicho">-</span><br/>
+                    Vendidos: <span class="badge badge-success" id="totaldeboletosvendidosnicho">-</span><br/>
+                    Extraviados: <span class="badge badge-warning" id="totaldeboletosextraviadosnicho">-</span><br/>
+                    Robados: <span class="badge badge-danger" id="totaldeboletosrobadosnicho">-</span><br/>
+                    
+                </address>
+            </div>
+            
+           
+        </div>
+											
+										</div>
+										<div class="modal-footer">
+											<a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cerrar</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							
+		<!-- modalDetalleColaborador -->
+							<div class="modal" id="modalDetalleColaborador">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+											<h4 class="modal-title">Seguimiento Colaborador: <span id="titlecolaborador">-</span></h4>
+										</div>
+										<div class="modal-body">
+											
+											<div class="invoice-header">
+            <div class="invoice-from">
+                
+                <address class="m-t-5 m-b-5">
+                    
+                    
+                    <strong>Talonarios.</strong>
+                    Total: <span class="badge badge-primary" id="totaldetalonarioscolaborador">-</span><br/>
+                    Asignados: <span class="badge badge-info" id="totaldetalonariosasignadoscolaborador">-</span><br/>
+                    Parcialmente Vendidos: <span class="badge badge-default" id="totaldetalonariosparcialvendidoscolaborador">-</span><br/>
+                    Vendidos: <span class="badge badge-success" id="totaldetalonariosvendidoscolaborador">-</span><br/>
+                    
+                    
+                </address>
+            </div>
+            <div class="invoice-to">
+                
+                <address class="m-t-5 m-b-5">
+                   <strong>Boletos</strong>
+                    Total: <span class="badge badge-primary" id="totaldeboletoscolaborador">-</span><br/>
+                    Asignados: <span class="badge badge-info" id="totaldeboletosasignadoscolaborador">-</span><br/>
+                    Parcialmente Vendidos: <span class="badge badge-default" id="totaldeboletosparcialvendidoscolaborador">-</span><br/>
+                    Vendidos: <span class="badge badge-success" id="totaldeboletosvendidoscolaborador">-</span><br/>
+                    Extraviados: <span class="badge badge-warning" id="totaldeboletosextraviadoscolaborador">-</span><br/>
+                    Robados: <span class="badge badge-danger" id="totaldeboletosrobadoscolaborador">-</span><br/>
+                    
+                </address>
+            </div>
+            
+           
+        </div>
+											
+											
+										</div>
+										<div class="modal-footer">
+											<a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cerrar</a>
+										</div>
+									</div>
+								</div>
+							</div>
+    
+    	<!-- END modalDetalleColaborador -->
+    
+    <!-- begin invoice -->
+    <div class="invoice">
+        <div class="invoice-company">
+            <span class="pull-right hidden-print">
+            <a class="btn btn-sm btn-success m-b-10" href="javascript:;"><i class="fa fa-download m-r-5"></i> Exportar PDF</a>
+            <a class="btn btn-sm btn-success m-b-10" onclick="window.print()" href="javascript:;"><i class="fa fa-print m-r-5"></i> Imprimir</a>
+            </span>
+            <p>#SORTEO#</p>
+            <p>#SECTOR#</p>
+            
+            <div style="visibility: collapse;">
+            	<input id="input_sorteo_id" type="hidden" value="#IDSORTEO#" />
+            	<input id="input_sector_id" type="hidden" value="#IDSECTOR#" />
+            </div>
+        </div>
+        <div class="invoice-header">
+            <div class="invoice-from">
+                
+                  <address class="m-t-5 m-b-5">
+                    <strong>Talonarios.</strong>
+                    Total: <span class="badge badge-primary" id="totaldetalonarios">-</span><br/>
+                    <span style="display:none;" class="badge badge-info" id="totaldetalonariosasignados">-</span>
+                    <span style="display:none;" class="badge badge-default" id="totaldetalonariosparcialvendidos">-</span>
+                    Vendidos: <span class="badge badge-success" id="totaldetalonariosvendidos">-</span><br/>
+                    </address>
+                
+            </div>
+            <div class="invoice-to">
+                
+                <address class="m-t-5 m-b-5">
+                    <strong>Boletos</strong>
+                    Total: <span class="badge badge-primary" id="totaldeboletos">-</span><br/>
+                    <span class="badge badge-info" style="display:none;" id="totaldeboletosasignados">-</span>
+                    <span style="display:none;" class="badge badge-default" id="totaldeboletosparcialvendidos">-</span>
+                    Vendidos: <span class="badge badge-success" id="totaldeboletosvendidos">-</span><br/>
+                    <span class="badge badge-warning" style="display:none;" id="totaldeboletosextraviados">-</span>
+                    <span class="badge badge-danger" style="display:none;" id="totaldeboletosrobados">-</span>
+                    
+                </address>
+              
+            </div>
+        </div>
+        
+        
+        <!-- begin grafica -->
+        
+                <div id="grafica" style="height: 400px; min-width: 310px"></div>
+                
+                
+                
+        <!-- end grafica -->
+        
+        
+        <div class="invoice-content">
+            <div class="table-responsive">
+                              
+                                <div id="data-table_wrapper" class="dataTables_wrapper no-footer"><div class="dataTables_length" id="data-table_length"><label>Mostrar: 
+                                <select name="data-table_length" onChange="changeShow()" id="data-elements-length" aria-controls="data-table" class="">
+                                <option value="100">100</option><option value="200">200</option><option value="500">500</option><option value="1000">1000</option><option value="2000">2000</option></select> </label></div>
+                                
+                                 <div style="float:left; display:none;" class="btn-group">
+								  <a class="btn btn-warning" href="javascript:void(0)"><span class="icon icon-white icon-arrowthick-s" title=".icon  .icon-white  .icon-arrowthick-s "></span> Estatus</a>
+								  <a class="btn dropdown-toggle btn-warning" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+								  <ul class="dropdown-menu">
+								    <li><a onclick="enviar();" href="javascript:void(0)"><i class="icon-ok"></i> Abono</a></li>
+								    <li class="divider"></li>
+									<li><a onclick="enviarEstatus('V');" href="javascript:void(0)"><i class="icon-ok"></i> Vendido</a></li>
+									<li class="divider"></li>
+									<li><a onclick="enviarEstatus('E');" href="javascript:void(0)"><i class="icon-ban-circle"></i> Extraviado</a></li>
+								  </ul>
+								  </div>
+                                <div id="data-table_filter" class="dataTables_filter"><label>Buscar:<input type="search" class="" id="searchtable" placeholder="" onkeyup="onkeyup_colfield_check(event)" aria-controls="data-table"></label></div>
+                             <form  class="form-horizontal" action="/" method="POST" id="formulario" name="formulario" >
+                             <input type="hidden" id="idboletos" name="idboletos" value="">
+                                 <div id="listresultados" style="min-height:300px;"  class="block">
+                                 
+                                 
+                                 </div>
+                             </form>    
+                               
+                                </div>
+                            </div>
+           
+        </div>
+        
+         <!-- INICIO MODAL  -->
+<div id="myModal" class="modal modal-message fade" style="display: none;" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<button class="close" aria-hidden="true" data-dismiss="modal" type="button">×</button>
+<h4 class="modal-title">Selecciona el Abono del boleto</h4>
+</div>
+<div class="modal-body">
+
+    <form action="/" id="formulario2" method="POST" data-parsley-validate="true" name="form-wizard">
+								
+								  
+                                        <fieldset>
+                                           
+                                            <!-- begin row -->
+                                            <div class="row">
+                                                <!-- begin col-4 -->
+                                                <div class="col-md-4">
+													<div class="form-group block1">
+													<input type="hidden" id="idrole"  name="idrole" >
+														<label>Abono:</label>
+														<input type="text" name="abono" id="abono"    placeholder="" class="form-control"     data-parsley-type="digits" required />
+													</div>
+                                                </div>
+                                                <!-- end col-4 -->
+                                            </div>
+                                            
+                                            
+										</fieldset>
+										
+										</form>
+
+
+
+
+</div>
+<div class="modal-footer">
+<a class="btn btn-sm btn-white" data-dismiss="modal" href="javascript:;">Cancelar</a>
+<a class="btn btn-sm btn-primary" id="aceptarmodal" href="javascript:;">Aceptar</a>
+</div>
+</div>
+</div>
+</div>                
+        <!-- FIN MODAL  -->  
+        
+        <div class="invoice-note">
+            * Los boletos extraviados no estan considerados<br>
+            * La vista corresponde solo a boletos con efectivo depositado<br>
+            
+        </div>
+        <div class="invoice-footer text-muted">
+            <p class="text-center m-b-5">
+                Red de Universidades Anáhuac
+            </p>
+            <!--<p class="text-center">
+                <span class="m-r-10"><i class="fa fa-globe"></i> matiasgallipoli.com</span>
+                <span class="m-r-10"><i class="fa fa-phone"></i> T:016-18192302</span>
+                <span class="m-r-10"><i class="fa fa-envelope"></i> rtiemps@gmail.com</span>
+            </p>-->
+        </div>
+    </div>
+    <!-- end invoice -->
+    
+        </div>
+		<!-- end content -->
+			
+		</div>
+		<!-- end #content page -->
+		
+		<!-- begin scroll to top btn -->
+		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+		<!-- end scroll to top btn -->
+	</div>
+	<!-- end page container -->
+	
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="assets/plugins/jquery/jquery-1.9.1.min.js"></script>
+	<script src="assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
+	<script src="assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+	<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<!--[if lt IE 9]>
+		<script src="assets/crossbrowserjs/html5shiv.js"></script>
+		<script src="assets/crossbrowserjs/respond.min.js"></script>
+		<script src="assets/crossbrowserjs/excanvas.min.js"></script>
+	<![endif]-->
+	<script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="assets/plugins/jquery-cookie/jquery.cookie.js"></script>
+	<!-- ================== END BASE JS ================== -->
+	
+	<script src="assets/plugins/highstock/js/highstock.js"></script>
+    <script src="assets/plugins/highstock/js/modules/exporting.js"></script>
+	
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<script src="assets/plugins/gritter/js/jquery.gritter.js"></script>
+	<script src="assets/plugins/sparkline/jquery.sparkline.js"></script>
+	<script src="assets/plugins/parsley/dist/parsley.js"></script>
+	<script src="assets/js/reportes/boletosvendidosxsector.js"></script>
+	
+	<script src="assets/plugins/jqueryblockUI/jquery.blockUI.js"></script>
+	
+	
+	<script src="assets/js/apps.min.js"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
+	
+	<script>
+		$(document).ready(function() {
+			App.init();
+			Listar.init();
+			
+		});
+
+	</script>
+	
+</body>
+</html>
+
+

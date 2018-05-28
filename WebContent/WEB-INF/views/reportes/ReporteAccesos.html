@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8" />
+<title>Sorteos Anáhuac | Red de Universidades Anáhuac</title>
+<meta
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+	name="viewport" />
+<meta content="" name="description" />
+<meta content="" name="author" />
+
+
+
+<!-- ================== BEGIN BASE CSS STYLE ================== -->
+<link
+	href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
+	rel="stylesheet" />
+<link
+	href="assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css"
+	rel="stylesheet" />
+<link href="assets/plugins/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet" />
+<link href="assets/plugins/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" />
+<link href="assets/css/animate.min.css" rel="stylesheet" />
+<link href="assets/css/style.min.css" rel="stylesheet" />
+<link href="assets/css/style-responsive.min.css" rel="stylesheet" />
+<link href="assets/css/theme/default.css" rel="stylesheet" id="theme" />
+<!-- ================== END BASE CSS STYLE ================== -->
+
+<!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
+<link href="assets/plugins/parsley/src/parsley.css" rel="stylesheet" />
+<!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
+<link href="assets/plugins/DataTables/css/data-table.css"
+	rel="stylesheet" />
+<!-- ================== END PAGE LEVEL STYLE ================== -->
+
+<!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
+<link href="assets/plugins/bootstrap-datepicker/css/datepicker.css"
+	rel="stylesheet" />
+<link href="assets/plugins/bootstrap-datepicker/css/datepicker3.css"
+	rel="stylesheet" />
+<link href="assets/plugins/gritter/css/jquery.gritter.css"
+	rel="stylesheet" />
+<!-- ================== END PAGE LEVEL STYLE ================== -->
+
+<!-- ================== BEGIN BASE JS ================== -->
+<script src="assets/plugins/pace/pace.min.js"></script>
+<!-- ================== END BASE JS ================== -->
+</head>
+<body>
+	<!-- begin #page-loader -->
+	<div id="page-loader" class="fade in">
+		<span class="spinner"></span>
+	</div>
+	<!-- end #page-loader -->
+
+	<!-- begin #page-container -->
+	<div id="page-container"
+		class="fade page-sidebar-fixed page-header-fixed">
+		<!-- begin #header -->
+		<div id="header" class="header navbar navbar-default navbar-fixed-top">
+			<!-- begin container-fluid -->
+			<div class="container-fluid">
+				<!-- begin mobile sidebar expand / collapse button -->
+				<div class="navbar-header">
+					<a href="Dashboard.do" class="navbar-brand"><span
+						class="navbar-logo"><img src="assets/img/logo_red.png"
+							width="55" height="55" /></span> Anáhuac </a>
+					<button type="button" class="navbar-toggle"
+						data-click="sidebar-toggled">
+						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+				</div>
+				<!-- end mobile sidebar expand / collapse button -->
+
+				<!-- begin header navigation right -->
+				<ul class="nav navbar-nav navbar-right">#NOTIFICACIONES#
+
+				</ul>
+				<!-- end header navigation right -->
+			</div>
+			<!-- end container-fluid -->
+		</div>
+		<!-- end #header -->
+
+		<!-- begin #sidebar -->
+		<div id="sidebar" class="sidebar">
+			<!-- begin sidebar scrollbar -->
+			<div data-scrollbar="true" data-height="100%">
+				<!-- begin sidebar user -->
+				<ul class="nav">
+					<li class="nav-profile">#INFOUSER#</li>
+				</ul>
+				<!-- end sidebar user -->
+				<!-- begin sidebar nav -->
+				#MENU#
+				<!-- end sidebar nav -->
+			</div>
+			<!-- end sidebar scrollbar -->
+		</div>
+		<div class="sidebar-bg"></div>
+		<!-- end #sidebar -->
+
+		<!-- begin #content -->
+		<div class="content" id="content">
+			<!-- begin breadcrumb -->
+			<ol class="breadcrumb hidden-print pull-right">
+				<li><a href="ReporteAccesos">Accesos</a></li>
+
+			</ol>
+			<!-- end breadcrumb -->
+			<!-- begin page-header -->
+			<h1 class="page-header hidden-print">Reporte de accesos al App
+				m&oacute;vil</h1>
+			<!-- end page-header -->
+
+
+
+			<!-- begin invoice -->
+			<div class="invoice">
+				<div class="invoice-header" style="background: transparent; margin: 0px;">
+					<span class="pull-right hidden-print"> <!-- 
+            	<a class="btn btn-sm btn-success m-b-10" href="javascript:;"><i class="fa fa-download m-r-5"></i> Exportar PDF</a>
+            	 --> <a class="btn btn-sm btn-success m-b-10"
+						href="javascript:void(0)" onclick="ExportExcel();"><i
+							class="fa fa-download m-r-5"></i> Exportar a Excel</a>
+
+					</span>
+					<h1 class="page-header">#SORTEO#</h1>
+				</div>
+				<div class="invoice-content">
+					<div class="table-responsive">
+
+						<div class="invoice-from">
+							<div class="form-inline" style="margin: 5px;">
+
+								<div class="form-group">
+									<input type="text" id="fecha_ini" onchange="fecha_ini_onchange();" readonly
+										placeholder="Fecha inicial" class="form-control">
+								</div>
+
+								<div class="form-group">
+									<a class="btn btn-sm btn-white "
+										href="javascript:void(0)" onclick="RemoveFechaIni();">
+										&nbsp;<i class="fa fa-remove m-r-5"></i></a>
+								</div>
+
+								<div class="form-group">
+									<input type="text" id="fecha_fin" onchange="fecha_fin_onchange();" readonly
+										placeholder="Fecha final" class="form-control" />
+								</div>
+
+								<div class="form-group">
+									<a class="btn btn-sm btn-white "
+										href="javascript:void(0)" onclick="RemoveFechaFin();">
+										&nbsp;<i class="fa fa-remove m-r-5"></i></a>
+								</div>
+
+							</div>
+						</div>
+
+						<div id="data-table_wrapper" class="dataTables_wrapper no-footer">
+							<div class="dataTables_length" id="data-table_length">
+								<label>Mostrar: <select name="data-table_length"
+									onChange="changeShow()" id="data-elements-length"
+									aria-controls="data-table" class="">
+										<option value="50">50</option>
+										<option value="100">100</option>
+										<option value="200">200</option>
+										<option value="500">500</option>
+										<option value="1000">1000</option>
+										<option value="2000">2000</option>
+								</select>
+								</label>
+							</div>
+
+
+
+							<div id="data-table_filter" class="dataTables_filter">
+								<label>Buscar:<input type="search" class=""
+									id="searchtable" placeholder=""
+									onkeyup="onkeyup_colfield_check(event)"
+									aria-controls="data-table"></label>
+							</div>
+							<form class="form-horizontal" action="/" method="POST"
+								id="formulario" name="formulario">
+								<input type="hidden" id="idboletos" name="idboletos" value="">
+							</form>
+								<div id="listresultados" style="min-height: 300px; padding:1pt;" class="block">
+								</div>
+
+						</div>
+					</div>
+
+				</div>
+
+
+
+				<div class="invoice-note">
+					* El reporte es solo para talonarios electr&oacute;nicos<br>
+				</div>
+				<div class="invoice-footer text-muted">
+					<p class="text-center m-b-5">Red de Universidades Anáhuac</p>
+
+				</div>
+			</div>
+			<!-- end invoice -->
+
+		</div>
+		<!-- end content -->
+
+
+		<!-- begin scroll to top btn -->
+		<a href="javascript:;"
+			class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade"
+			data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+		<!-- end scroll to top btn -->
+	</div>
+	<!-- end page container -->
+
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="assets/plugins/jquery/jquery-1.9.1.min.js"></script>
+	<script src="assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
+	<script src="assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+	<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script
+		src="assets/plugins/jquery-ui/ui/i18n/jquery.ui.datepicker-es.js"></script>
+	<!--[if lt IE 9]>
+		<script src="assets/crossbrowserjs/html5shiv.js"></script>
+		<script src="assets/crossbrowserjs/respond.min.js"></script>
+		<script src="assets/crossbrowserjs/excanvas.min.js"></script>
+	<![endif]-->
+	<script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="assets/plugins/jquery-cookie/jquery.cookie.js"></script>
+	<!-- ================== END BASE JS ================== -->
+
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<script src="assets/plugins/gritter/js/jquery.gritter.js"></script>
+	<script src="assets/plugins/sparkline/jquery.sparkline.js"></script>
+	<script src="assets/plugins/parsley/dist/parsley.js"></script>
+	<script src="assets/js/reportes/ReporteAccesos.js"></script>
+
+	<script src="assets/plugins/jqueryblockUI/jquery.blockUI.js"></script>
+
+
+	<script src="assets/js/apps.min.js"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
+
+	<script>
+		$(document).ready(function() {
+			App.init();
+			Listar.init();
+			
+		});
+	</script>
+
+</body>
+</html>

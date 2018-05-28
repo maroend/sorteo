@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8" />
+<title>Sorteos Anáhuac | Red de Universidades Anáhuac</title>
+<meta
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+	name="viewport" />
+<meta content="" name="description" />
+<meta content="" name="author" />
+
+<!-- ================== BEGIN BASE CSS STYLE ================== -->
+<link
+	href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
+	rel="stylesheet" />
+<link
+	href="assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css"
+	rel="stylesheet" />
+<link href="assets/plugins/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet" />
+<link href="assets/plugins/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" />
+<link href="assets/css/animate.min.css" rel="stylesheet" />
+<link href="assets/css/style.min.css" rel="stylesheet" />
+<link href="assets/css/style-responsive.min.css" rel="stylesheet" />
+<link href="assets/css/theme/default.css" rel="stylesheet" id="theme" />
+<!-- ================== END BASE CSS STYLE ================== -->
+
+<link rel="stylesheet" type="text/css" href="assets/plugins/fancybox/source/jquery.fancybox.css?v=2.1.5" media="screen" />
+
+<link rel="stylesheet" href="assets/plugins/smallipop/css/jquery.smallipop.css" type="text/css" media="all" title="Screen"/>
+
+<!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
+<link
+	href="assets/plugins/jquery-jvectormap/jquery-jvectormap-2.0.1.css"
+	rel="stylesheet" />
+<link href="assets/plugins/bootstrap-datepicker/css/datepicker.css"
+	rel="stylesheet" />
+<link href="assets/plugins/bootstrap-datepicker/css/datepicker3.css"
+	rel="stylesheet" />
+<link href="assets/plugins/gritter/css/jquery.gritter.css"
+	rel="stylesheet" />
+<!-- ================== END PAGE LEVEL STYLE ================== -->
+
+<!-- ================== BEGIN BASE JS ================== -->
+<script src="assets/plugins/pace/pace.min.js"></script>
+<!-- ================== END BASE JS ================== -->
+</head>
+<body class="raphael">
+	<!-- begin #page-loader -->
+	<div id="page-loader" class="fade in">
+		<span class="spinner"></span>
+	</div>
+	<!-- end #page-loader -->
+
+	<!-- begin #page-container -->
+	<div id="page-container"
+		class="fade page-sidebar-fixed page-header-fixed">
+		<!-- begin #header -->
+		<div id="header" class="header navbar navbar-default navbar-fixed-top">
+			<!-- begin container-fluid -->
+			<div class="container-fluid">
+				<!-- begin mobile sidebar expand / collapse button -->
+				<div class="navbar-header">
+					<a href="Dashboard.do" class="navbar-brand"><span
+						class="navbar-logo"><img src="assets/img/logo_red.png"
+							width="55" height="55" /></span> Anáhuac </a>
+					<button type="button" class="navbar-toggle" data-click="sidebar-toggled">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				<!-- end mobile sidebar expand / collapse button -->
+
+				<!-- begin header navigation right -->
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+							<!-- <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle f-s-14">
+							<i class="fa fa-2x fa-slideshare"></i>
+							<span class="hidden-xs" style="font-size:12px; top:-10px;">Ayuda</span>
+						</a>
+						
+						<a id="fancybox-manual-c" href="javascript:;" data-smallipop-preferred-position="left" title="!Conoce como funciona el sorteo!" class="dropdown-toggle" >
+							<i class="fa fa-2x fa-slideshare"> </i>
+							<span class="hidden-xs" style="top:-15px;">Infografía Sorteo Anáhuac</span> 
+						</a>-->
+						
+					</li>
+					
+                            #NOTIFICACIONES#
+
+				</ul>
+				<!-- end header navigation right -->
+			</div>
+			<!-- end container-fluid -->
+		</div>
+		<!-- end #header -->
+
+		<!-- begin #sidebar -->
+		<div id="sidebar" class="sidebar">
+			<!-- begin sidebar scrollbar -->
+			<div data-scrollbar="true" data-height="100%">
+				<!-- begin sidebar user -->
+				<ul class="nav">
+					<li class="nav-profile">
+						#INFOUSER#
+					</li>
+				</ul>
+				<!-- end sidebar user -->
+				<!-- begin sidebar nav -->
+				#MENU#
+				<!-- end sidebar nav -->
+			</div>
+			<!-- end sidebar scrollbar -->
+		</div>
+		<div class="sidebar-bg"></div>
+		<!-- end #sidebar -->
+
+		<!-- begin #content -->
+		<div id="content" class="content">
+			<!-- begin breadcrumb -->
+			<ol class="breadcrumb pull-right">
+				<li><a href="Dashboard.do?view=listsorteos">Sorteos</a></li>
+				<li><a href="Dashboard.do">Dashboard</a></li>
+			</ol>
+			<!-- end breadcrumb -->
+			<!-- begin page-header -->
+			<h1 class="page-header">#SORTEO#</h1>
+			<h1 class="page-header">#SECTOR#</h1>
+			<h1 class="page-header">#NICHO#</h1>
+			<h1 class="page-header">#COLABORADOR#</h1>
+			<!-- end page-header -->
+
+			<!-- begin row -->
+			<div class="row">
+			
+			
+			
+				<!-- begin col-3 -->
+				<div class="col-md-3 col-sm-6">
+					<div class="widget widget-stats bg-blue">
+						<div class="stats-icon stats-icon-lg">
+							<i class="fa fa-tags fa-fw"></i>
+						</div>
+						<div class="stats-title">Emisión en B&oacute;veda</div>
+						<div class="stats-title">&nbsp;</div>
+						<div class="stats-number">#EMISION#</div>
+						<div class="stats-progress progress">
+							<div style="width: 70.1%;" class="progress-bar"></div>
+						</div>
+						<div class="stats-desc" >#ASIGNADOS#</div>
+					</div>
+				</div>
+				<!-- end col-3 -->
+				<!-- begin col-3 -->
+				<div class="col-md-3 col-sm-6">
+					<div class="widget widget-stats bg-green">
+						<div class="stats-icon stats-icon-lg">
+							<i class="fa fa-tags fa-fw"></i>
+						</div>
+						<div class="stats-title">Boletos en Colaboradores</div>
+						<div class="stats-title">(FC2)</div>
+						<div class="stats-number">#FC2#</div>
+						<div class="stats-progress progress">
+							<div style="width: 40.5%;" class="progress-bar"></div>
+						</div>
+						<br/>
+					</div>
+				</div>
+				<!-- end col-3 -->
+				<!-- begin col-3 -->
+				<div class="col-md-3 col-sm-6">
+					<div class="widget widget-stats bg-purple">
+						<div class="stats-icon stats-icon-lg">
+							<i class="fa fa-tags fa-fw"></i>
+						</div>
+						<div class="stats-title">Boletos Retornados</div>
+						<div class="stats-title">(FC4)</div>
+						<div class="stats-number">#FC4#</div>
+						<div class="stats-progress progress">
+							<div style="width: 76.3%;" class="progress-bar"></div>
+						</div>
+						<br/>
+					</div>
+				</div>
+				<!-- end col-3 -->
+				<!-- begin col-3 -->
+				<div class="col-md-3 col-sm-6">
+					<div class="widget widget-stats bg-black">
+						<div class="stats-icon stats-icon-lg">
+							<i class="fa fa-tags fa-fw"></i>
+						</div>
+						<div class="stats-title">BANCOS</div>
+						<div class="stats-title">&nbsp;</div>
+						<div class="stats-number">#BANCOS#</div>
+						<div class="stats-progress progress">
+							<div style="width: 54.9%;" class="progress-bar"></div>
+						</div>
+						<br/>
+					</div>
+				</div>
+				<!-- end col-3 -->
+				
+				
+				
+				
+				
+			</div>
+			<!-- end row -->
+			<!-- begin row -->
+			<div class="row">
+				<!-- begin col-8 -->
+				<div class="col-md-8">
+					<div class="panel panel-inverse" data-sortable-id="index-1">
+						<div class="panel-heading">
+							<div class="panel-heading-btn">
+								<a href="javascript:;"
+									class="btn btn-xs btn-icon btn-circle btn-default"
+									data-click="panel-expand"><i class="fa fa-expand"></i></a> <a
+									href="javascript:;"
+									class="btn btn-xs btn-icon btn-circle btn-success"
+									data-click="panel-reload"><i class="fa fa-repeat"></i></a> <a
+									href="javascript:;"
+									class="btn btn-xs btn-icon btn-circle btn-warning"
+									data-click="panel-collapse"><i class="fa fa-minus"></i></a> <a
+									href="javascript:;"
+									class="btn btn-xs btn-icon btn-circle btn-danger"
+									data-click="panel-remove"><i class="fa fa-times"></i></a>
+							</div>
+							<h4 class="panel-title">Estadísticas de Ventas</h4>
+						</div>
+						<div class="panel-body">
+							<!--  <div id="interactive-chart" class="height-sm"></div>-->
+						<div id="grafica" style="height: 400px; min-width: 310px"></div>
+						
+						</div>
+					</div>
+
+
+					<div class="panel panel-inverse" data-sortable-id="index-6">
+						<div class="panel-heading">
+							<div class="panel-heading-btn">
+								<a href="javascript:;"
+									class="btn btn-xs btn-icon btn-circle btn-default"
+									data-click="panel-expand"><i class="fa fa-expand"></i></a> <a
+									href="javascript:;"
+									class="btn btn-xs btn-icon btn-circle btn-success"
+									data-click="panel-reload"><i class="fa fa-repeat"></i></a> <a
+									href="javascript:;"
+									class="btn btn-xs btn-icon btn-circle btn-warning"
+									data-click="panel-collapse"><i class="fa fa-minus"></i></a> <a
+									href="javascript:;"
+									class="btn btn-xs btn-icon btn-circle btn-danger"
+									data-click="panel-remove"><i class="fa fa-times"></i></a>
+							</div>
+							<h4 class="panel-title">#POBLACION#</h4>
+						</div>
+						<div id="div_poblacion_id" class="panel-body p-t-0" style="overflow-x:auto;">
+								
+							<!--#TABLA#-->
+									
+									<br/>
+									<div class="block" style="width: 100%; text-align: center;">
+										<img src="assets/img/load-search.gif" /><br>
+										<h2> Buscando...</h2>
+									</div>
+									<br/>
+						</div>
+						
+						
+								
+						
+						
+						
+						
+					</div>
+
+
+				</div>
+				<!-- end col-8 -->
+				
+				
+				<input id="hidden_nivel_id" type="hidden" value="#HIDDEN_NIVEL#">
+
+
+
+				<!-- begin col-4 -->
+				<div class="col-md-4">
+
+					<div class="panel panel-inverse" data-sortable-id="index-2">
+						<div class="panel-heading">
+							<div class="panel-heading-btn">
+								<a href="javascript:;"
+									class="btn btn-xs btn-icon btn-circle btn-default"
+									data-click="panel-expand"><i class="fa fa-expand"></i></a>
+								<a href="javascript: alert('hola');"
+									class="btn btn-xs btn-icon btn-circle btn-success"
+									data-click="panel-reload"><i class="fa fa-repeat"></i></a>
+								<a href="javascript:;"
+									class="btn btn-xs btn-icon btn-circle btn-warning"
+									data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+								<a href="javascript:;"
+									class="btn btn-xs btn-icon btn-circle btn-danger"
+									data-click="panel-remove"><i class="fa fa-times"></i></a>
+							</div>
+							<h4 class="panel-title">Análisis Global Ventas</h4>
+						</div>
+						<div class="panel-body">
+							<!-- <div id="div_pie_id" class="height-sm"></div> -->
+							<div id="div_pie_id" style="min-width: 100px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+						</div>
+					</div>
+
+
+
+					<div class="panel panel-inverse" data-sortable-id="index-9">
+						<div class="panel-heading">
+							<div class="panel-heading-btn">
+								<a href="javascript:;"
+									class="btn btn-xs btn-icon btn-circle btn-default"
+									data-click="panel-expand"><i class="fa fa-expand"></i></a> <a
+									href="javascript:;"
+									class="btn btn-xs btn-icon btn-circle btn-success"
+									data-click="panel-reload"><i class="fa fa-repeat"></i></a> <a
+									href="javascript:;"
+									class="btn btn-xs btn-icon btn-circle btn-warning"
+									data-click="panel-collapse"><i class="fa fa-minus"></i></a> <a
+									href="javascript:;"
+									class="btn btn-xs btn-icon btn-circle btn-danger"
+									data-click="panel-remove"><i class="fa fa-times"></i></a>
+							</div>
+							<h4 class="panel-title">Ubicación Ventas</h4>
+						</div>
+						<div class="panel-body p-0">
+							  <div id="world-map" class="height-sm width-full">
+							  	<iframe src="Mapa" frameborder="0" style="overflow:hidden;height:100%;width:100%" height="100%" width="100%">
+							  	</iframe>
+							  </div>
+						</div>
+					</div>
+
+
+				</div>
+				<!-- end col-4 -->
+			</div>
+			<!-- end row -->
+		</div>
+		<!-- end #content -->
+	
+	
+	
+		<!-- begin scroll to top btn -->
+		<a href="javascript:;"
+			class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade"
+			data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+		<!-- end scroll to top btn -->
+	</div>
+	<!-- end page container -->
+
+	<!-- ================== BEGIN BASE JS ================== -->
+	  
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js" charset="utf-8" ></script>
+	
+	<script src="assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
+	<script src="assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+	<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<!--[if lt IE 9]>
+		<script src="assets/crossbrowserjs/html5shiv.js"></script>
+		<script src="assets/crossbrowserjs/respond.min.js"></script>
+		<script src="assets/crossbrowserjs/excanvas.min.js"></script>
+	<![endif]-->
+	<script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="assets/plugins/jquery-cookie/jquery.cookie.js"></script>
+	<!-- ================== END BASE JS ================== -->
+
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<script src="assets/plugins/gritter/js/jquery.gritter.js"></script>
+	<script src="assets/plugins/sparkline/jquery.sparkline.js"></script>
+	
+
+	
+	<!-- Add fancyBox main JS and CSS files -->
+	<script type="text/javascript" src="assets/plugins/fancybox/source/jquery.fancybox.js?v=2.1.5"></script>
+	
+	
+	<script type="text/javascript" src="assets/plugins/smallipop/lib/jquery.smallipop.js"></script>
+	
+	
+	
+		<!-- Grafica de venta de boletos -->
+	<script src="assets/plugins/highstock/js/highstock.js"></script>
+    <script src="assets/plugins/highstock/js/modules/exporting.js"></script>
+		<!-- Grafica de pie -->
+<!-- 	<script src="assets/plugins/highcharts/js/highcharts.js"></script> -->
+<!-- 	<script src="assets/plugins/highcharts/js/modules/exporting.js"></script> -->
+	
+	
+	<script src="assets/js/apps.min.js"></script>
+	<script src="assets/js/dashboard/dashboard.min.js"></script>
+	<script src="assets/js/dashboard/grafica.js"></script>
+	
+	  
+	<!-- ================== END PAGE LEVEL JS ================== -->
+
+	<script>
+	
+	
+	
+	
+	
+		$(document).ready(function() {
+			App.init();
+			Dashboard.init();
+			initialize();
+			
+			
+			 
+			 $('.dropdown-toggle').smallipop();
+			 
+			 $('.dropdown-toggle').smallipop('show');
+			
+			
+			$("#fancybox-manual-c").click(function() {
+				$.fancybox.open([
+					{
+						href : 'assets/img/procesosorteo1.jpg',
+						title : 'Operación y Seguimiento Sorteo Anáhuac'
+					}, {
+						href : 'assets/img/procesosorteo2.jpg',
+						title : 'Actores que intervienen en Sorteo Anáhuac'
+					}, {
+						href : 'assets/img/procesosorteo3.jpg',
+						title : 'Proceso de Asignación de Talonarios y Boletos'
+					},{
+						href : 'assets/img/procesosorteo4.jpg',
+						title : 'Proceso de Venta de Talonarios y Boletos'
+					}
+				], {
+					helpers : {
+						thumbs : {
+							width: 75,
+							height: 50
+						}
+					}
+				});
+			});
+			
+
+		});
+
+	</script>
+	
+	
+
+</body>
+</html>

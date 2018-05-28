@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8" />
+<title>Red de Universidades Anáhuac - Sorteos</title>
+<meta
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+	name="viewport" />
+<meta content="" name="description" />
+<meta content="" name="author" />
+
+<!-- ================== BEGIN BASE CSS STYLE ================== -->
+<link href="assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />
+<!-- ================== END BASE CSS STYLE ================== -->
+	<style>
+	
+		.sty_layer {
+			position: absolute;
+			left: 0;
+			top: 0;
+		  width: 100%;
+	    height: 100%;
+		  max-width: 100%;
+	    max-height: 100%;
+	    color:black;
+		}
+		.sty_back {
+		  background-image: url('assets/img/gallery/gallery-2.jpg');
+		  background-size:cover;
+		}
+		.sty_marquee {
+			margin: 30pt 10pt 10pt 10pt;
+			/*background-color: #EEEEEE;*/
+		}
+		
+		.style_contain{
+			/*margin: 30pt 10pt 10pt 10pt;*/
+			background-color: transparent;
+		}
+		.style_text_general{
+			font-family: Arial;
+			font-weight: bold;
+			font-size: 40pt;
+			text-align: center;
+			vertical-align: top;
+			margin: 0;
+		}
+		.style_text_boleto{  /* CAJA DE TEXTO - BOLETO */
+			font-family: Arial;
+			font-weight: bold;
+			font-size: 45pt;
+			text-align: center;
+			color: #FFFFFF;
+			background-color: #2b8ed9;
+			
+			cursor: text;
+			border-width: 0;
+			margin: 0pt;
+			margin-bottom: 20pt;
+		}
+		.style_text_normal{
+			color: #505050;
+			margin: 0pt;
+		}
+		.style_text_status{  /* TURQUESA */
+			color: #FFF;
+			margin: 0pt 0pt 30pt 10pt;
+		}
+		
+		.style_status_inc_robado{
+			background-color: #ff4848;
+		}
+		.style_status_inc_extraviado{
+			background-color: #ff9b13;
+		}
+		.style_status_vendido{
+			background-color: #0ca99d;
+		}
+		.style_status_no_vendido{
+			background-color: #202020;
+		}
+		.style_status_abono{
+			background-color: #a7a7a7;
+		}
+		.style_status_transito{
+			background-color: #3355AA;
+		}
+		.style_vacio{
+			background-color: #AAAAAA21;
+		}
+		
+		.style_text_talonario{  /* NARANJA */
+			color: #FFFFFF;
+			background-color: #f49300;
+			margin: 0pt;
+			margin-bottom: 30pt;
+			width: 40%;
+			left: 30%;
+			position: relative;
+		}
+		.style_text_caja{  /* GRIS OSCURO */
+			color: #FFFFFF;
+			background-color: #202020;
+			margin: 0pt;
+			margin-bottom: 30pt;
+			width: 40%;
+			left: 30%;
+			position: relative;
+		}
+		.style_text_responsable{  /* AZUL */
+			color: #1a64ff;
+			margin: 0pt;
+		}
+		
+	</style>
+</head>
+<body>
+	<!-- begin #page-loader -->
+	<div class="sty_layer sty_back">
+		<div style="font-size:15pt">
+			&nbsp;
+		</div> 
+	</div>
+
+	<div class="sty_layer">
+		<div class="sty_marquee">
+
+
+			<!-- INICIO TABLA -->
+			<input type="hidden" id="pk_sorteo" value="#PK_SORTEO#">
+			<div class="style_contain">
+				<div style="position: relative; width: 30%; float: left;" class="style_text_general">
+						<div class="style_text_normal">
+							BOLETO
+						</div>
+				</div>
+				<div style="position: relative; width: 40%; float: left;" class="style_text_general">
+						<div style="width: 100%">
+							<input type="text" id="input_boleto_id" class="style_text_boleto" style="width: 100%" value="" />
+						</div>
+				</div>
+				<div style="position: relative; width: 30%; float: left;" class="style_text_general">
+						<div id="div_status_id" class="style_text_status">
+							<div>
+								&nbsp;
+							</div>
+						</div>
+				</div>
+				
+				<br/>
+				<div class="style_text_general" style="text-align: center;">
+						<div class="style_text_normal">TALONARIO</div>
+						<div class="style_text_talonario" id="div_talonario_id">&nbsp;</div>
+						<div id="div_fisicos">
+								<div class="style_text_normal">CAJA</div>
+								<div class="style_text_caja" id="div_caja_id">&nbsp;</div>
+								
+								<div class="style_text_normal">RESPONSABLE</div>
+								<div class="style_text_responsable" id="div_responsable_id">&nbsp;</div>
+						</div>
+						<div id="div_electronicos">
+								<br/>
+								<div class="style_text_normal style_text_responsable">Boleto electr&oacute;nico</div>
+						</div>
+				</div>
+				
+			</div>
+			<!-- FIN TABLA -->
+
+
+		</div>
+	</div>
+	<!-- end #page-loader -->
+
+	<!-- end page container -->
+
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="assets/plugins/jquery/jquery-1.9.1.min.js"></script>
+	<script src="assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
+	<script src="assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+	<!-- ================== END BASE JS ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<script src="assets/js/premios/buscar_boleto.js"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
+
+	<script>
+		$(document).ready(function() {
+			initialize();
+		});
+	</script>
+
+</body>
+</html>

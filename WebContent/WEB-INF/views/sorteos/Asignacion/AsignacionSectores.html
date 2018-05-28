@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+	<title>Sorteos An&aacute;huac | Red de Universidades An&aacute;huac</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	
+
+	
+	<!-- ================== BEGIN BASE CSS STYLE ================== -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+	<link href="assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />
+	<link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+	<link href="assets/css/animate.min.css" rel="stylesheet" />
+	<link href="assets/css/style.min.css" rel="stylesheet" />
+	<link href="assets/css/style-responsive.min.css" rel="stylesheet" />
+	<link href="assets/plugins/DataTables/css/data-table.css" rel="stylesheet" />
+	<link href="assets/css/theme/default.css" rel="stylesheet" id="theme" />
+
+	<!-- ================== END BASE CSS STYLE ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
+	<link href="assets/plugins/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" />
+	<link href="assets/plugins/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet" />
+    <link href="assets/plugins/gritter/css/jquery.gritter.css" rel="stylesheet" />
+    
+	<!-- ================== END PAGE LEVEL STYLE ================== -->
+	
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="assets/plugins/pace/pace.min.js"></script>
+	<!-- ================== END BASE JS ================== -->
+</head>
+<body>
+
+
+
+	<!-- begin #page-loader -->
+	<div id="page-loader" class="fade in">
+		<span class="spinner"></span>
+	</div>
+	<!-- end #page-loader -->
+
+	<!-- begin #page-container -->
+	<div id="page-container"
+		class="fade page-sidebar-fixed page-header-fixed">
+		<!-- begin #header -->
+		<div id="header" class="header navbar navbar-default navbar-fixed-top">
+			<!-- begin container-fluid -->
+			<div class="container-fluid">
+				<!-- begin mobile sidebar expand / collapse button -->
+				<div class="navbar-header">
+					<a href="Dashboard.do" class="navbar-brand"><span
+						class="navbar-logo"><img src="assets/img/logo_red.png"
+							width="55" height="55" /></span> An&aacute;huac </a>
+					<button type="button" class="navbar-toggle"
+						data-click="sidebar-toggled">
+						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+				</div>
+				<!-- end mobile sidebar expand / collapse button -->
+
+				<!-- begin header navigation right -->
+				<ul class="nav navbar-nav navbar-right">#NOTIFICACIONES#
+
+				</ul>
+				<!-- end header navigation right -->
+			</div>
+			<!-- end container-fluid -->
+		</div>
+		<!-- end #header -->
+
+		<!-- begin #sidebar -->
+		<div id="sidebar" class="sidebar">
+			<!-- begin sidebar scrollbar -->
+			<div data-scrollbar="true" data-height="100%">
+				<!-- begin sidebar user -->
+				<ul class="nav">
+					<li class="nav-profile">#INFOUSER#</li>
+				</ul>
+				<!-- end sidebar user -->
+				<!-- begin sidebar nav -->
+				#MENU#
+				<!-- end sidebar nav -->
+			</div>
+			<!-- end sidebar scrollbar -->
+		</div>
+		<div class="sidebar-bg"></div>
+		<!-- end #sidebar -->
+
+		<!-- begin #content -->
+		<div class="content" id="content">
+			<!-- begin breadcrumb -->
+			<ol class="breadcrumb pull-right">
+				<li><a href="Sorteos.do">Sorteos</a></li>
+				<li><a href="#URLSECTORES#">Sectores</a></li>
+
+			</ol>
+			<!-- end breadcrumb -->
+			<!-- begin page-header -->
+			<h1 class="page-header">
+				<span style="color: Orange;">&#8226;</span> #SORTEO#
+			</h1>
+			<h3 class="page-header">
+				Sectores encontrados: <span id="numTal"></span>
+			</h3>
+			<!-- end page-header -->
+
+
+			<!-- begin row -->
+			<div class="row">
+				<!-- begin col-12 -->
+				<div class="col-md-12">
+					<div class="result-container">
+						<div class="input-group m-b-20">
+							<input type="text" placeholder="Sectores a buscar..."
+								id="searchtable" onkeyup="onkeyup_colfield_check(event)"
+								class="form-control input-white">
+							<div class="input-group-btn">
+								<button class="btn btn-inverse" type="button" onclick="btnBuscar_click()">
+									<i class="fa fa-search"></i> Buscar
+								</button>
+
+							</div>
+						</div>
+						<!--MODAL CARGA DE TALONARIOS SECTOR-->
+
+						<!-- INICIO MODAL  -->
+						<div id="myModalfc1" class="modal modal-message fade"
+							style="display: none;" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header" id="instruccionesheader">
+										<button class="close" aria-hidden="true" data-dismiss="modal"
+											type="button">×</button>
+										<h4 class="modal-title">DISTRIBUCION DE TALONARIOS COMPLETOS A SECTOR</h4>
+									</div>
+									<div class="modal-body">
+
+										<div id="instrucciones">
+											<p>
+												<strong>FC1; Formato de control 1</strong>
+											</p>
+											<p></p>
+											<p>Se realizar&aacute; una asignaci&oacute;n de Talonarios y boletos al sector.</p>
+										</div>
+
+
+										<div id="formato" style="display: none;">
+											<form class="form-horizontal" action="/" method="POST"
+												id="formulario" name="formulario"
+												data-parsley-validate="true">
+
+												<fieldset>
+
+													<legend>FC1; Formato de control 1 </legend>
+
+													<div class="form-group">
+														<label class="col-md-3 control-label">Folio de
+															formato:</label>
+														<div class="col-md-9">
+															<input type="text" class="form-control" id="folio"
+																name="folio" style="width: 150px" placeholder=""
+																required>
+														</div>
+													</div>
+
+													<div class="form-group">
+														<label class="col-md-3 control-label">Sorteo:</label>
+														<div class="col-md-9">
+															<input type="hidden" id="numsorteo" name="numsorteo"
+																value="#IDSORTEO#" /> <input type="text" disabled
+																id="sorteo" style="width: 300px" name="sorteo"
+																value="#SORTEO#" class="form-control"
+																style="width: 150px" placeholder="" required>
+														</div>
+													</div>
+
+												</fieldset>
+											</form>
+										</div>
+
+										<div id="formtalonarios" style="display: none;">
+
+											<fieldset>
+												<legend>
+													Talonarios: (<span id="numtalonarios"
+														style="font-weight: bold;"></span> - <span
+														id="numtalonariosadd"
+														style="font-weight: bold; color: blue;">0</span>) Boletos
+													de cada Talonario: <span id="numboletos"
+														style="font-weight: bold;"></span>
+												</legend>
+
+
+												<div class="form-group">
+													<label class="col-md-4 control-label"
+														style="width: 120px; margin-top: 7px;">Talonario <span
+														id="spannumtalonario"
+														style="font-weight: bold; color: blue;">1</span>:
+													</label>
+													<div class="col-md-8" style="width: 120px;">
+														<input type="hidden" name="hnumtalonario"
+															id="hnumtalonario"> <input type="text"
+															id="barcodetalonario" name="barcodetalonario"
+															onkeyup="onkeyup_talonario_check(event)"
+															class="form-control" style="width: 100px"
+															placeholder="# Talonario" required>
+													</div>
+													<div class="col-md-8" style="width: 100px;">
+														<input type="button" class="btn btn-sm btn-primary"
+															id="btntalonario" value="Agregar" />
+													</div>
+
+													<div id="colboletos" style="display: none;">
+														<label class="col-md-4 control-label"
+															style="width: 120px; margin-top: 7px;">Boleto <span
+															id="numboleto" style="font-weight: bold; color: blue;">1</span>
+															de <span id="totalnumboleto" style="font-weight: bold;">11</span>:
+														</label>
+														<div class="col-md-8" style="width: 120px;">
+															<input type="text" id="barcodeboleto"
+																name="barcodeboleto"
+																onkeyup="onkeyup_boleto_check(event)"
+																class="form-control" style="width: 100px"
+																placeholder="# Boleto" required>
+														</div>
+														<div class="col-md-8" style="width: 100px;">
+															<input type="button" class="btn btn-sm btn-primary"
+																id="btnboleto" value="Agregar" />
+														</div>
+
+													</div>
+
+												</div>
+
+
+											</fieldset>
+										</div>
+
+										<div class="result-info" id="numboletosadd"
+											style="display: none;">
+											<legend>
+												<small>Boletos de Talonario:</small>
+											</legend>
+											<p id="btlnm" class="location btlnm"></p>
+										</div>
+
+
+
+										<div class="jumbotron m-b-0 text-center" id="cargacompleta"
+											style="display: none;">
+											<h1>Talonarios y Boletos cargados Exitosamente!!</h1>
+											<br>
+											<p>
+												Se han agregado <span id="talonarioscomplete"> 1</span>
+												Talonarios y <span id="boletoscomplete"> 1</span> Boletos de
+												cada Talonario, Total: <span id="totalboletoscomplete">
+													1</span> Boletos, con numero de formato de control Folio: <span
+													id="folioformato"> 1</span>
+											</p>
+											<p>
+												<a href="javascript:void(0)" role="button"
+													class="btn btn-success btn-lg">Proceder con nueva carga</a>
+											</p>
+										</div>
+
+
+
+
+
+
+										<!-- begin row -->
+										<div class="row" id="asignacion" style="display: none;">
+
+
+
+
+											<!-- INICIO DE TABS -->
+
+											<div class="md-6">
+												<ul class="nav nav-tabs">
+													<li class="active" id="talonariosTab"><a id="tallink"
+														data-toggle="tab" href="#default-tab-1">Talonarios</a></li>
+													<li class="" id="boletosTab"><a id="bollink"
+														data-toggle="tab" href="#default-tab-2">Boletos</a></li>
+
+												</ul>
+												<div class="tab-content">
+													<div id="default-tab-1" class="tab-pane fade active in">
+
+														<div class="col-md-12 ui-sortable">
+
+															<div class="panel panel-inverse">
+																<div class="panel-heading">
+																	<h4 class="panel-title">Lista de Talonarios</h4>
+																</div>
+																
+																<div class="panel-body">
+																	<div class="table-responsive">
+																		<div id="data-table_wrapper" class="dataTables_wrapper no-footer">
+																			<div class="dataTables_filter">
+																				<label style="width:100%">
+																					Asignar por intervalo.
+																					Desde:<input id="intervalo_1" type="text" value="" style="width:60px;" onkeyup="intervalo_1_onkeyup(event);">&nbsp;&nbsp;
+																					Hasta:<input id="intervalo_2" type="text" value="" style="width:60px;" onkeyup="intervalo_2_onkeyup(event);">&nbsp;&nbsp;
+																					<!-- <input type="button" value="Asignar"> -->
+																					<button id="bBuscaIntervalo" class="btn btn-sm btn-primary" onclick="buscaIntervaloTalonarios()">
+																						Buscar&nbsp;&nbsp;<i class="fa fa-search"></i>
+																					</button>
+																					<img alt="" style="width:20px;" src="assets/img/load.gif" id="img_process" />
+																					
+																					<span id="span_paso_2">
+																						<button id="bFisico"      class="btn btn-sm btn-primary" onclick="SeleccionaElectronico(false)">
+																							F&iacute;sico&nbsp;&nbsp;_<i class="fa fa-pencil"></i>
+																						</button>
+																						<button id="bElectronico" class="btn btn-sm btn-primary" onclick="SeleccionaElectronico(true)">
+																							Electr&oacute;nico&nbsp;&nbsp;<i class="fa fa-credit-card"></i>
+																						</button>
+																					</span>
+																					<span id="span_paso_3">
+																						<button id="bEnviaIntervalo" class="btn btn-sm btn-primary" onclick="enviaIntervaloTalonarios()">
+																							Asignar <span id="eNTalonarios">x</span> talonario(s)
+																							&nbsp;&nbsp;<i class="fa fa-paper-plane"></i>
+																						</button>
+																					</span>
+																					<!-- 
+																					<button id="bEnviaIntervalo_2" class="btn btn-sm btn-warning" onclick="enviaIntervaloTalonarios()" >Asignar <span id="eNTalonarios">x</span> talonario(s)</button>
+																					 -->
+																				
+																					
+																				</label>
+																				<br><br>
+																			</div>
+																			<hr/>
+																			<div class="dataTables_length" id="data-table_length">
+																				<label>Mostrar: <select
+																					name="data-table_lengthM"
+																					onChange="changeShowModal()"
+																					id="data-elements-lengthM"
+																					aria-controls="data-table" class="">
+																						<option value="100">100</option>
+																						<option value="500">500</option>
+																						<option value="1000">1000</option>
+																						<option value="5000">5000</option>
+																						<option value="10000">10000</option>
+																					</select>
+																				</label>
+																			</div>
+																			<div id="data-table_filter" class="dataTables_filter">
+																				<label>Buscar:<input type="search" class="" id="searchtableM" placeholder="" onkeyup="onkeyup_colfield_checkModal(event)" aria-controls="data-table">
+																				</label>
+																			</div>
+																			
+																			<form action="/" method="POST" id="formulario1t" name="formulario1t">
+																				<input type="hidden" id="idsTalonarios">
+																				
+																				<div id="listresultados2fc1" style="min-height: 300px;" class="block"></div>
+																			</form>
+																		</div>
+
+																		
+																	</div>
+
+
+																</div>
+
+															</div>
+
+
+														</div>
+
+
+													</div>
+													<div id="default-tab-2" class="tab-pane fade">
+
+														<div class="col-md-12 ui-sortable">
+
+															<div class="panel-inverse">
+																<div class="panel-heading">
+
+																	<h4 class="panel-title">Lista de Boletos</h4>
+																</div>
+
+																<div class="panel-body">
+																	<div class="table-responsive">
+																		<div id="data-table_wrapper"
+																			class="dataTables_wrapper no-footer">
+																			<div class="dataTables_length" id="data-table_length">
+																				<label>Mostrar: <select
+																					name="data-table_lengthMBoletos"
+																					onChange="changeShowModalBoletos()"
+																					id="data-elements-lengthMBoletos"
+																					aria-controls="data-table" class="">
+
+																						<option value="100">100</option>
+																						<option value="500">500</option>
+																						<option value="1000">1000</option>
+																						<option value="5000">5000</option>
+																						<option value="10000">10000</option>
+																						<option value="20000">20000</option>
+																				</select>
+																				</label>
+																			</div>
+																			<div id="data-table_filter" class="dataTables_filter">
+																				<label>Buscar:<input type="search" class=""
+																					id="searchtableMBoletos" placeholder=""
+																					onkeyup="onkeyup_colfield_checkModalBoletos(event)"
+																					aria-controls="data-table"></label>
+																			</div>
+
+
+																			<form action="/" method="POST" id="formulario1b" name="formulario1b">
+																				<input type="hidden" id="idboletos">
+																				<input type="hidden" id="foltalonarios">
+																				<div id="listresultados3" style="min-height: 300px;" class="block"></div>
+																			</form>
+																		</div>
+																	</div>
+																</div>
+																<!-- </br> -->
+
+															</div>
+
+														</div>
+
+													</div>
+
+												</div>
+
+											</div>
+
+											<!-- FIN TABS -->
+
+										</div>
+
+									</div>
+									<div class="modal-footer">
+										<a class="btn btn-sm btn-white" data-dismiss="modal"
+											href="javascript:;">Cancelar</a> <a
+											class="btn btn-sm btn-primary" id="aceptarmodalfc1"
+											href="javascript:void(0)" onClick="mostrarFormato();">Siguiente</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- FIN MODAL  -->
+
+						<!-- END CARGA DE TALONARIOS SECTOR -->
+
+
+
+						<!-- INICIO MODAL OPCIONES -->
+						<div id="myModalConfiguracion" class="modal modal-message fade"
+							style="display: none;" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button class="close" aria-hidden="true" data-dismiss="modal"
+											type="button">×</button>
+										<h4 class="modal-title">OPCIONES SECTOR</h4>
+									</div>
+									<div class="modal-body">
+
+										<input type="hidden" name="idSector" id="idSector">
+
+										<div id="formConfig">
+											<div role="tabpanel" class="bwizard-activated"
+												aria-hidden="false" style="">
+												<div class="jumbotron m-b-0 text-center">
+													<div style="width: 100%;">
+														<p>#OPCIONFC1#</p>
+														
+														<p>#OPCIONDEVOLUCIONES#</p>
+
+														<p>#OPCIONELIMINAR#</p>
+														<p>#OPCIONELIMINARSECTOR#</p>
+													</div>
+
+												</div>
+											</div>
+										</div>
+										
+										
+										<!-- 
+										<div id="cargaBoletos" style="display: none;">
+
+
+											<div id="step4" role="tabpanel" class="bwizard-activated"
+												aria-hidden="false" style="">
+												<div class="jumbotron m-b-0 text-center">
+													<span id="mensajec">
+														<h1>Cargar Talonarios y Boletos de Boveda</h1>
+														<br>
+													</span>
+													<p>
+														<span id="contentcarga"></span> <a
+															href="javascript:void(0)" id="btncargaboletossorteo"
+															onClick="cargarBoletos();" role="button"
+															class="btn btn-success btn-lg">Proceder con la carga</a>
+													</p>
+
+												</div>
+											</div>
+
+										</div>
+										 -->
+
+
+
+										<!-- ELIMINAR CARGA DE TALONARIOS SECTOR -->
+
+										<div id="formEliminarCargaSector" style="display: none;">
+											<div id="step4" role="tabpanel" class="bwizard-activated"
+												aria-hidden="false">
+												<div class="jumbotron m-b-0 text-center">
+													<h1>Eliminar Asignacion de Talonarios y Boletos</h1>
+													<br>
+													<p>
+														<label class="control-label" id="eliminarlabeldeltecarga"><strong>Introduzca
+																la palabra ELIMINAR en el campo:</strong></label>
+													</p>
+													<div align="center">
+														<p>
+															<span id="contentcarga2"></span> <input type="text"
+																id="deletecargasorteoconfirm"
+																name="deletecargasorteoconfirm" class="form-control"
+																style="width: 100px" required>
+														</p>
+													</div>
+													<p>
+														<a id="btneliminardeltecarga" href="javascript:void(0)"
+															role="button" onClick="eliminarBoletosYTalonarios()"
+															class="btn btn-success btn-lg">Proceder con la
+															eliminaci&oacute;n</a>
+													</p>
+												</div>
+											</div>
+										</div>
+
+										<!-- END ELIMINAR CARGA DE TALONARIOS SECTOR -->
+
+
+
+										<!-- ELIMINAR SECTOR -->
+
+										<div id="formEliminarSector" style="display: none;">
+											<div role="tabpanel" class="bwizard-activated"
+												aria-hidden="false" style="">
+												<div class="jumbotron m-b-0 text-center">
+													<h1>Eliminar Sector</h1>
+													<br>
+													<p>
+														<label class="control-label" id="eliminarlabeldeltecarga"><strong>Introduzca
+																la palabra ELIMINAR en el campo:</strong></label>
+													</p>
+													<div align="center">
+														<p>
+															<span id="contentcarga2_2"></span> <input type="text"
+																id="inputPalabraELIMINAR_2_id"
+																name="inputPalabraELIMINAR_2_id" class="form-control"
+																style="width: 100px" required>
+														</p>
+													</div>
+													<p>
+														<a id="btneliminardeltecarga"
+															href="javascript:eliminarSector()" role="button"
+															class="btn btn-success btn-lg">
+															Proceder con la eliminaci&oacute;n
+														</a>
+													</p>
+												</div>
+											</div>
+										</div>
+
+										<!-- END ELIMINAR SECTOR -->
+										
+										
+																				
+										
+										
+
+
+										<!-- ELIMINAR PROCESS AND SUCCESS -->
+
+										<div id="formeliminarsucces" style="display: none;">
+											<div id="step4" role="tabpanel" class="bwizard-activated"
+												aria-hidden="false" style="">
+												<div class="jumbotron m-b-0 text-center">
+													<span id="titlesuccess"><h1>Eliminando los
+															talonarios y boletos</h1>
+														<br></span>
+
+													<div align="center">
+														<p>
+														<div id="content_process">
+															<img src="assets/img/load.gif" id="loaddeletecarga" /><br>
+														</div>
+														<div id="content_sucess">
+															<span class="fa-stack fa-2x text-success"> <i
+																class="fa fa-circle fa-stack-2x"></i> <i
+																class="fa fa-check fa-stack-1x fa-inverse"></i>
+															</span>
+														</div>
+														</p>
+													</div>
+
+												</div>
+											</div>
+
+										</div>
+										<!-- END  ELIMINAR PROCESS AND SUCCESS -->
+
+
+									</div>
+									<div class="modal-footer">
+										<a class="btn btn-sm btn-white" data-dismiss="modal"
+											href="javascript:;">Cerrar</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- FIN  MODAL OPCIONES -->
+						
+						
+							
+										
+						<!-- INICIO MODAL FC5-FC5B 3(SECTOR) -->
+						<div id="myModalFC5-FC5B" class="modal modal-message fade"
+							style="display: none;" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header" id="instruccionesheader3">
+										<button class="close" aria-hidden="true" data-dismiss="modal"
+											type="button">×</button>
+										<h4 class="modal-title">Devolución de talonarios y
+											boletos electrónicos</h4>
+									</div>
+									<div class="modal-body">
+
+										<div id="instrucciones3">
+											<p>
+												<strong>FC5;FC5B - Electrónicos - Sector - Formato
+													de control</strong>
+											</p>
+											<p></p>
+											<p>FC5 Devolución No Vendidos - Sector</p>
+											<p></p>
+											<p>FC5B Devolución No vendidos Parcialmente - Sector</p>
+										</div>
+
+
+										<div id="formatoFC5-FC5B" style="display: none;">
+											<form class="form-horizontal" action="/" method="POST" id=""
+												name="" data-parsley-validate="true">
+
+												<fieldset>
+
+													<legend>FC5-FC5B - Electrónicos - Sector; Formato
+														de control </legend>
+
+
+
+													<div class="form-group">
+														<label class="col-md-3 control-label">Folio de
+															formato:</label>
+														<div class="col-md-9">
+															<input type="text" class="form-control" id="foliofcs"
+																name="foliofcs" style="width: 150px" placeholder=""
+																required>
+														</div>
+													</div>
+
+													<div class="form-group">
+														<label class="col-md-3 control-label">Sorteo:</label>
+														<div class="col-md-9">
+															<input type="hidden" id="numsorteo" name="numsorteo"
+																value="#IDSORTEO#" " /> <input type="text" disabled
+																id="sorteo" style="width: 300px" name="sorteo"
+																value="#SORTEO#" class="form-control"
+																style="width: 150px" placeholder="" required>
+														</div>
+													</div>
+
+
+												</fieldset>
+
+											</form>
+
+
+										</div>
+
+									</div>
+									<div class="modal-footer">
+										<a class="btn btn-sm btn-white" data-dismiss="modal"
+											href="javascript:;">Cancelar</a> <a
+											class="btn btn-sm btn-primary" id="aceptarmodalFC3"
+											href="javascript:void(0)" onClick="mostrarFormatoFC5_FC5B();">Siguiente</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- FIN MODAL FC5-FC5B(SECTOR) -->
+
+						<div id="listresultados" style="min-height: 300px;" class="block">
+						</div>
+
+
+
+
+
+					</div>
+				</div>
+				<!-- end col-12 -->
+			</div>
+			<!-- end row -->
+		</div>
+		<!-- end row -->
+
+	</div>
+	<!-- end #content -->
+
+
+
+
+
+
+
+	<!-- begin scroll to top btn -->
+	<a href="javascript:;"
+		class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade"
+		data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+	<!-- end scroll to top btn -->
+	
+	<!-- end page container -->
+
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="assets/plugins/jquery/jquery-1.9.1.min.js"></script>
+	<script src="assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
+	<script src="assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+	<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<!--[if lt IE 9]>
+		<script src="assets/crossbrowserjs/html5shiv.js"></script>
+		<script src="assets/crossbrowserjs/respond.min.js"></script>
+		<script src="assets/crossbrowserjs/excanvas.min.js"></script>
+	<![endif]-->
+	<script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="assets/plugins/jquery-cookie/jquery.cookie.js"></script>
+	<!-- ================== END BASE JS ================== -->
+
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<script src="assets/plugins/gritter/js/jquery.gritter.js"></script>
+	<script src="assets/plugins/DataTables/media/js/jquery.dataTables.js"></script>
+	<script src="assets/plugins/sparkline/jquery.sparkline.js"></script>
+	<script src="assets/js/sorteos/Asignacion/AsignacionSectores.js"></script>
+	<script src="assets/plugins/jqueryblockUI/jquery.blockUI.js"></script>
+
+
+
+	<script src="assets/js/apps.min.js"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
+
+	<script>
+		$(document).ready(function() {
+			
+			App.init();
+			Listar.init();
+			
+			
+			$("#talonariosTab").click(function () {
+				$('#aceptarmodalfc1').removeAttr( "onClick" );
+				$("#aceptarmodalfc1").attr("onClick","enviarasignaciontalonarios()");
+				
+				 $("#Habilitados input[type=checkbox]").prop('checked', false);
+			});
+			
+			$("#boletosTab").click(function () {
+				$('#aceptarmodalfc1').removeAttr( "onClick" );
+				$("#aceptarmodalfc1").attr("onClick","enviarBoletos()");
+				 $("#Habilitados input[type=checkbox]").prop('checked', false);//solo los del objeto #diasHabilitados
+				
+				var html = $("#listresultados3").html();  
+				 
+				//if (html == ''){
+		     		ListarModalBoletos.init();
+				//}
+	     	});
+			
+			
+		/*	$("#marcarTodo").change(function () {
+		    	
+		    	alert('entro');
+		        if ($(this).is(':checked')) {
+		            //$("input[type=checkbox]").prop('checked', true); //todos los check
+		            $("#Habilitados input[type=checkbox]").prop('checked', true); //solo los del objeto #diasHabilitados
+		        } else {
+		            //$("input[type=checkbox]").prop('checked', false);//todos los check
+		            $("#Habilitados input[type=checkbox]").prop('checked', false);//solo los del objeto #diasHabilitados
+		        }
+		    });*/
+			
+		});
+	</script>
+
+</body>
+</html>

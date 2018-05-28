@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+	<title>Sorteos Anáhuac | Red de Universidades Anáhuac</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	
+
+	<!-- ================== BEGIN BASE CSS STYLE ================== -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+	<link href="assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />
+	<link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+	<link href="assets/css/animate.min.css" rel="stylesheet" />
+	<link href="assets/css/style.min.css" rel="stylesheet" />
+	<link href="assets/css/opa-icons.css" rel="stylesheet" />
+	<link href="assets/css/style-responsive.min.css" rel="stylesheet" />
+	<link href="assets/plugins/DataTables/css/data-table.css" rel="stylesheet" />
+	<!-- ================== END BASE CSS STYLE ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
+	
+	<link href="assets/plugins/parsley/src/parsley.css" rel="stylesheet" />
+    <link href="assets/plugins/gritter/css/jquery.gritter.css" rel="stylesheet" />
+	<!-- ================== END PAGE LEVEL STYLE ================== -->
+	
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="assets/plugins/pace/pace.min.js"></script>
+	<!-- ================== END BASE JS ================== -->
+</head>
+<body>
+	<!-- begin #page-loader -->
+	<div id="page-loader" class="fade in"><span class="spinner"></span></div>
+	<!-- end #page-loader -->
+	
+	<!-- begin #page-container -->
+	<div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+		<!-- begin #header -->
+		<div id="header" class="header navbar navbar-default navbar-fixed-top">
+			<!-- begin container-fluid -->
+			<div class="container-fluid">
+				<!-- begin mobile sidebar expand / collapse button -->
+				<div class="navbar-header">
+					<a href="Dashboard.do" class="navbar-brand"><span class="navbar-logo"><img src="assets/img/logo_red.png" width="55" height="55"/></span> Anáhuac	</a>
+					<button type="button" class="navbar-toggle" data-click="sidebar-toggled">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				<!-- end mobile sidebar expand / collapse button -->
+				
+				<!-- begin header navigation right -->
+				<ul class="nav navbar-nav navbar-right">
+					#NOTIFICACIONES#
+				</ul>
+				<!-- end header navigation right -->
+			</div>
+			<!-- end container-fluid -->
+		</div>
+		<!-- end #header -->
+		
+		<!-- begin #sidebar -->
+		<div id="sidebar" class="sidebar">
+		     
+		     <div data-scrollbar="true" data-height="100%">
+				<!-- begin sidebar user -->
+				<ul class="nav">
+					<li class="nav-profile">
+						#INFOUSER#
+					</li>
+				</ul>
+		
+		
+			<!-- begin sidebar scrollbar -->
+			#MENU#
+			</div>
+			<!-- end sidebar scrollbar -->
+		</div>
+		<div class="sidebar-bg"></div>
+		<!-- end #sidebar -->
+		
+		<!-- begin #content -->
+		<div class="content" id="content">
+    <!-- begin breadcrumb -->
+    <ol class="breadcrumb pull-right">
+        <li><a href="Dashboard.do">Dashboard</a></li>
+        <li><a href="Sectores">Sectores</a></li>
+        
+    </ol>
+    <!-- end breadcrumb -->
+    <!-- begin page-header -->
+    <h1 class="page-header">Permisos<small></small></h1>
+    <!-- end page-header -->
+    
+    
+    
+   <!-- begin row -->
+    <div class="row">
+			    <!-- begin col-12 -->
+			    <div class="col-md-12 ui-sortable">
+			        <!-- begin panel -->
+                    <div class="panel panel-inverse">
+                        <div class="panel-heading">
+                            <div class="panel-heading-btn">
+                                <a data-click="panel-expand" class="btn btn-xs btn-icon btn-circle btn-default" href="javascript:;"><i class="fa fa-expand"></i></a>
+                                <a data-click="panel-reload" class="btn btn-xs btn-icon btn-circle btn-success" href="javascript:;"><i class="fa fa-repeat"></i></a>
+                                <a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+                                <a data-click="panel-remove" class="btn btn-xs btn-icon btn-circle btn-danger" href="javascript:;"><i class="fa fa-times"></i></a>
+                            </div>
+                            <h4 class="panel-title">Agregar Permisos</h4>
+                        </div>
+                        <div  class="panel-body">
+                        
+                        <div id="alerta" class="alert alert-success fade in">
+                            <span data-dismiss="alert" class="close">×</span>
+                            <i id="headAlerta" class="fa fa-check fa-2x pull-left"></i>
+                            <p id="bodyAlerta">El permiso ha sigo agregado con exito.</p>
+                        </div>
+                        	
+							 <div class="form-inline" style="margin-top:5px;">
+						<form action="/" method="POST" data-parsley-validate id="formulario" name="formulario"> 
+							 
+							 <div class="form-group">
+							        <input type="hidden" id="idpermiso" name="idpermiso">
+							          <input type="text" name="permiso" id="permiso" placeholder="permiso" data-parsley-validate="true" class="form-control"  required/>
+								</div>
+								
+															 
+							 <div class="form-group">
+							          <input type="text" " name="descripcion" id="descripcion" placeholder="Descripción del permiso" class="form-control"  />
+								</div>
+								
+								
+							
+								
+								<div class="form-group m-r-10">
+							          <select name="tipo" id="tipo" class="form-control" >
+							          <option value="D">Dashboard</option>
+							          <option value="S">Sorteos</option>
+							          <option value="P">Población</option>
+							          <option value="T">Talonarios</option>
+							          <option value="V">Ventas</option>
+							          <option value="E">Premios</option>
+							           <option value="R">Reportes</option>
+							           <option value="U">Usuarios</option>
+							           <option value="H">Herramientas</option>
+							          
+							          
+							           </select>
+								</div>
+							
+							 <button class="btn btn-sm btn-primary" id="guardar" onClick="javascript:Guardar();return false;" type="submit"  >Guardar</button> 
+							 
+						</form>
+							 </div>
+                           
+                           
+                            
+                        </div>
+                    </div>
+                    <!-- end panel -->
+                </div>
+                <!-- end col-12 -->
+</div>
+			<!-- end row -->
+    
+    
+    
+    <!-- begin row -->
+    <div class="row">
+			    <!-- begin col-12 -->
+			    <div class="col-md-12 ui-sortable">
+			        <!-- begin panel -->
+                    <div class="panel panel-inverse">
+                        <div class="panel-heading">
+                            <div class="panel-heading-btn">
+                                <a data-click="panel-expand" class="btn btn-xs btn-icon btn-circle btn-default" href="javascript:;"><i class="fa fa-expand"></i></a>
+                                <a data-click="panel-reload" class="btn btn-xs btn-icon btn-circle btn-success" href="javascript:;"><i class="fa fa-repeat"></i></a>
+                                <a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+                                <a data-click="panel-remove" class="btn btn-xs btn-icon btn-circle btn-danger" href="javascript:;"><i class="fa fa-times"></i></a>
+                            </div>
+                            <h4 class="panel-title">Lista de Permisos</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+ 
+          <!--  <div id="data-table_filter" class="dataTables_filter"><label>Buscar:<input type="search" class="" id="searchtable" placeholder="" onkeyup="onkeyup_colfield_check(event)" aria-controls="data-table"></label></div>
+                                 <div id="pagginghead" class="pagging">	
+		
+			<div style="float:left;" class="btn-group">
+					<a class="btn btn-warning" href="javascript:void(0)"><span class="icon icon-white icon-arrowthick-s" title=".icon  .icon-white  .icon-arrowthick-s "></span> Privilegios</a>
+					  <a class="btn dropdown-toggle btn-warning" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+				  <ul class="dropdown-menu\">
+					<li><a onclick="permitirPermisos();" href="javascript:void(0)"><i class="icon-ok"></i> Permitir Permiso</a></li>
+					<li class="divider"></li>
+				<li><a onclick="restringirPermisos();" href="javascript:void(0)"><i class="icon-ban-circle"></i> Restringir Permiso</a></li>
+				</ul>
+				</div>-->
+				
+				<h1 class="page-header">
+                     #ROLE#
+                   <small></small>
+                </h1>
+				
+				
+				<div id="pagginghead" class="pagging">	
+			 
+                                <div id="" style="min-height:300px;"  class="block">
+                                
+                                
+               
+                                <div class="row" align="">
+       
+                                <div class="col-md">
+			        <div id="accordion" class="panel-group">
+						<div class="panel panel-inverse overflow-hidden">
+							<div class="panel-heading bgcolor-gris">
+								<h3 class="panel-title">
+									<a href="#collapseOne" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle accordion-toggle-styled collapsed" aria-expanded="false">
+									    <i class="fa fa-plus-circle pull-right"></i> 
+										Dashboard
+									</a>
+								</h3>
+							</div>
+							<div class="panel-collapse collapse" id="collapseOne" aria-expanded="false" style="height: 0px;">
+								<div class="panel-body">
+								
+								  <div style="float:left;" class="btn-group">
+								  <a class="btn btn-warning" href="javascript:void(0)"><span class="icon icon-white icon-arrowthick-s" title=".icon  .icon-white  .icon-arrowthick-s "></span> Privilegios</a>
+								  <a class="btn dropdown-toggle btn-warning" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+								  <ul class="dropdown-menu">
+									<li><a onclick="permitirPermisos('D');" href="javascript:void(0)"><i class="icon-ok"></i> Permitir Permiso</a></li>
+									<li class="divider"></li>
+									<li><a onclick="restringirPermisos('D');" href="javascript:void(0)"><i class="icon-ban-circle"></i> Restringir Permiso</a></li>
+								  </ul>
+								  </div>
+									
+								<div id="listresultadosdashboard" style="min-height:300px;"  class="block"></div>
+									
+									
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-inverse overflow-hidden">
+							<div class="panel-heading bgcolor-gris">
+								<h3 class="panel-title">
+									<a href="#collapseTwo" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle accordion-toggle-styled" aria-expanded="false">
+									    <i class="fa fa-plus-circle pull-right"></i> 
+										Sorteos
+									</a>
+								</h3>
+							</div>
+							<div class="panel-collapse collapse" id="collapseTwo" aria-expanded="false" style="">
+								<div class="panel-body">
+								
+								<div style="float:left;" class="btn-group">
+								  <a class="btn btn-warning" href="javascript:void(0)"><span class="icon icon-white icon-arrowthick-s" title=".icon  .icon-white  .icon-arrowthick-s "></span> Privilegios</a>
+								  <a class="btn dropdown-toggle btn-warning" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+								  <ul class="dropdown-menu">
+									<li><a onclick="permitirPermisos('S');" href="javascript:void(0)"><i class="icon-ok"></i> Permitir Permiso</a></li>
+									<li class="divider"></li>
+									<li><a onclick="restringirPermisos('S');" href="javascript:void(0)"><i class="icon-ban-circle"></i> Restringir Permiso</a></li>
+								  </ul>
+								  </div>
+									
+								
+								<div id="listresultadossorteos" style="min-height:300px;"  class="block"></div>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-inverse overflow-hidden">
+							<div class="panel-heading bgcolor-gris">
+								<h3 class="panel-title">
+									<a href="#collapseThree" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle accordion-toggle-styled collapsed" aria-expanded="false">
+									    <i class="fa fa-plus-circle pull-right"></i> 
+										Población
+									</a>
+								</h3>
+							</div>
+							<div class="panel-collapse collapse" id="collapseThree" aria-expanded="false">
+								<div class="panel-body">
+								
+								<div style="float:left;" class="btn-group">
+								  <a class="btn btn-warning" href="javascript:void(0)"><span class="icon icon-white icon-arrowthick-s" title=".icon  .icon-white  .icon-arrowthick-s "></span> Privilegios</a>
+								  <a class="btn dropdown-toggle btn-warning" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+								  <ul class="dropdown-menu">
+									<li><a onclick="permitirPermisos('P');" href="javascript:void(0)"><i class="icon-ok"></i> Permitir Permiso</a></li>
+									<li class="divider"></li>
+									<li><a onclick="restringirPermisos('P');" href="javascript:void(0)"><i class="icon-ban-circle"></i> Restringir Permiso</a></li>
+								  </ul>
+								  </div>
+								
+								<div id="listresultadospoblacion" style="min-height:300px;"  class="block"></div>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-inverse overflow-hidden">
+							<div class="panel-heading bgcolor-gris">
+								<h3 class="panel-title">
+									<a href="#collapseFour" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle accordion-toggle-styled collapsed" aria-expanded="false">
+									    <i class="fa fa-plus-circle pull-right"></i> 
+										Boveda
+									</a>
+								</h3>
+							</div>
+							<div class="panel-collapse collapse" id="collapseFour" aria-expanded="false">
+								<div class="panel-body">
+								
+								<div style="float:left;" class="btn-group">
+								  <a class="btn btn-warning" href="javascript:void(0)"><span class="icon icon-white icon-arrowthick-s" title=".icon  .icon-white  .icon-arrowthick-s "></span> Privilegios</a>
+								  <a class="btn dropdown-toggle btn-warning" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+								  <ul class="dropdown-menu">
+									<li><a onclick="permitirPermisos('T');" href="javascript:void(0)"><i class="icon-ok"></i> Permitir Permiso</a></li>
+									<li class="divider"></li>
+									<li><a onclick="restringirPermisos('T');" href="javascript:void(0)"><i class="icon-ban-circle"></i> Restringir Permiso</a></li>
+								  </ul>
+								  </div>
+									
+									<div id="listresultadostalonarios" style="min-height:300px;"  class="block"></div>
+									
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-inverse overflow-hidden">
+							<div class="panel-heading bgcolor-gris">
+								<h3 class="panel-title">
+									<a href="#collapseFive" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle accordion-toggle-styled collapsed" aria-expanded="false">
+									    <i class="fa fa-plus-circle pull-right"></i> 
+										Ventas
+									</a>
+								</h3>
+							</div>
+							<div class="panel-collapse collapse" id="collapseFive" aria-expanded="false">
+								<div class="panel-body">
+								
+								
+								<div style="float:left;" class="btn-group">
+								  <a class="btn btn-warning" href="javascript:void(0)"><span class="icon icon-white icon-arrowthick-s" title=".icon  .icon-white  .icon-arrowthick-s "></span> Privilegios</a>
+								  <a class="btn dropdown-toggle btn-warning" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+								  <ul class="dropdown-menu">
+									<li><a onclick="permitirPermisos('V');" href="javascript:void(0)"><i class="icon-ok"></i> Permitir Permiso</a></li>
+									<li class="divider"></li>
+									<li><a onclick="restringirPermisos('V');" href="javascript:void(0)"><i class="icon-ban-circle"></i> Restringir Permiso</a></li>
+								  </ul>
+								  </div>
+								
+									<div id="listresultadosventas" style="min-height:300px;"  class="block"></div>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-inverse overflow-hidden">
+							<div class="panel-heading bgcolor-gris">
+								<h3 class="panel-title">
+									<a href="#collapseSix" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle accordion-toggle-styled collapsed" aria-expanded="false">
+									    <i class="fa fa-plus-circle pull-right"></i> 
+										Premios
+									</a>
+								</h3>
+							</div>
+							<div class="panel-collapse collapse" id="collapseSix" aria-expanded="false">
+								<div class="panel-body">
+								
+								<div style="float:left;" class="btn-group">
+								  <a class="btn btn-warning" href="javascript:void(0)"><span class="icon icon-white icon-arrowthick-s" title=".icon  .icon-white  .icon-arrowthick-s "></span> Privilegios</a>
+								  <a class="btn dropdown-toggle btn-warning" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+								  <ul class="dropdown-menu">
+									<li><a onclick="permitirPermisos('E');" href="javascript:void(0)"><i class="icon-ok"></i> Permitir Permiso</a></li>
+									<li class="divider"></li>
+									<li><a onclick="restringirPermisos('E');" href="javascript:void(0)"><i class="icon-ban-circle"></i> Restringir Permiso</a></li>
+								  </ul>
+								  </div>
+								
+								
+									<div id="listresultadospremios" style="min-height:300px;"  class="block"></div>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-inverse overflow-hidden">
+							<div class="panel-heading bgcolor-gris">
+								<h3 class="panel-title">
+									<a href="#collapseSeven" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle accordion-toggle-styled collapsed" aria-expanded="false">
+									    <i class="fa fa-plus-circle pull-right"></i> 
+										Reportes
+									</a>
+								</h3>
+							</div>
+							<div class="panel-collapse collapse" id="collapseSeven" aria-expanded="false">
+								<div class="panel-body">
+								
+								<div style="float:left;" class="btn-group">
+								  <a class="btn btn-warning" href="javascript:void(0)"><span class="icon icon-white icon-arrowthick-s" title=".icon  .icon-white  .icon-arrowthick-s "></span> Privilegios</a>
+								  <a class="btn dropdown-toggle btn-warning" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+								  <ul class="dropdown-menu">
+									<li><a onclick="permitirPermisos('R');" href="javascript:void(0)"><i class="icon-ok"></i> Permitir Permiso</a></li>
+									<li class="divider"></li>
+									<li><a onclick="restringirPermisos('R');" href="javascript:void(0)"><i class="icon-ban-circle"></i> Restringir Permiso</a></li>
+								  </ul>
+								  </div>
+								  
+									<div id="listresultadosreportes" style="min-height:300px;"  class="block"></div>
+								</div>
+							</div>
+						</div>
+						
+							<div class="panel panel-inverse overflow-hidden">
+							<div class="panel-heading bgcolor-gris">
+								<h3 class="panel-title">
+									<a href="#collapseEight" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle accordion-toggle-styled collapsed" aria-expanded="false">
+									    <i class="fa fa-plus-circle pull-right"></i> 
+										Usuarios
+									</a>
+								</h3>
+							</div>
+							<div class="panel-collapse collapse" id="collapseEight" aria-expanded="false">
+								<div class="panel-body">
+								
+								<div style="float:left;" class="btn-group">
+								  <a class="btn btn-warning" href="javascript:void(0)"><span class="icon icon-white icon-arrowthick-s" title=".icon  .icon-white  .icon-arrowthick-s "></span> Privilegios</a>
+								  <a class="btn dropdown-toggle btn-warning" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+								  <ul class="dropdown-menu">
+									<li><a onclick="permitirPermisos('U');" href="javascript:void(0)"><i class="icon-ok"></i> Permitir Permiso</a></li>
+									<li class="divider"></li>
+									<li><a onclick="restringirPermisos('U');" href="javascript:void(0)"><i class="icon-ban-circle"></i> Restringir Permiso</a></li>
+								  </ul>
+								  </div>
+								  
+									<div id="listresultadosusuarios" style="min-height:300px;"  class="block"></div>
+								</div>
+							</div>
+						</div>
+						
+							<div class="panel panel-inverse overflow-hidden">
+							<div class="panel-heading bgcolor-gris">
+								<h3 class="panel-title">
+									<a href="#collapseNine" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle accordion-toggle-styled collapsed" aria-expanded="false">
+									    <i class="fa fa-plus-circle pull-right"></i> 
+										Herramientas
+									</a>
+								</h3>
+							</div>
+							<div class="panel-collapse collapse" id="collapseNine" aria-expanded="false">
+								<div class="panel-body">
+								
+								<div style="float:left;" class="btn-group">
+								  <a class="btn btn-warning" href="javascript:void(0)"><span class="icon icon-white icon-arrowthick-s" title=".icon  .icon-white  .icon-arrowthick-s "></span> Privilegios</a>
+								  <a class="btn dropdown-toggle btn-warning" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+								  <ul class="dropdown-menu">
+									<li><a onclick="permitirPermisos('H');" href="javascript:void(0)"><i class="icon-ok"></i> Permitir Permiso</a></li>
+									<li class="divider"></li>
+									<li><a onclick="restringirPermisos('H');" href="javascript:void(0)"><i class="icon-ban-circle"></i> Restringir Permiso</a></li>
+								  </ul>
+								  </div>
+								  
+									<div id="listresultadosherramientas" style="min-height:300px;"  class="block"></div>
+								</div>
+							</div>
+						</div>
+						
+						
+						
+						
+						
+						<!-- <div class="panel panel-inverse overflow-hidden">
+							<div class="panel-heading">
+								<h3 class="panel-title">
+									<a href="#collapseEight" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle accordion-toggle-styled collapsed" aria-expanded="false">
+									    <i class="fa fa-plus-circle pull-right"></i> 
+										Usuarios
+									</a>
+								</h3>
+							</div>
+							<div class="panel-collapse collapse" id="collapseSeven" aria-expanded="false">
+								<div class="panel-body">
+									<div id="listresultadosusuarios" style="min-height:300px;"  class="block"></div>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-inverse overflow-hidden">
+							<div class="panel-heading">
+								<h3 class="panel-title">
+									<a href="#collapseNine" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle accordion-toggle-styled collapsed" aria-expanded="false">
+									    <i class="fa fa-plus-circle pull-right"></i> 
+										Herramientas
+									</a>
+								</h3>
+							</div>
+							<div class="panel-collapse collapse" id="collapseSeven" aria-expanded="false">
+								<div class="panel-body">
+									<div id="listresultadosherramientas" style="min-height:300px;"  class="block"></div>
+								</div>
+							</div>
+						</div> -->
+						
+						
+					  
+						
+					</div>
+			    </div>
+ 
+                                </div>
+                               
+                                
+                                </div>
+                                
+                               
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end panel -->
+                </div>
+                <!-- end col-12 -->
+            </div>
+    
+    <!-- end row -->
+</div>
+			<!-- end row -->
+			
+		</div>
+		<!-- end #content -->
+		
+		   <!-- INICIO MODAL -->
+        
+<div id="myModal" class="modal fade" style="display: none;" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<button class="close" aria-hidden="true" data-dismiss="modal" type="button">×</button>
+<h4 class="modal-title" id="titlemodal">Alerta!</h4>
+</div>
+<div class="modal-body">
+<div class="">
+<h4>
+<p ><span id="bodymodal">Debe elegir al menos un permiso a modificar</span></p>
+</div>
+<div class="modal-footer">
+
+<a class="btn btn-sm btn-danger" id="aceptarmodal" data-dismiss="modal" href="javascript:;">Action</a>
+</div>
+</div>
+</div>
+</div>
+
+
+        
+        
+        <!-- FIN MODAL -->
+		<!-- begin scroll to top btn -->
+		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+		<!-- end scroll to top btn -->
+	</div>
+	<!-- end page container -->
+	
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="assets/plugins/jquery/jquery-1.9.1.min.js"></script>
+	<script src="assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
+	<script src="assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+	<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<!--[if lt IE 9]>
+		<script src="assets/crossbrowserjs/html5shiv.js"></script>
+		<script src="assets/crossbrowserjs/respond.min.js"></script>
+		<script src="assets/crossbrowserjs/excanvas.min.js"></script>
+	<![endif]-->
+	<script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="assets/plugins/jquery-cookie/jquery.cookie.js"></script>
+	<!-- ================== END BASE JS ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+		
+	<script src="assets/plugins/jqueryblockUI/jquery.blockUI.js"></script>
+	<script src="assets/plugins/gritter/js/jquery.gritter.js"></script>
+	<script src="assets/plugins/DataTables/media/js/jquery.dataTables.js"></script>
+	<script src="assets/plugins/parsley/dist/parsley.js"></script>
+	<script src="assets/js/permisos/list-permisos.min.js"></script>
+	<script src="assets/js/apps.min.js"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
+	
+	
+	<script>
+		$(document).ready(function() {
+			$('#alerta').hide();
+			 BuscarPermisos();
+			 App.init();
+		});
+	</script>
+	
+</body>
+</html>

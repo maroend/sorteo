@@ -1,0 +1,344 @@
+﻿<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8" />
+<title>Red de Universidades Anáhuac - Sorteos</title>
+<meta
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+	name="viewport" />
+<meta content="" name="description" />
+<meta content="" name="author" />
+
+<!-- ================== BEGIN BASE CSS STYLE ================== -->
+
+<!-- ================== END BASE CSS STYLE ================== -->
+	<style>
+	
+		.sty_layer {
+			position: absolute;
+			left: 0;
+			top: 0;
+		  width: 720px;
+	    color:black;
+	    background-color: #EEEEEE;
+	    
+	    border: 1pt Solid #AAAAAA;
+		}
+		.sty_back {
+			background-color: White;
+		  background-size: cover;
+		}
+		.sty_marquee {
+			margin: 30pt 10pt 10pt 10pt;
+			/*background-color: #EEEEEE;*/
+		}
+		
+		.style_contain{
+			/*margin: 30pt 10pt 10pt 10pt;*/
+			background-color: transparent;
+		}
+		.style_text_general{
+			font-family: Arial;
+			font-weight: bold;
+			font-size: 15pt;
+			text-align: center;
+			vertical-align: top;
+			margin: 0;
+		}
+		.style_text_boleto{  /* CAJA DE TEXTO - BOLETO */
+			font-family: Arial;
+			font-weight: bold;
+			font-size: 15pt;
+			text-align: center;
+			color: #FFF;
+			background-color: #2b8ed9;
+			cursor: text;
+			border-width: 0;
+			margin: 0pt;
+			margin-bottom: 10pt;
+		}
+		.style_text_normal{
+			color: #505050;
+			margin: 0pt;
+		}
+		.style_text_status{  /* TURQUESA */
+			color: #FFF;
+			margin: 0pt 0pt 10pt 10pt;
+		}
+		
+		.style_status_inc_robado{
+			background-color: #ff4848;
+		}
+		.style_status_inc_extraviado{
+			background-color: #ff9b13;
+		}
+		.style_status_vendido{
+			background-color: #0ca99d;
+		}
+		.style_status_no_vendido{
+			background-color: #202020;
+		}
+		.style_status_abono{
+			background-color: #a7a7a7;
+		}
+		.style_status_transito{
+			background-color: #3355AA;
+		}
+		.style_vacio{
+			background-color: #AAAAAA21;
+		}
+		
+		.style_text_talonario{  /* NARANJA */
+			color: #FFF;
+			background-color: #f49300;
+			margin: 0pt;
+			margin-bottom: 30pt;
+			/*width: 40%;*/
+			/*left: 30%;*/
+			position: relative;
+		}
+		.style_text_info{  /* GRIS OSCURO */
+			color: #FFF;
+			background-color: #202020;
+			margin: 0pt;
+			margin-bottom: 30pt;
+			width: 40%;
+			left: 30%;
+			position: relative;
+		}
+		
+		
+		
+		
+		.sty_table{
+			width: 100%;
+			background-color: #DDFFDD;
+			text-align: center;
+			
+			padding: 0;
+			margin: 0;
+			border-style: solid;
+			border-width: 0;
+			border-color: white;
+		}
+		
+		
+		
+		
+		
+		
+		
+		.sty_row{
+			margin-top: 10pt;
+		}
+		
+		.sty_label_div{
+			font-family: Arial;
+			font-weight: bold;
+			font-style: italic;
+			font-size: 14pt;
+			background-color:#DDDDDD;
+			padding: 2pt 5pt 2pt 10pt;
+			width:140pt;
+			text-align: left;
+
+			margin: 0;
+			border-style: solid;
+			border-width: 0;
+			border-color: white;
+		}
+		.sty_info{
+			font-family: Calibri;
+			font-weight: normal;
+			font-size: 18pt;
+			background-color:#EEEEEE;
+			padding: 2pt 5pt 2pt 5pt;
+			text-align: left;
+			
+			margin: 0;
+			border-style: solid;
+			border-width: 0;
+			border-color: white;
+		}
+		.sty_info_div{
+			border-width: 0;
+			border-bottom: 1.5pt solid #777777;
+		}
+		.sty_button{
+			padding: 3pt 20pt 3pt 20pt;
+			color: #FFFFFF;
+			background-color: #2b8ed9;
+			text-decoration: none;
+			font-style: 
+		}
+	
+	</style>
+</head>
+<body>
+	<!-- begin #page-loader -->
+	<div class="sty_layer sty_back">
+		<div style="font-size:15pt">
+			&nbsp;
+		</div> 
+	</div>
+
+	<div class="sty_layer">
+		<div class="sty_marquee">
+
+
+			<!-- INICIO TABLA -->
+			<input type="hidden" id="pk_sorteo" value="#PK_SORTEO#">
+			<div class="style_contain">
+				<div id="panel_boleto">
+					<div style="position: relative; width: 20%; float: left;" class="style_text_general">
+							<div class="style_text_normal">
+								BOLETO
+							</div>
+					</div>
+					<div style="position: relative; width: 20%; float: left;" class="style_text_general">
+							<div style="width: 100%">
+								<input type="text" id="input_boleto_id" class="style_text_boleto" style="width: 100%" value="" />
+							</div>
+					</div>
+					<div style="position: relative; width: 20%; float: left;" class="style_text_general">
+							<div id="div_status_id" class="style_text_status">
+								<div>
+									&nbsp;
+								</div>
+							</div>
+					</div>
+					<div style="position: relative; width: 30%; float: left;" class="style_text_general">
+							<div class="style_text_normal">
+								TALONARIO:
+							</div>
+					</div>
+					<div style="position: relative; width: 10%; float: left;" class="style_text_general">
+							<div class="style_text_normal" id="div_talonario_id">
+								----
+							</div>
+					</div>
+				</div>
+				
+				
+				<div class="style_text_general" style="text-align: center;">
+						<div id="div_electronicos">
+						
+							
+								
+								<table style="width:100%; border-width: 0;">
+									<tr>
+										<td style="width:5%"></td>
+										<td style="width:90%; ">
+												
+												<!-- 1 -->
+												<div class="sty_row">
+													<div>
+														<div class="sty_label_div">Due&ntilde;o</div>
+													</div>
+													<div class="sty_info">
+														<div class="sty_info_div" id="div_nombre_id">
+															-
+														</div>
+													</div>
+												</div>
+												
+												<!-- 2 -->
+												<div class="sty_row">
+													<div>
+														<div class="sty_label_div">Domicilio</div>
+													</div>
+													<div class="sty_info">
+														<div class="sty_info_div" id="div_domicilio_id">
+															-
+														</div>
+													</div>
+												</div>
+												
+												<!-- 3 -->
+												<div class="sty_row">
+													<div>
+														<div class="sty_label_div">Tel&eacute;fono fijo</div>
+													</div>
+													<div class="sty_info">
+														<div class="sty_info_div" id="div_telefono_fijo_id">
+															55--------
+														</div>
+													</div>
+												</div>
+												
+												<!-- 4 -->
+												<div class="sty_row">
+													<div>
+														<div class="sty_label_div">Tel&eacute;fono m&oacute;vil</div>
+													</div>
+													<div class="sty_info">
+														<div class="sty_info_div" id="div_telefono_movil_id">
+															55--------
+														</div>
+													</div>
+												</div>
+												
+												<!-- 5 -->
+												<div class="sty_row">
+													<div>
+														<div class="sty_label_div">Correo</div>
+													</div>
+													<div class="sty_info">
+														<div class="sty_info_div" id="div_correo_id">
+															@
+														</div>
+													</div>
+												</div>
+												
+												<!-- 6 -->
+												<div class="sty_row">
+													<img id="img_boleto_id" style="width: 100%;" src="" alt="">
+												</div>
+												
+												<input type="hidden" id="ref_bancaria" value="" />
+												<div id="btnImprimir" style="text-align: center; padding: 10pt;">
+													<a id="btn_link_to_print" class="sty_button" href="" target="_blank">Imprimir formato</a>
+												</div>
+												
+												
+												
+												
+										</td>
+										<td style="width:5%"></td>
+									</tr>
+								</table>
+								
+						</div>
+				</div>
+				
+			</div>
+			<!-- FIN TABLA -->
+
+
+		</div>
+	</div>
+	<!-- end #page-loader -->
+
+	<!-- end page container -->
+
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="assets/plugins/jquery/jquery-1.9.1.min.js"></script>
+	<script src="assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
+	<script src="assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+	<!-- ================== END BASE JS ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<script src="assets/js/premios/buscar_boleto_electronico.js"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
+
+	<script>
+		$(document).ready(function() {
+			initialize();
+		});
+	</script>
+
+</body>
+</html>

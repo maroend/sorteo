@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8" />
+<title>Sorteos An&aacute;huac | Red de Universidades
+	An&aacute;huac</title>
+<meta
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+	name="viewport" />
+<meta content="" name="description" />
+<meta content="" name="author" />
+
+
+
+<!-- ================== BEGIN BASE CSS STYLE ================== -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+<link href="assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />
+<link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+<link href="assets/css/animate.min.css" rel="stylesheet" />
+<link href="assets/css/style.min.css" rel="stylesheet" />
+<link href="assets/css/style-responsive.min.css" rel="stylesheet" />
+<link href="assets/plugins/DataTables/css/data-table.css" rel="stylesheet" />
+<!-- ================== END BASE CSS STYLE ================== -->
+
+<!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
+<link href="assets/plugins/parsley/src/parsley.css" rel="stylesheet" />
+<link href="assets/plugins/gritter/css/jquery.gritter.css" rel="stylesheet" />
+<link href="https://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/css/bootstrap-multiselect.css" rel="stylesheet" type="text/css" />
+<!-- ================== END PAGE LEVEL STYLE ================== -->
+
+<!-- ================== BEGIN BASE JS ================== -->
+<script src="assets/plugins/pace/pace.min.js"></script>
+<!-- ================== END BASE JS ================== -->
+</head>
+<body>
+	<!-- begin #page-loader -->
+	<div id="page-loader" class="fade in">
+		<span class="spinner"></span>
+	</div>
+	<!-- end #page-loader -->
+
+	<!-- begin #page-container -->
+	<div id="page-container"
+		class="fade page-sidebar-fixed page-header-fixed">
+		<!-- begin #header -->
+		<div id="header" class="header navbar navbar-default navbar-fixed-top">
+			<!-- begin container-fluid -->
+			<div class="container-fluid">
+				<!-- begin mobile sidebar expand / collapse button -->
+				<div class="navbar-header">
+					<a href="Dashboard.do" class="navbar-brand"><span
+						class="navbar-logo"><img src="assets/img/logo_red.png"
+							width="55" height="55" /></span> An&aacute;huac </a>
+					<button type="button" class="navbar-toggle"
+						data-click="sidebar-toggled">
+						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+				</div>
+				<!-- end mobile sidebar expand / collapse button -->
+
+				<!-- begin header navigation right -->
+				<ul class="nav navbar-nav navbar-right">#NOTIFICACIONES#
+				</ul>
+				<!-- end header navigation right -->
+			</div>
+			<!-- end container-fluid -->
+		</div>
+		<!-- end #header -->
+
+		<!-- begin #sidebar -->
+		<div id="sidebar" class="sidebar">
+
+			<div data-scrollbar="true" data-height="100%">
+				<!-- begin sidebar user -->
+				<ul class="nav">
+					<li class="nav-profile">
+
+						<div class="info">#INFOUSER#</div>
+					</li>
+				</ul>
+
+
+				<!-- begin sidebar scrollbar -->
+				#MENU#
+			</div>
+			<!-- end sidebar scrollbar -->
+		</div>
+		<div class="sidebar-bg"></div>
+		<!-- end #sidebar -->
+
+		<!-- begin #content -->
+		<div class="content" id="content">
+			<!-- begin breadcrumb -->
+			<ol class="breadcrumb pull-right">
+				
+				<li><a href="Colaboradores.do">Colaboradores</a></li>
+
+			</ol>
+			<!-- end breadcrumb -->
+			<!-- begin page-header -->
+			<h1 class="page-header">
+				Colaboradores<small> </small>
+			</h1>
+			<!-- end page-header -->
+
+
+
+			<!-- INICIO MODAL  -->
+			<div id="myModalComision" class="modal modal-message fade"
+				style="display: none;" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button class="close" aria-hidden="true" data-dismiss="modal"
+								type="button">×</button>
+							<h4 class="modal-title">Ingresa la Comisi&oacute;n</h4>
+						</div>
+						<div class="modal-body">
+
+							<form action="/" id="formulario2" method="POST"
+								data-parsley-validate="true" name="form-wizard">
+
+
+								<fieldset>
+
+									<!-- begin row -->
+									<div class="row">
+										<!-- begin col-4 -->
+										<div class="col-md-4">
+											<div class="form-group block1">
+												
+												<label>Comisi&oacute;n:</label> <input type="text"
+													name="comision" id="comision" placeholder=""
+													class="form-control" data-parsley-type="number" required />
+											</div>
+										</div>
+										<!-- end col-4 -->
+									</div>
+
+
+								</fieldset>
+
+							</form>
+
+
+
+
+						</div>
+						<div class="modal-footer">
+							<a class="btn btn-sm btn-white" data-dismiss="modal"
+								href="javascript:;">Cancelar</a> <a
+								class="btn btn-sm btn-primary" id="aceptarmodalComision"
+								href="javascript:;">Aceptar</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- FIN MODAL  -->
+
+
+			<!-- begin row -->
+			<div class="row">
+				<!-- begin col-12 -->
+				<div class="col-md-12 ui-sortable">
+					<!-- begin panel -->
+					<div class="panel panel-inverse">
+						<div class="panel-heading">
+							<div class="panel-heading-btn">
+								<a data-click="panel-expand"
+									class="btn btn-xs btn-icon btn-circle btn-default"
+									href="javascript:;"><i class="fa fa-expand"></i></a> <a
+									data-click="panel-reload"
+									class="btn btn-xs btn-icon btn-circle btn-success"
+									href="javascript:;"><i class="fa fa-repeat"></i></a> <a
+									data-click="panel-collapse"
+									class="btn btn-xs btn-icon btn-circle btn-warning"
+									href="javascript:;"><i class="fa fa-minus"></i></a> <a
+									data-click="panel-remove"
+									class="btn btn-xs btn-icon btn-circle btn-danger"
+									href="javascript:;"><i class="fa fa-times"></i></a>
+							</div>
+							<h4 class="panel-title">Lista de Colaboradores</h4>
+						</div>
+						<div class="panel-body">
+
+							<div id="alerta" class="alert alert-success fade in">
+								<span data-dismiss="alert" class="close">×</span> <i
+									id="headAlerta" class="fa fa-check fa-2x pull-left"></i>
+								<p id="bodyAlerta">El colaborador ha sigo agregado con exito.</p>
+							</div>
+
+
+
+							<div class="table-responsive">
+								<div id="data-table_wrapper" class="dataTables_wrapper no-footer">
+									<div class="dataTables_length" id="data-table_length">
+										<label> Mostrar: <select name="data-table_length"
+											onChange="changeShow()" id="data-elements-length"
+											aria-controls="data-table" title="Indica cuantos elementos se ven en la pagina">
+												<option value="10">10</option>
+												<option value="25">25</option>
+												<option value="50">50</option>
+												<option value="100">100</option>
+												<option value="500">500</option>
+												<option value="1000">1000</option>
+												<option value="2000">2000</option>
+												<option value="4000">4000</option>
+											</select>
+										</label>
+
+									</div>
+									<div id="data-table_filter" class="dataTables_filter">
+										<label>Buscar:<input type="search" class=""
+											id="searchtable" placeholder=""
+											onkeyup="onkeyup_colfield_check(event)"
+											aria-controls="data-table" title="Buscar por: clave | nombre | correo@">
+											<button class="btn btn-sm btn-white" onclick="btnSearch()"><i class="fa fa-search"></i></button>
+										</label>
+									</div>
+
+									<div class="row" style="display: #DISPLAY_EDIT_CONTROLS#">
+
+										<a class="btn btn-sm btn-primary" href="javascript:AgregarColaboradores();" title="Agrega un nuevo colaborador">
+											<i class="fa fa-plus m-r-5"></i> Nuevo
+										</a>
+										<a class="btn btn-sm btn-danger" href="javascript:void(0)" onclick="EliminarColaboradores();" title="Elimina colaboradores marcados">
+											<i class="fa fa-times m-r-5"></i> Eliminar
+										</a>
+										<a class="btn btn-sm btn-primary" href="ImportColaboradores" title="Agrega o actualiza colaboradores desde Excel">
+											<i class="fa fa-upload m-r-5"></i> Importar
+										</a>
+										<a class="btn btn-sm btn-primary" href="javascript:void(0)" onclick="ExportExcel();" title="Descarga los colaboradores a una tabla de Excel">
+											<i class="fa fa-download m-r-5"></i> Exportar
+										</a>
+										<a class="btn btn-sm btn-white" href="uploads/Colaboradores.xlsx" title="Proporcina la forma de Excel para importar nuevos colaboradores">
+											<i class="fa fa-download m-r-5"></i> Ejemplo importar
+										</a>
+									</div>
+
+									<div class="">
+										<div class="pull-left width-full"></div>
+										<!-- begin row -->
+										<div class="row">
+											<!-- begin col-6 -->
+
+											<input type="hidden" id="usuario" name="usuario" value="#USUARIO#">
+											<input type="hidden" id="idsectorU" name="idsectorU" value="#SECTOR_USUARIO#">
+											<input type="hidden" id="idnichoU" name="idnichoU" value="#NICHO_USUARIO#">
+
+											<div class="col-md-5">
+												<div class="form-group">
+													<label>Sector:</label>
+													<select name="idsectorb" id="idsectorb" class="form-control" title="Filtrar colaboradores por Sector">
+														<option value="">Seleccionar Sector</option>
+													</select>
+												</div>
+											</div>
+
+											<div class="col-md-5">
+												<div class="form-group">
+													<label>Nicho:</label>
+													<select name="idnichob" id="idnichob" class="form-control" title="Filtrar colaboradores por Nicho">
+														<option value="">Todos</option>
+													</select>
+
+												</div>
+											</div>
+
+
+										</div>
+
+
+									</div>
+
+
+
+									<form action="/" method="" id="formulario1t"
+										name="formulario1t">
+										<input type="hidden" id="idscolaboradores">
+										<div id="listresultados" style="min-height: 300px;"
+											class="block"></div>
+									</form>
+								</div>
+							</div>
+						</div>
+						<!-- end panel -->
+					</div>
+					<!-- end col-12 -->
+				</div>
+				<!-- end row -->
+
+			</div>
+			<!-- end #content -->
+
+
+
+			<!-- INICIO MODAL  -->
+			<div id="myModal" class="modal modal-message fade"
+				style="display: none;" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button class="close" aria-hidden="true" data-dismiss="modal"
+								type="button">×</button>
+							<h4 class="modal-title">Agregar Colaborador</h4>
+						</div>
+						<div class="modal-body">
+
+
+
+							<!-- begin row -->
+							<div class="row">
+								<!-- begin col-12 -->
+								<div class="col-md-12 ui-sortable">
+									<!-- begin panel -->
+									<div class="panel panel-inverse">
+										<div class="panel-heading">
+											<div class="panel-heading-btn">
+												<a data-click="panel-expand"
+													class="btn btn-xs btn-icon btn-circle btn-default"
+													href="javascript:;"><i class="fa fa-expand"></i></a> <a
+													data-click="panel-reload"
+													class="btn btn-xs btn-icon btn-circle btn-success"
+													href="javascript:;"><i class="fa fa-repeat"></i></a> <a
+													data-click="panel-collapse"
+													class="btn btn-xs btn-icon btn-circle btn-warning"
+													href="javascript:;"><i class="fa fa-minus"></i></a> <a
+													data-click="panel-remove"
+													class="btn btn-xs btn-icon btn-circle btn-danger"
+													href="javascript:;"><i class="fa fa-times"></i></a>
+											</div>
+											<h4 class="panel-title">Agregar Colaboradores</h4>
+										</div>
+										<div class="panel-body">
+
+
+
+											<form action="/" method="POST" data-parsley-validate
+												id="formulario" name="formulario">
+
+
+
+												<div class="form-group"></div>
+												
+												<!--   <button class="btn btn-sm btn-primary" id="guardar" onClick="javascript:Guardar();return false;" type="submit">Guardar</button> -->
+
+
+
+												<fieldset>
+
+													<legend class="pull-left width-full">
+														<i class="fa fa-key" style="color: #fbb64b;"></i> Claves
+													</legend>
+
+													<!-- begin row -->
+													<div class="row">
+														<!-- begin col-4 -->
+														<div class="col-md-4">
+															<div class="form-group block1">
+																<label>Clave:</label>
+																<input type="text" name="clave" maxlength="9"
+																	id="clave" placeholder="Clave" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)"
+																	class="form-control" required />
+															</div>
+														</div>
+														<!-- end col-4 -->
+														
+														
+														<!-- begin col-3 -->
+														<div class="col-md-3">
+															<div class="form-group">
+															
+																<label>&nbsp;</label><br/>
+																
+																<div id="data-table_filter" class="dataTables_filter">
+																	<div class="btn btn-white" onclick="referencia_click();">
+																		<i id="referencia_check" class="fa fa-square-o"></i>&nbsp;&nbsp;Usar referencia fija
+																		<input type="hidden" id="referencia">
+																	</div>
+																	<img id="img_referencia_gif" style="width:25px;" src="assets/img/load-search.gif">
+																
+																</div>
+																
+															</div>
+														</div>
+														<!-- end col-3 -->
+														
+														
+														<!-- begin col-5 -->
+														<div class="col-md-5" id="column_referencia">
+															<div class="form-group">
+															
+																<label>N&uacute;mero de Referencia Bancaria</label>
+																<!-- 
+						                		<input type="text" name="num_referencia" id="num_referencia"
+																		placeholder="Referencia bancaria" class="form-control"
+																		disabled required/>
+																 -->
+																<span id="num_referencia" class="form-control"></span>
+																
+															</div>
+														</div>
+														<!-- end col-5 -->
+														
+														<input type="hidden" id="hidden_comision" />
+
+													</div>
+													<!-- end row -->
+
+
+
+													<legend class="pull-left width-full">
+														<i class="fa fa-user" style="color: #fbb64b;"></i>
+														Identificaci&oacute;n
+													</legend>
+													<!-- begin row -->
+													<div class="row">
+														<!-- begin col-4 -->
+														<div class="col-md-4">
+															<div class="form-group block1">
+																<label>Nombre:</label> <input type="hidden"
+																	id="idcolaborador" name="idcolaborador"> <input
+																	type="text" name="nombre" id="nombre" placeholder=""
+																	class="form-control" data-parsley-group="wizard-step-1"
+																	required />
+															</div>
+														</div>
+														<!-- end col-4 -->
+														<!-- begin col-4 -->
+														<div class="col-md-4">
+															<div class="form-group">
+																<label>Apellido Paterno</label> <input type="text"
+																	name="apaterno" id="apaterno" placeholder=""
+																	class="form-control" data-parsley-group="wizard-step-1"
+																	required />
+															</div>
+														</div>
+														<!-- end col-4 -->
+														<!-- begin col-4 -->
+														<div class="col-md-4">
+															<div class="form-group">
+																<label>Apellido Materno</label> <input type="text"
+																	name="amaterno" id="amaterno" placeholder=""
+																	class="form-control" />
+															</div>
+														</div>
+														<!-- end col-4 -->
+													</div>
+													<!-- end row -->
+
+
+													<div class="row">
+
+														<div class="col-md-4">
+															<div class="form-group">
+																<label>Edad</label> <input type="text" name="edad"
+																	id="edad" placeholder="" class="form-control"
+																	data-parsley-group="wizard-step-1" />
+															</div>
+														</div>
+
+
+														<div class="col-md-4">
+															<div class="form-group">
+																<label>RFC</label> <input type="text" name="rfc"
+																	id="rfc" placeholder="" class="form-control"
+																	data-parsley-group="wizard-step-1" />
+															</div>
+														</div>
+
+
+													</div>
+
+												</fieldset>
+
+												<fieldset>
+													<legend class="pull-left width-full">
+														<i class="fa fa-phone" style="color: #fbb64b;"></i>
+														Telefonos
+													</legend>
+													<!-- begin row -->
+													<div class="row">
+														<!-- begin col-6 -->
+														<div class="col-md-4">
+															<div class="form-group">
+																<!--  data-parsley-pattern="^\d{3} \d{2} \d{8}$" -->
+																<label>Personal</label> <input type="text"
+																	id="telefono_p" placeholder="" class="form-control"
+																	data-parsley-group="wizard-step-1"
+																	data-parsley-type-message="Solo numeros."
+																	data-error-message="Telefono es requerido." required />
+															</div>
+														</div>
+														<!-- end col-6 -->
+														<!-- begin col-6 -->
+														<div class="col-md-4">
+															<div class="form-group">
+																<label>Oficina</label> <input type="text"
+																	id="telefono_s" placeholder="" class="form-control"
+																	data-parsley-group="wizard-step-1" />
+															</div>
+														</div>
+
+														<!-- end col-6 -->
+													</div>
+													<!-- end row -->
+
+													<legend class="pull-left width-full">
+														<i class="fa fa-envelope" style="color: #fbb64b;"></i>
+														Correos
+													</legend>
+													<!-- begin row -->
+													<div class="row">
+														<!-- begin col-6 -->
+														<div class="col-md-4">
+															<div class="form-group">
+																<label>Personal</label> <input type="text" id="correo_p"
+																	placeholder="example@email.com" class="form-control"
+																	data-parsley-group="wizard-step-1"
+																	data-parsley-type="email" required />
+															</div>
+														</div>
+														<!-- end col-6 -->
+														<!-- begin col-6 -->
+														<div class="col-md-4">
+															<div class="form-group">
+																<label>Trabajo</label> <input type="text" id="correo_s"
+																	placeholder="example@email.com" class="form-control"
+																	data-parsley-group="wizard-step-1"
+																	data-parsley-type="email" />
+															</div>
+														</div>
+
+
+
+														<!-- end col-6 -->
+													</div>
+													<!-- end row -->
+
+
+												</fieldset>
+
+
+												<fieldset>
+													<legend class="pull-left width-full">
+														<i class="fa fa-map-marker" style="color: #fbb64b;"></i>
+														Direcci&oacute;n
+													</legend>
+													<!-- begin row -->
+													<div class="row">
+
+														<!-- begin col-6 -->
+														<div class="col-md-4">
+															<div class="form-group">
+																<label>C&oacute;digo Postal:</label>
+																<input type="text" maxlength="5"
+																	id="cp" placeholder="" class="form-control"
+																	data-parsley-group="wizard-step-3"
+																	data-parsley-maxlength="5" data-parsley-type="digits"
+																	required />
+															</div>
+														</div>
+														<!-- end col-6 -->
+														<!-- begin col-6 -->
+														<div class="col-md-4">
+															<div class="form-group">
+																<label>&nbsp;</label><br>
+																<button class="btn btn-success" type="button"
+																	id="btnbuscardireccion">
+																	<i class="fa fa-search"></i> Buscar
+																</button>
+																<div style="float: left; padding-right: 15px;"
+																	id="preloader"></div>
+															</div>
+														</div>
+														<!-- end col-6 -->
+
+													</div>
+													<!-- end row -->
+
+
+													<!-- begin row -->
+													<div class="row">
+
+														<!-- begin col-4 -->
+														<div class="col-md-4">
+															<div class="form-group">
+																<label>Estado:</label> <input type="text" id="estado"
+																	placeholder="" class="form-control"
+																	data-parsley-group="wizard-step-3" required />
+															</div>
+														</div>
+														<!-- end col-4 -->
+
+														<!-- begin col-4 -->
+														<div class="col-md-4">
+															<div class="form-group">
+																<label>Municipio o Delegaci&oacute;n:</label> <input
+																	type="text" id="mundel" placeholder=""
+																	class="form-control" data-parsley-group="wizard-step-3"
+																	required />
+															</div>
+														</div>
+														<!-- end col-4 -->
+
+														<!-- begin col-4 -->
+														<div class="col-md-4">
+															<div class="form-group">
+																<label>Colonia:</label> <select class="form-control"
+																	id="colonia" data-parsley-group="wizard-step-3"
+																	required>
+																</select>
+															</div>
+														</div>
+														<!-- end col-4 -->
+
+													</div>
+													<!-- end row -->
+
+
+													<!-- begin row -->
+													<div class="row">
+
+														<!-- begin col-4 -->
+														<div class="col-md-4">
+															<div class="form-group">
+																<label>Calle:</label> <input type="text" id="calle"
+																	placeholder="" class="form-control"
+																	data-parsley-group="wizard-step-3" required />
+															</div>
+														</div>
+														<!-- end col-4 -->
+
+
+														<div class="col-md-2">
+															<div class="form-group">
+																<label>N&deg; exterior</label> <input type="text"
+																	id="numero_ext" placeholder="" class="form-control"
+																	data-parsley-group="wizard-step-3" required />
+															</div>
+														</div>
+
+														<div class="col-md-2">
+															<div class="form-group">
+																<label>N&deg; interior</label> <input type="text"
+																	id="numero_int" placeholder="" class="form-control"
+																	data-parsley-group="wizard-step-3" />
+															</div>
+														</div>
+
+
+													</div>
+													<!-- end row -->
+
+												</fieldset>
+												
+												<fieldset>
+													<legend class="pull-left width-full">
+														<i class="fa fa-university" style="color: #fbb64b;"></i>
+														Sector y Nicho
+													</legend>
+													
+													<!-- begin row -->
+													<div class="row">
+
+															<div class="col-md-5">
+																<div class="form-group">
+																	<label>Sector:</label>
+																	<select name="idsector" id="idsector" class="form-control">
+																		<option>Seleccione el sector al que pertenece</option>
+																	</select>
+																</div>
+															</div>
+													</div>
+													
+													<div class="row">
+															<div class="col-md-12">
+																<div class="form-group">
+																	<label>Nichos:</label>
+																	<br/>
+																	
+																	<div id="divNichos_id"></div>
+																	<!-- 
+																	<select name="idnicho" id="idnicho" class="form-control" multiple="multiple" data-parsley-group="wizard-step-3" required>
+																	</select>
+																	 -->
+																	
+																</div>
+															</div>
+													</div>
+
+
+												
+												</fieldset>
+
+
+
+
+											</form>
+
+										</div>
+									</div>
+									<!-- end panel -->
+								</div>
+								<!-- end col-12 -->
+							</div>
+							<!-- end row -->
+
+
+
+
+
+
+
+						</div>
+						<div class="modal-footer">
+							<a class="btn btn-sm btn-white" id="btn_cancelar_modal" data-dismiss="modal"
+								href="javascript:;">Cancelar</a>
+							<a class="btn btn-sm btn-primary" id="btn_aceptar_modal"
+								href="javascript:void(0);">Guardar</a>
+							<img id="img_aceptar_gif" style="width:25px;" src="assets/img/load-search.gif">
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- FIN MODAL  -->
+
+
+
+
+
+
+
+			<!-- begin scroll to top btn -->
+			<a href="javascript:;"
+				class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade"
+				data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+			<!-- end scroll to top btn -->
+		</div>
+	</div>
+	<!-- end page container -->
+
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="assets/plugins/jquery/jquery-1.9.1.min.js"></script>
+	<script src="assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
+	<script src="assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+	<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<!--[if lt IE 9]>
+		<script src="assets/crossbrowserjs/html5shiv.js"></script>
+		<script src="assets/crossbrowserjs/respond.min.js"></script>
+		<script src="assets/crossbrowserjs/excanvas.min.js"></script>
+	<![endif]-->
+	<script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="assets/plugins/jquery-cookie/jquery.cookie.js"></script>
+	<!-- ================== END BASE JS ================== -->
+
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<script src="assets/plugins/gritter/js/jquery.gritter.js"></script>
+	<script src="https://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js" type="text/javascript"></script>
+	<script src="assets/plugins/jqueryblockUI/jquery.blockUI.js"></script>
+	<script src="assets/plugins/DataTables/media/js/jquery.dataTables.js"></script>
+	<script src="assets/plugins/parsley/dist/parsley.js"></script>
+	<script src="assets/js/poblacion/colaboradores.min.js?ver=4"></script>
+	<script src="assets/js/apps.min.js"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
+
+	<script>
+		$(document).ready(function() {
+			App.init();
+			//Listar.init();
+		});
+		
+		/*
+        $(function () {
+            $('#lstFruits').multiselect({
+                includeSelectAllOption: true
+            });
+            $('#btnSelected').click(function () {
+                var selected = $("#lstFruits option:selected");
+                var message = "";
+                selected.each(function () {
+                    message += $(this).text() + " " + $(this).val() + "\n";
+                });
+                alert(message);
+            });
+        });
+		*/
+	</script>
+</body>
+</html>

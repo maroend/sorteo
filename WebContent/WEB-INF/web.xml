@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>sorteo</display-name>
+  <welcome-file-list>
+    <welcome-file>Login.do</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  <listener>
+    <description>sessionListener</description>
+    <listener-class>
+        com.core.SessionListener
+    </listener-class>
+  </listener>
+  <session-config>
+    <session-timeout>70</session-timeout>
+  </session-config>
+  
+  
+  <!--  
+  <env-entry>
+    <env-entry-name>server</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>52.171.142.236</env-entry-value>
+  </env-entry>
+  <env-entry>
+    <env-entry-name>userBD</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>sqladminclara</env-entry-value>
+  </env-entry>
+  <env-entry>
+    <env-entry-name>passwBD</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>C@rlos6132000</env-entry-value>
+  </env-entry>
+  <env-entry>
+    <env-entry-name>db</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>sorteo</env-entry-value>
+  </env-entry>
+  <env-entry>
+    <env-entry-name>port</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>1433</env-entry-value>
+  </env-entry>
+  -->
+  
+  <!--  -->
+  <env-entry>
+    <env-entry-name>server</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>service-claradb.database.windows.net</env-entry-value>
+  </env-entry>
+  <env-entry>
+    <env-entry-name>userBD</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>claradb-01</env-entry-value>
+  </env-entry>
+  <env-entry>
+    <env-entry-name>passwBD</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>Cl@r@-DB-01</env-entry-value>
+  </env-entry>
+  <env-entry>
+    <env-entry-name>db</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>sorteo-prod</env-entry-value>
+  </env-entry>
+  <env-entry>
+    <env-entry-name>port</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>1433</env-entry-value>
+  </env-entry>
+  
+  
+</web-app>

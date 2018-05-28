@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+	<title>Sorteos Anáhuac | Red de Universidades Anáhuac</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	
+
+	
+	<!-- ================== BEGIN BASE CSS STYLE ================== -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+	<link href="assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />
+	<link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+	<link href="assets/css/animate.min.css" rel="stylesheet" />
+	<link href="assets/css/style.min.css" rel="stylesheet" />
+	<link href="assets/css/style-responsive.min.css" rel="stylesheet" />
+	<link href="assets/plugins/DataTables/css/data-table.css" rel="stylesheet" />
+	<!-- ================== END BASE CSS STYLE ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
+	
+	<link href="assets/plugins/parsley/src/parsley.css" rel="stylesheet" />
+    <link href="assets/plugins/gritter/css/jquery.gritter.css" rel="stylesheet" />
+	<!-- ================== END PAGE LEVEL STYLE ================== -->
+	
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="assets/plugins/pace/pace.min.js"></script>
+	<!-- ================== END BASE JS ================== -->
+</head>
+<body>
+	<!-- begin #page-loader -->
+	<div id="page-loader" class="fade in"><span class="spinner"></span></div>
+	<!-- end #page-loader -->
+	
+	<!-- begin #page-container -->
+	
+	<div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+		<!-- begin #header -->
+		<div id="header" class="header navbar navbar-default navbar-fixed-top">
+			<!-- begin container-fluid -->
+			<div class="container-fluid">
+				<!-- begin mobile sidebar expand / collapse button -->
+				<div class="navbar-header">
+					<a href="Dashboard.do" class="navbar-brand"><span class="navbar-logo"><img src="assets/img/logo_red.png" width="55" height="55"/></span> Anáhuac	</a>
+					<button type="button" class="navbar-toggle" data-click="sidebar-toggled">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				<!-- end mobile sidebar expand / collapse button -->
+				
+				<!-- begin header navigation right -->
+				<ul class="nav navbar-nav navbar-right">
+					
+					#NOTIFICACIONES#
+					
+				</ul>
+				<!-- end header navigation right -->
+			</div>
+			<!-- end container-fluid -->
+		</div>
+		<!-- end #header -->
+		
+		<!-- begin #sidebar -->
+		<div id="sidebar" class="sidebar">
+			<!-- begin sidebar scrollbar -->
+			<div data-scrollbar="true" data-height="100%">
+				<!-- begin sidebar user -->
+				<ul class="nav">
+					<li class="nav-profile">
+						#INFOUSER#
+					</li>
+				</ul>
+				<!-- end sidebar user -->
+				<!-- begin sidebar nav -->
+				#MENU#
+				<!-- end sidebar nav -->
+			</div>
+			<!-- end sidebar scrollbar -->
+		</div>
+		<div class="sidebar-bg"></div>
+		<!-- end #sidebar -->
+		
+		<!-- begin #content -->
+		<div class="content" id="content">
+		 <!-- begin breadcrumb -->
+    <ol class="breadcrumb hidden-print pull-right">
+      <li>
+        <a href="VentaElectronica">VentaElectronica</a>
+      </li>
+    </ol>
+    <!-- end breadcrumb -->
+
+    <!-- begin page-header -->
+    <h1 class="page-header hidden-print">Venta electr&oacute;nica</h1>
+    <!-- end page-header -->
+
+    	<!-- begin invoice -->
+			<div class="invoice">
+				
+				<div class="row" style="float: left;">
+					<h1 class="page-header">
+						<span style="color: Orange;">&#8226;</span> #SORTEO#
+						<input type="hidden" id="id_sorteo" value="__ID_SORTEO__">
+					</h1>
+				</div>
+				
+				<div style="float: right;">
+					<img id="img_gif_working" style="width:40pt; display: none;" alt="" src="assets/img/gears.gif">
+				</div>
+
+				<br/>
+				<br/>
+				<br/>
+
+
+				<!-- OPCION 1 -->
+				<div class="row">
+					<div style="float: left; width: 20pt;">
+						<h4 class="title">1</h4>
+					</div>
+					<div style="float: left;">
+						<h4 class="title">
+							<a href="javascript: VentaFC4();">Venta y FC4 de boletos electr&oacute;nicos</a>
+						</h4>
+						Busca los boletos electr&oacute;nicos asignados y registra la venta y FC4. 
+						<br/>
+						<br/>
+						<div id="div_ventafc4_id">
+												
+								<table>
+									<tr>
+										<td>Limpiando:</td>
+										<td style="border-width: 0; padding: 4pt;"><progress id="progressbar_loading" style="width: 150pt;" value="0" max="100"></progress></td>
+										<td style="border-width: 0; padding: 4pt;"><div id="div_porcentaje_id">0%</div></td>
+									</tr>
+									<tr>
+										<td>Validando:</td> 
+										<td style="border-width: 0; padding: 4pt;"><progress id="progressbar_loading_2" style="width: 150pt;" value="0" max="100"></progress></td>
+										<td style="border-width: 0; padding: 4pt;"><div id="div_porcentaje_id_2">0%</div></td>
+									</tr>
+								</table>
+												
+						</div>
+						<div id="div_ventafc4_msg_id"></div>
+						
+					</div>
+					<br />
+				</div>
+				<!-- FIN OPCION -->
+
+
+				<!-- OPCION 2 -->
+				<div class="row">
+					<div style="float: left; width: 20pt;">
+						<h4 class="title">2</h4>
+					</div>
+					<div style="float: left;">
+						<h4 class="title">
+							<a href="javascript: completarCompradoresModal();">Completar venta de boletos electr&oacute;nicos</a>
+						</h4>
+						Registrar a los colaboradores como compradores de sus boletos electr&oacute;nicos faltantes por vender.
+						<br/>
+						<br/>
+						<div id="div_completar_id">
+								<table>
+									<tr>
+										<td>Registrando:</td>
+										<td style="border-width: 0; padding: 4pt;"><progress id="progressbar_loading_3" style="width: 150pt;" value="0" max="100"></progress></td>
+										<td style="border-width: 0; padding: 4pt;"><div id="div_porcentaje_id_3">0%</div></td>
+									</tr>
+								</table>
+						</div>
+						<div id="div_completar_msg_id"></div>
+						
+					</div>
+					<br />
+				</div>
+				<!-- FIN OPCION -->
+
+
+				<!-- OPCION 3 -->
+				<div class="row">
+					<div style="float: left; width: 20pt;">
+						<h4 class="title">3</h4>
+					</div>
+					<div style="float: left;">
+						<h4 class="title">
+							<a href="javascript: validarFoliosDigitales();">Validar folios digitales consecutivos</a>
+						</h4>
+						Vuelve a enumerar los folios digitales de los boletos  electr&oacute;nicos.
+						<br/>
+						<br/>
+						<div id="div_refolear_id">
+								<table>
+									<tr>
+										<td>Validando:</td>
+										<td style="border-width: 0; padding: 4pt;"><progress id="progressbar_loading_4" style="width: 150pt;" value="0" max="100"></progress></td>
+										<td style="border-width: 0; padding: 4pt;"><div id="div_porcentaje_id_4">0%</div></td>
+									</tr>
+								</table>
+						</div>
+						<div id="div_refolear_msg_id"></div>
+						
+					</div>
+					<br />
+				</div>
+				<!-- FIN OPCION -->
+
+
+				<br /> <br /> <br />
+				
+			</div>
+			<!-- end invoice -->
+
+						
+						
+						
+						<!-- INICIO MODAL  -->
+						<div id="modalCompletarCompradores" class="modal modal-message fade"
+							style="display: none;" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button class="close" aria-hidden="true" data-dismiss="modal"
+											type="button">×</button>
+										<h3 class="modal-title">Completar venta de boletos electr&oacute;nicos</h3>
+										<h4>&nbsp;Seleccione los nichos en los que se completarán los compradores.</h4> 
+									</div>
+									<div class="modal-body" style="max-height: 330px;">
+
+										<!-- begin row -->
+										<div class="row">
+											
+											<div class="panel-body">
+												<div class="table-responsive" id="divNichos_id">
+												</div>
+											</div>
+											
+										</div>
+
+									</div>
+									<div class="modal-footer">
+										<a class="btn btn-sm btn-white" data-dismiss="modal" href="javascript:;">Cerrar</a>
+										<a class="btn btn-sm btn-primary" href="javascript:btnAceptar();">Aceptar</a>
+										<input type="hidden" id="tipoGuardarEditar" value="0">
+										<input type="hidden" id="sorteoIdParalelo" value="0">
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- FIN MODAL  -->
+
+			
+			
+		</div>
+		<!-- end #content page -->
+		
+		<!-- begin scroll to top btn -->
+		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+		<!-- end scroll to top btn -->
+	</div>
+
+
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="assets/plugins/jquery/jquery-1.9.1.min.js"></script>
+	<script src="assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
+	<script src="assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+	<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<!--[if lt IE 9]>
+		<script src="assets/crossbrowserjs/html5shiv.js"></script>
+		<script src="assets/crossbrowserjs/respond.min.js"></script>
+		<script src="assets/crossbrowserjs/excanvas.min.js"></script>
+	<![endif]-->
+	<script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="assets/plugins/jquery-cookie/jquery.cookie.js"></script>
+	<!-- ================== END BASE JS ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<script src="assets/plugins/gritter/js/jquery.gritter.js"></script>
+	<script src="assets/plugins/jqueryblockUI/jquery.blockUI.js"></script>
+	<script src="assets/plugins/DataTables/media/js/jquery.dataTables.js"></script>
+	<script src="assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<script src="assets/plugins/parsley/dist/parsley.js"></script>
+	<script src="assets/js/apps.min.js"></script>
+	<script src="assets/js/progressbar.js"></script>
+	<script src="assets/js/conciliacion/venta_electronica.min.js"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
+	
+	<script>
+		$(document).ready(function() {
+			App.init();
+			//Listar.init();
+		});
+	</script>
+	
+</body>
+</html>

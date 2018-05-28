@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+	<title>Sorteos Anáhuac | Red de Universidades Anáhuac</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	
+
+	
+	<!-- ================== BEGIN BASE CSS STYLE ================== -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+	<link href="assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />
+	<link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+	<link href="assets/css/animate.min.css" rel="stylesheet" />
+	<link href="assets/css/style.min.css" rel="stylesheet" />
+	<link href="assets/css/style-responsive.min.css" rel="stylesheet" />
+	<link href="assets/plugins/DataTables/css/data-table.css" rel="stylesheet" />
+	<!-- ================== END BASE CSS STYLE ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
+		<link href="assets/plugins/parsley/src/parsley.css" rel="stylesheet" />
+	
+    <link href="assets/plugins/gritter/css/jquery.gritter.css" rel="stylesheet" />
+    <link href="assets/plugins/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" />
+	<link href="assets/plugins/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet" />
+	<!-- ================== END PAGE LEVEL STYLE ================== -->
+	
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="assets/plugins/pace/pace.min.js"></script>
+	<!-- ================== END BASE JS ================== -->
+</head>
+<body>
+	<!-- begin #page-loader -->
+	<div id="page-loader" class="fade in"><span class="spinner"></span></div>
+	<!-- end #page-loader -->
+	
+	<!-- begin #page-container -->
+	<div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+		<!-- begin #header -->
+		<div id="header" class="header navbar navbar-default navbar-fixed-top">
+			<!-- begin container-fluid -->
+			<div class="container-fluid">
+				<!-- begin mobile sidebar expand / collapse button -->
+				<div class="navbar-header">
+					<a href="Dashboard.do" class="navbar-brand"><span class="navbar-logo"><img src="assets/img/logo_red.png" width="55" height="55"/></span> Anáhuac	</a>
+					<button type="button" class="navbar-toggle" data-click="sidebar-toggled">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				<!-- end mobile sidebar expand / collapse button -->
+				
+				<!-- begin header navigation right -->
+				<ul class="nav navbar-nav navbar-right">
+					
+					#NOTIFICACIONES#
+					
+				</ul>
+				<!-- end header navigation right -->
+			</div>
+			<!-- end container-fluid -->
+		</div>
+		<!-- end #header -->
+	
+		
+		<!-- begin #sidebar -->
+		<div id="sidebar" class="sidebar">
+		<!-- begin sidebar user -->
+				<ul class="nav">
+					<li class="nav-profile">
+						#INFOUSER#
+					</li>
+				</ul>
+				<!-- end sidebar user -->
+			<!-- begin sidebar scrollbar -->
+			#MENU#
+			<!-- end sidebar scrollbar -->
+		</div>
+		<div class="sidebar-bg"></div>
+		<!-- end #sidebar -->
+		
+		<!-- begin #content -->
+		<div class="content" id="content">
+    <!-- begin breadcrumb -->
+    
+    <!-- end breadcrumb -->
+    <!-- begin page-header -->
+    
+    <!-- end page-header -->
+    
+    <!-- begin row -->
+    <div class="row">
+			    <!-- begin col-12 -->
+			    <div class="col-md-12 ui-sortable">
+			        <!-- begin panel -->
+                    <div class="panel panel-inverse">
+                        <div class="panel-heading">
+                            <div class="panel-heading-btn">
+                                <a data-click="panel-expand" class="btn btn-xs btn-icon btn-circle btn-default" href="javascript:;"><i class="fa fa-expand"></i></a>
+                                <a data-click="panel-reload" class="btn btn-xs btn-icon btn-circle btn-success" href="javascript:;"><i class="fa fa-repeat"></i></a>
+                                <a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+                                <a data-click="panel-remove" class="btn btn-xs btn-icon btn-circle btn-danger" href="javascript:;"><i class="fa fa-times"></i></a>
+                            </div>
+                            <h4 class="panel-title">Editar Información Personal</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                            
+                            
+                            <div id="wizard" style="display:none;">
+									    <div class="jumbotron m-b-0 text-center">
+                                            <h1>Su información ha sido cambiada exitosamente!!</h1>
+                                            <p>
+                                            <span class="fa-stack fa-2x text-success">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-check fa-stack-1x fa-inverse"></i>
+								</span>
+                                            </p>
+                                        </div>
+									</div>
+                        
+                        
+                        
+                                <div id="verFormulario" class="block" style="min-height:300px;" >
+                                
+                                <form  class="" action="/" method="POST" id="formulario" name="formulario" data-parsley-validate="true">
+                               
+                                
+                                  
+                                         <fieldset>
+                                            <legend class="pull-left width-full">Identificación</legend>
+                                            <!-- begin row -->
+                                            <div class="row">
+                                                <!-- begin col-4 -->
+                                                <div class="col-md-4">
+													<div class="form-group block1">
+														<label>Nombre:</label>
+														<input type="text" name="nombre" id="nombre" placeholder="" class="form-control" data-parsley-group="wizard-step-1" required />
+													</div>
+                                                </div>
+                                                <!-- end col-4 -->
+                                                <!-- begin col-4 -->
+                                                <div class="col-md-4">
+													<div class="form-group">
+														<label>Apellido Paterno</label>
+														<input type="text" name="apaterno" id="apaterno" placeholder="" class="form-control" data-parsley-group="wizard-step-1" required />
+													</div>
+                                                </div>
+                                                <!-- end col-4 -->
+                                                <!-- begin col-4 -->
+                                                <div class="col-md-4">
+													<div class="form-group">
+														<label>Apellido Materno</label>
+														<input type="text" name="amaterno" id="amaterno" placeholder="" class="form-control" />
+													</div>
+                                                </div>
+                                                <!-- end col-4 -->
+                                            </div>
+                                            <!-- end row -->
+                                            
+                                            
+                                        <div class="row">
+                                            
+                                            <div class="col-md-4">
+                                            <div class="form-group">
+														<label>Edad</label>
+														<input type="text" name="edad" id="edad" placeholder="" class="form-control" data-parsley-group="wizard-step-1"  />
+													</div>
+                                            </div>
+                                            
+                                            
+                                            <div class="col-md-4">
+                                            <div class="form-group">
+														<label>RFC</label>
+														<input type="text" name="rfc" id="rfc" placeholder="" class="form-control" data-parsley-group="wizard-step-1"  />
+													</div>
+                                            </div>
+                                            
+                                            
+                                            </div>
+                                            
+										</fieldset>
+                        
+                         	<fieldset>
+											<legend class="pull-left width-full">Telefonos</legend>
+                                            <!-- begin row -->
+                                            <div class="row">
+                                                <!-- begin col-6 -->
+                                                <div class="col-md-4">
+													<div class="form-group">
+														<label>Casa</label>
+														<input type="text" name="telefonocasa" id="telefonocasa" placeholder="(XXX) (XX) (XXXXXXXX)" class="form-control" data-parsley-group="wizard-step-2" data-parsley-type-message="Solo numeros." data-error-message="Telefono es requerido."  data-parsley-pattern="^\d{3} \d{2} \d{8}$" required />
+													</div>
+                                                </div>
+                                                <!-- end col-6 -->
+                                                <!-- begin col-6 -->
+                                                <div class="col-md-4">
+													<div class="form-group">
+														<label>Oficina</label>
+														<input type="text" name="telefonooficina" id="telefonooficina" placeholder="" class="form-control" data-parsley-group="wizard-step-2" data-parsley-type="number" required />
+													</div>
+                                                </div>
+                                                
+                                                
+                                                <div class="col-md-4">
+													<div class="form-group">
+														<label>Movil</label>
+														<input type="text" name="telefonomovil" id="telefonomovil" placeholder="" class="form-control" data-parsley-group="wizard-step-2" data-parsley-type="number" required/>
+													</div>
+                                                </div>
+                                                
+                                                <!-- end col-6 -->
+                                            </div>
+                                            <!-- end row -->
+                                            
+                                            <legend class="pull-left width-full">Correos</legend>
+                                            <!-- begin row -->
+                                            <div class="row">
+                                                <!-- begin col-6 -->
+                                                <div class="col-md-4">
+													<div class="form-group">
+														<label>Personal</label>
+														<input type="text" name="correopersonal" id="correopersonal" placeholder="example@email.com" class="form-control" data-parsley-group="wizard-step-2" data-parsley-type="email" required />
+													</div>
+                                                </div>
+                                                <!-- end col-6 -->
+                                                <!-- begin col-6 -->
+                                                <div class="col-md-4">
+													<div class="form-group">
+														<label>Trabajo</label>
+														<input type="text" name="correotrabajo" id="correotrabajo" placeholder="example@email.com" class="form-control" data-parsley-group="wizard-step-2" data-parsley-type="email" required />
+													</div>
+                                                </div>
+                                                
+                                                
+                                                <div class="col-md-4">
+													<div class="form-group">
+														<label>Otro</label>
+														<input type="text" name="correootro" id="correootro" placeholder="" class="form-control" />
+													</div>
+                                                </div>
+                                                
+                                                <!-- end col-6 -->
+                                            </div>
+                                            <!-- end row -->
+                                            
+                                             <legend class="pull-left width-full">Redes Sociales</legend>
+                                            <!-- begin row -->
+                                            <div class="row">
+                                                <!-- begin col-6 -->
+                                                <div class="col-md-4">
+													<div class="form-group">
+														<label>Facebook</label>
+														<input type="text" name="facebook" id="facebook" placeholder="" class="form-control" />
+													</div>
+                                                </div>
+                                                <!-- end col-6 -->
+                                                <!-- begin col-6 -->
+                                                <div class="col-md-4">
+													<div class="form-group">
+														<label>Twitter</label>
+														<input type="text" name="twitter" id="twitter" placeholder="" class="form-control" />
+													</div>
+                                                </div>
+                                                
+                                                
+                                                <div class="col-md-4">
+													<div class="form-group">
+														<label>Otro</label>
+														<input type="text" name="otrared" id="otrared" placeholder="" class="form-control" />
+													</div>
+                                                </div>
+                                                
+                                                <!-- end col-6 -->
+                                            </div>
+                                            <!-- end row -->
+                                            
+										</fieldset>
+                        
+                          
+                     		<fieldset>
+											<legend class="pull-left width-full">Dirección</legend>
+                                            <!-- begin row -->
+                                            <div class="row">
+                                                <!-- begin col-6 -->
+                                                <div class="col-md-4">
+													<div class="form-group">
+														<label>Codigo Postal:</label>
+														<input type="text" name="cp" id="cp" placeholder="" class="form-control" data-parsley-group="wizard-step-3" required />
+													</div>
+                                                </div>
+                                                <!-- end col-6 -->
+                                                <!-- begin col-6 -->
+                                                <div class="col-md-4">
+													<div class="form-group">
+														<label>&nbsp;</label><br>
+														<button class="btn btn-success" type="button" id="btnbuscardireccion"><i class="fa fa-search"></i> Buscar</button>
+													    <div style="float:left; padding-right:15px;" id="preloader" ></div>
+													</div>
+                                                </div>
+
+                                                <!-- end col-6 -->
+                                            </div>
+                                            <!-- end row -->
+                                            
+                                          
+                                            <!-- begin row -->
+                                            <div class="row">
+                                                <!-- begin col-6 -->
+                                                <div class="col-md-4">
+													<div class="form-group">
+														<label>Pais:</label>
+														<input type="text" name="pais" id="pais" placeholder="" class="form-control" data-parsley-group="wizard-step-3" required />
+													</div>
+                                                </div>
+                                                <!-- end col-6 -->
+                                                <!-- begin col-6 -->
+                                                <div class="col-md-4">
+													<div class="form-group">
+														<label>Estado:</label>
+														<input type="text" name="estado" id="estado" placeholder="" class="form-control" data-parsley-group="wizard-step-3" required />
+													</div>
+                                                </div>
+                                                
+                                                
+                                                <div class="col-md-4">
+													<div class="form-group">
+														<label>Municipio o Delegación:</label>
+														<input type="text" name="delmun" id="delmun" placeholder="" class="form-control"   data-parsley-group="wizard-step-3" required />
+													</div>
+                                                </div>
+                                                
+                                                <!-- end col-6 -->
+                                            </div>
+                                            <!-- end row -->
+                                            
+                                          
+                                            <!-- begin row -->
+                                            <div class="row">
+                                                <!-- begin col-6 -->
+                                                <div class="col-md-4">
+													<div class="form-group">
+														<label>Colonia:</label>
+														
+
+										 <select class="form-control" name="colonia" id="colonia" data-parsley-group="wizard-step-3" required>
+                                            
+                                         </select>
+														
+													</div>
+                                                </div>
+                                                <!-- end col-6 -->
+                                                <!-- begin col-6 -->
+                                                <div class="col-md-4">
+													<div class="form-group">
+														<label>Calle:</label>
+														<input type="text" name="calle" id="calle" placeholder="" class="form-control" data-parsley-group="wizard-step-3" required />
+													</div>
+                                                </div>
+                                                
+                                                
+                                                <div class="col-md-4">
+													<div class="form-group">
+														<label>Num.</label>
+														<input type="text" name="numero" id="numero" placeholder="" data-parsley-type="number" class="form-control" data-parsley-group="wizard-step-3" required />
+													</div>
+                                                </div>
+                                                
+                                                <!-- end col-6 -->
+                                            </div>
+                                            <!-- end row -->
+                                            
+										</fieldset>
+										
+										
+									<!--  	<fieldset>
+											<legend class="pull-left width-full">Login</legend>
+                                          
+                                            <div class="row">
+                                             
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label>Usuario</label>
+                                                        <div class="controls">
+                                                            <input type="text" name="username" id="username" placeholder="usuario" class="form-control" data-parsley-group="wizard-step-4" required />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                              
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label>Contraseña</label>
+                                                        <div class="controls">
+                                                            <input type="password" name="password" id="password" placeholder="Contraseña" class="form-control" data-parsley-group="wizard-step-4" required  />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                             
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label>Confirmar Contraseña</label>
+                                                        <div class="controls">
+                                                            <input type="password" name="password2" placeholder="Confirmed password" class="form-control" data-parsley-group="wizard-step-4" required  />
+                                                        </div>
+                                                    </div>
+                                                </div>     
+                                            </div>
+                                        
+                                        </fieldset>-->
+                        
+                        
+                      </br></br>
+                        
+                         
+                       
+                    
+                        <div class="form-group">
+                            <label class="col-md-3 control-label"></label>
+        <a class="btn btn-sm btn-default" href="javascript:window.history.back();">Cancelar</a>                            
+        <button id="guardar" class="btn btn-sm btn-primary" type="submit" onclick="Editar();return false;">Guardar</button>
+
+
+                        </div>
+                    </form></br></br>
+                    
+                      
+                                
+                                </div>
+                                
+                              
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end panel -->
+                </div>
+                <!-- end col-12 -->
+            </div>
+    
+    <!-- end row -->
+</div>
+			<!-- end row -->
+			
+		</div>
+		<!-- end #content -->
+		
+        
+		
+		<!-- begin scroll to top btn -->
+		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+		<!-- end scroll to top btn -->
+	</div>
+	<!-- end page container -->
+	
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="assets/plugins/jquery/jquery-1.9.1.min.js"></script>
+	<script src="assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
+	<script src="assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+	<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<!--[if lt IE 9]>
+		<script src="assets/crossbrowserjs/html5shiv.js"></script>
+		<script src="assets/crossbrowserjs/respond.min.js"></script>
+		<script src="assets/crossbrowserjs/excanvas.min.js"></script>
+	<![endif]-->
+	<script src="assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<script src="assets/plugins/bootstrap-datepicker/js/locales/bootstrap-datepicker.es.js" charset="UTF-8"></script>
+	<script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="assets/plugins/jquery-cookie/jquery.cookie.js"></script>
+	<!-- ================== END BASE JS ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+		
+	<script src="assets/plugins/jqueryblockUI/jquery.blockUI.js"></script>
+	<script src="assets/plugins/parsley/dist/parsley.js"></script>
+	<script src="assets/plugins/DataTables/media/js/jquery.dataTables.js"></script>
+	<script src="assets/js/usuarios/profile.js"></script>
+	<script src="assets/js/apps.min.js"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
+	
+	<script>
+		$(document).ready(function() {
+			App.init();
+			BuscarUsuario();
+		});
+	</script>
+	
+</body>
+</html>

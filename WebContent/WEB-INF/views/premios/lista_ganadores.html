@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+	<title>Sorteos Anáhuac | Red de Universidades Anáhuac</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	
+	<!-- ================== BEGIN BASE CSS STYLE ================== -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+	<link href="assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />
+	<link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+	<link href="assets/css/animate.min.css" rel="stylesheet" />
+	<link href="assets/css/style.min.css" rel="stylesheet" />
+	<link href="assets/css/style-responsive.min.css" rel="stylesheet" />
+	<link href="assets/css/theme/default.css" rel="stylesheet" id="theme" />
+	<!-- ================== END BASE CSS STYLE ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
+  	<link href="assets/plugins/lightbox/css/lightbox.css" rel="stylesheet" />
+
+	<link href="assets/plugins/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" />
+	<link href="assets/plugins/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet" />
+    <link href="assets/plugins/gritter/css/jquery.gritter.css" rel="stylesheet" />
+	<!-- ================== END PAGE LEVEL STYLE ================== -->
+	
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="assets/plugins/pace/pace.min.js"></script>
+	<!-- ================== END BASE JS ================== -->
+</head>
+<body>
+	<!-- begin #page-loader -->
+	<div id="page-loader" class="fade in"><span class="spinner"></span></div>
+	<!-- end #page-loader -->
+	
+	<!-- begin #page-container -->
+	<div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+		<!-- begin #header -->
+		<div id="header" class="header navbar navbar-default navbar-fixed-top">
+			<!-- begin container-fluid -->
+			<div class="container-fluid">
+				<!-- begin mobile sidebar expand / collapse button -->
+				<div class="navbar-header">
+					<a href="Dashboard.do" class="navbar-brand"><span
+						class="navbar-logo"><img src="assets/img/logo_red.png"
+							width="55" height="55" /></span> Anáhuac </a>
+					<button type="button" class="navbar-toggle" data-click="sidebar-toggled">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				<!-- end mobile sidebar expand / collapse button -->
+				
+				<!-- begin header navigation right -->
+				<ul class="nav navbar-nav navbar-right">
+					<!--<li>
+						<form class="navbar-form full-width">
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Enter keyword" />
+								<button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
+							</div>
+						</form>
+					</li>-->
+					
+                            #NOTIFICACIONES#
+
+				</ul>
+				<!-- end header navigation right -->
+			</div>
+			<!-- end container-fluid -->
+		</div>
+		<!-- end #header -->
+		
+		<!-- begin #sidebar -->
+		<div id="sidebar" class="sidebar">
+			<!-- begin sidebar scrollbar -->
+			<div data-scrollbar="true" data-height="100%">
+				<!-- begin sidebar user -->
+			<ul class="nav">
+					<li class="nav-profile">
+						#INFOUSER#
+					</li>
+				</ul>
+				<!-- end sidebar user -->
+				<!-- begin sidebar nav -->
+					#MENU#
+				<!-- end sidebar nav -->
+			</div>
+			<!-- end sidebar scrollbar -->
+		</div>
+		<div class="sidebar-bg"></div>
+		<!-- end #sidebar -->
+		
+		<!-- begin #content -->
+		<div id="content" class="content">
+			<!-- begin breadcrumb -->
+			<ol class="breadcrumb pull-right">
+				<li><a href="javascript:;">Sorteo</a></li>
+				<li class="active">Ganadores</li>
+				
+			</ol>
+			<!-- end breadcrumb -->
+			<!-- begin page-header -->
+			<h1 class="page-header">GANADORES <small>#SORTEO#</small></h1>
+			<!-- end page-header -->
+
+
+			<div class="input-group m-b-20">
+				<input type="text" id="searchtable" class="form-control input-white" placeholder="Ganadores o premios a buscar...">
+				<div class="input-group-btn">
+					<button type="button" onclick="javascript:handleListar();" class="btn btn-inverse">
+						<i class="fa fa-search"></i> Buscar
+					</button>
+				</div>
+			</div>
+
+			<div id="options" class="m-b-10">
+            	<div>
+            		<a class="btn btn-warning m-r-5" href="Ganadores">Ganadores</a>
+            		<a class="btn btn-default m-r-5" href="GanadoresColaboradores">Colaboradores ganadores</a>
+            		&#160;&#160;
+            		#BTN_AGREGAR_GANADOR#
+            	</div>
+				<br/>
+            </div>
+
+<!-- 			<div class="btn-group m-l-10 m-b-20"> -->
+<!-- 				<a href="javascript:;" class="btn btn-white btn-white-without-border"><i class="fa fa-list"></i></a> -->
+<!-- 				<a href="javascript:;" class="btn btn-white btn-white-without-border"><i class="fa fa-th"></i></a> -->
+<!-- 				<a href="javascript:;" class="btn btn-white btn-white-without-border"><i class="fa fa-th-large"></i></a> -->
+<!-- 			</div> -->
+            <div id="gallery" class="gallery">
+            	<!-- /////////////////////////////////////// -->
+            </div>
+            
+            
+            
+		</div>
+		<!-- end #content -->
+		
+		
+		<!-- begin scroll to top btn -->
+		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+		<!-- end scroll to top btn -->
+
+
+	</div>
+	<!-- end page container -->
+
+
+
+
+
+	<!-- INICIO MODAL  -->
+	
+	<div id="myModalConfirmar" class="modal modal-message fade" style="display: none;" aria-hidden="true">
+		<div class="modal-dialog" style="width:400px;">
+			<div style="background-color:#FFFFFF; ">
+				<div class="modal-header" style="width:100%;">
+					<button class="close" aria-hidden="true" data-dismiss="modal" type="button">×</button>
+					<h4 class="modal-title">Confirme que desea borrar el ganador</h4>
+				</div>
+				<div class="modal-body" style="width:100%;">
+					<div role="tabpanel" class="bwizard-activated" aria-hidden="false" >
+						<div class="jumbotron m-b-0 text-center">
+							<a href="javascript:borrarGanador();" role="button" class="btn btn-success btn-lg">&#160; Si &#160;</a>
+							&#160;&#160;
+							<a href="javascript:;" role="button" class="btn btn-success btn-lg" data-dismiss="modal">&#160; No &#160;</a>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	<!-- FIN MODAL  -->
+
+
+
+
+
+
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="assets/plugins/jquery/jquery-1.9.1.min.js"></script>
+	<script src="assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
+	<script src="assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+	<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<!--[if lt IE 9]>
+		<script src="assets/crossbrowserjs/html5shiv.js"></script>
+		<script src="assets/crossbrowserjs/respond.min.js"></script>
+		<script src="assets/crossbrowserjs/excanvas.min.js"></script>
+	<![endif]-->
+	<script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="assets/plugins/jquery-cookie/jquery.cookie.js"></script>
+	<!-- ================== END BASE JS ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+  	<script src="assets/plugins/lightbox/js/lightbox.min.js"></script>
+	<script src="assets/js/gallery.demo.min.js"></script>
+	<script src="assets/js/apps.min.js"></script>
+	<script src="assets/js/premios/lista_ganadores.js"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
+	
+	<script>
+		$(document).ready(function() {
+			App.init();
+			Gallery.init();
+			initialize();
+			//showModal();
+		});
+	</script>
+	<script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-53034621-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+</body>
+</html>

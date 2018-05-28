@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+	<title>Sorteos Anáhuac | Red de Universidades Anáhuac</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	
+
+	
+	<!-- ================== BEGIN BASE CSS STYLE ================== -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+	<link href="assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />
+	<link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+	<link href="assets/css/animate.min.css" rel="stylesheet" />
+	<link href="assets/css/style.min.css" rel="stylesheet" />
+	<link href="assets/css/style-responsive.min.css" rel="stylesheet" />
+	<link href="assets/plugins/DataTables/css/data-table.css" rel="stylesheet" />
+	<link href="assets/css/theme/default.css" rel="stylesheet" id="theme" />
+	<!-- ================== END BASE CSS STYLE ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
+	<link href="assets/plugins/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" />
+	<link href="assets/plugins/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet" />
+    <link href="assets/plugins/gritter/css/jquery.gritter.css" rel="stylesheet" />
+	<!-- ================== END PAGE LEVEL STYLE ================== -->
+	
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="assets/plugins/pace/pace.min.js"></script>
+	<!-- ================== END BASE JS ================== -->
+</head>
+<body>
+
+
+ 
+	<!-- begin #page-loader -->
+	<div id="page-loader" class="fade in"><span class="spinner"></span></div>
+	<!-- end #page-loader -->
+	
+	<!-- begin #page-container -->
+	<div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+		<!-- begin #header -->
+		<div id="header" class="header navbar navbar-default navbar-fixed-top">
+			<!-- begin container-fluid -->
+			<div class="container-fluid">
+				<!-- begin mobile sidebar expand / collapse button -->
+				<div class="navbar-header">
+					<a href="Dashboard.do" class="navbar-brand"><span class="navbar-logo"><img src="assets/img/logo_red.png" width="55" height="55"/></span> Anáhuac	</a>
+					<button type="button" class="navbar-toggle" data-click="sidebar-toggled">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				<!-- end mobile sidebar expand / collapse button -->
+				
+				<!-- begin header navigation right -->
+				<ul class="nav navbar-nav navbar-right">
+					#NOTIFICACIONES#
+				</ul>
+				<!-- end header navigation right -->
+			</div>
+			<!-- end container-fluid -->
+		</div>
+		<!-- end #header -->
+		
+             
+             <!-- modalDetalleBoleto -->
+							<div class="modal" id="modalDetalleBoleto">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+											<h4 class="modal-title">Boleto: <small>COSTO:</small>
+											<span id="montoboleto"> - </span> <small>ABONO:</small><span id="abonoboleto">- </span>
+
+											</h4>
+										</div>
+										<div class="modal-body">
+										<input type="hidden" name="pkboleto" id="pkboleto"/>
+										<input type="hidden" name="pktalonario" id="pktalonario"/>
+										<input type="hidden" name="pksector" id="pksector"/>
+										<input type="hidden" name="pknicho" id="pknicho"/>
+										<input type="hidden" name="pkcolaborador" id="pkcolaborador"/>
+										
+										<input type="hidden" name="pkabono" id="pkabono"/>
+										<input type="hidden" name="pkcosto" id="pkcosto"/>
+										
+										<input type="hidden" name="boleto" id="boleto"/>
+										<input type="hidden" name="sorteo" id="sorteo"/>
+										<input type="hidden" name="costo" id="costo"/>
+										<input type="hidden" name="talonario" id="talonario"/>
+										
+										<!-- BOLETO -->
+										
+										<div class="result-info" id="boleto-info" style="display:block;">
+										
+										
+<h4 class="title">
+
+<a href="javascript:;">BOLETO FOLIO:</a> <span class="badge badge-primary badge-square" id="boletofolio">-</span>
+<a href="javascript:;">TALONARIO FOLIO:</a> <span class="badge badge-warning badge-square" id="talonariofolio">-</span>
+<span class="badge badge-inverse badge-square" id="estatusboleto">NO VENDIDO</span>
+</h4>
+<!--  
+<p class="location"> ASIGNACION: 
+<span id="bsector">Sector</span> / <span id="bnicho">Nicho</span> / <span id="bcolaborador">Colaborador</span> </p>-->
+
+<h3>Comprador: <span id="comprador"></span></h3>
+
+<span style="font-weight:700; font-size:18px;">Contacto:</span><br>
+<span style="font-weight:600;"> Telefono Fijo:</span>&nbsp;<span id="telefonofijo"></span>
+<span style="font-weight:600;"> Telefono Movil:</span>&nbsp;<span id="telefonomovil"></span><br>
+<span style="font-weight:600;"> Correo Electrónico:</span>&nbsp;<span id="correo"></span><br>
+
+<span style="font-weight:700; font-size:18px;">Dirección:</span><br>
+<span style="font-weight:600;"> Calle:</span>&nbsp;<span id="calle"></span>
+<span style="font-weight:600;"> Numero:</span>&nbsp;<span id="numero"></span>
+<span style="font-weight:600;"> Colonia:</span>&nbsp;<span id="colonia"></span>
+<span style="font-weight:600;"> Estado:</span>&nbsp;<span id="estado"></span>
+<span style="font-weight:600;"> Municipio o Delegación::</span>&nbsp;<span id="municipio"></span><br>
+
+
+<div id="divincidencia" style="display:none;">
+<span style="font-weight:700; font-size:18px; color:red;">INCIDENCIA:</span>&nbsp;<span id="tincidencia"></span>
+<span style="font-weight:600;"> Formato FC8:</span>&nbsp;<span id="tformatoincidencia"></span>
+<span style="font-weight:600;"> Folio MP:</span>&nbsp;<span id="tfoliomp"></span><br/>
+<span style="font-weight:600;"> Detalles:</span><br/><span id="tdetallesincidencia"></span>
+</div>
+
+<br/><br/>
+<a id="boletov" class="btn btn-success btn-block" href="javascript:void(0)" onClick="AbonarBoleto();"><i class="fa fa-barcode"></i> Abonar venta de boleto</a>
+
+<a id="boletoreporte" class="btn btn-success btn-block" href="javascript:void(0)" onClick="ReportedeExtravioBoleto()"><i class="fa fa-barcode"></i> FC8 Reporte de extravio o Robo de Boleto</a>
+
+<a class="btn btn-inverse btn-block" id="linkseguimientoboleto" href="#" target="_blank">Ver Detalle de Seguimiento</a>
+
+</div>
+
+										<!-- BOLETO -->
+										
+											<!-- VENTA BOLETO -->
+											
+											<div class="venta-boleto" id="boleto-venta" style="display:none;">
+<h4 class="title">
+<a href="javascript:;">BOLETO FOLIO:</a> <span class="badge badge-primary badge-square" id="boletofolioabono">-</span>
+<a href="javascript:;">TALONARIO FOLIO:</a> <span class="badge badge-warning badge-square" id="talonariofolioabono">-</span>
+</h4>
+
+
+<p class="desc">
+<table>
+
+<tr>
+<td align="right"><span style="font-weight:500; font-size:18px;">*ABONO: $</span></td>
+<td><input type="text" name="abono" id="iabono"/></td>
+<td></td>
+<td></td>
+</tr>
+
+
+
+<tr>
+<td colspan="4" ><span style="font-weight:500; font-size:18px;">Comprador:</span></td>
+</tr>
+
+
+<tr>
+<td align="right"><span style="font-weight:500;"> *Nombre: &nbsp;</span></td>
+<td><input type="text" name="nombre" id="inombre"/></td>
+<td align="right"><span style="font-weight:500;"> *Apellidos:&nbsp;</span></td>
+<td><input type="text" name="apellidos" id="iapellidos"></td>
+</tr>
+
+<tr>
+<td colspan="4"><span style="font-weight:500; font-size:16px;">Contacto:</span></td>
+</tr>
+
+
+<tr>
+<td align="right"><span style="font-weight:500;"> *Telefono Fijo:&nbsp;</span></td>
+<td><input type="text" name="telefonofijo" id="itelefonofijo"></td>
+<td align="right"><span style="font-weight:500;"> *Telefono Movil:&nbsp;</span></td>
+<td><input type="text" name="telefonomovil" id="itelefonomovil"></td>
+</tr>
+
+
+<tr>
+<td align="right"><span style="font-weight:500;"> *Correo Electrónico:&nbsp;</span></td>
+<td colspan="3"><input type="text" name="correo" id="icorreo"></td>
+</tr>
+
+<tr>
+<td colspan="4"><span style="font-weight:500; font-size:16px;">Dirección:</span></td>
+</tr>
+
+<tr>
+<td align="right"><span style="font-weight:500;"> *Calle:&nbsp;</span></td>
+<td><input type="text" name="calle" id="icalle"></td>
+<td align="right"><span style="font-weight:500;"> *Numero:&nbsp;</span></td>
+<td><input type="text" name="numero" id="inumero"></td>
+</tr>
+
+
+<tr>
+<td align="right"><span style="font-weight:500;"> *Colonia:&nbsp;</span></td>
+<td><input type="text" name="colonia" id="icolonia"></td>
+<td align="right"><span style="font-weight:500;"> *Estado:&nbsp;</span></td>
+<td><input type="text" name="estado" id="iestado"></td>
+</tr>
+
+<tr>
+<td align="right"><span style="font-weight:500;"> *Municipio o Delegación:&nbsp;</span></td>
+<td><input type="text" name="municipio" id="imunicipio"></td>
+<td></td>
+<td></td>
+</tr>
+
+</table>
+
+
+</p>
+
+<a class="btn btn-success btn-block" href="javascript:void(0)" onClick="InsertarVentaComprador()"><i class="fa fa-save"></i> Registar Venta de Boleto</a>
+<a class="btn btn-inverse btn-block" href="javascript:void(0)" onClick="CancelarventaBoleto()">Cancelar</a>
+
+</div>
+											
+											<!-- VENTA BOLETO -->
+											
+											
+											
+											<!-- EXTRAVIO BOLETO -->
+											
+											<div class="venta-boleto" id="boleto-extravio" style="display:none;">
+<h4 class="title">
+<a href="javascript:;">BOLETO FOLIO:</a> <span class="badge badge-primary badge-square" id="incidenciaboletofolio">-</span>
+<a href="javascript:;">TALONARIO FOLIO:</a> <span class="badge badge-warning badge-square" id="incidenciatalonariofolio">-</span>
+</h4>
+
+
+
+<table>
+
+
+<tr>
+<td><span style="font-weight:500; font-size:18px;">Incidencia:</span></td>
+<td><select name="incidencia" id="incidencia">
+<option value="N">Ninguna</option>
+<option value="E">Extravío</option>
+<option value="R">Robo</option>
+</select>
+</td>
+<td></td>
+<td></td>
+</tr>
+
+
+<tr>
+<td><span style="font-weight:500; font-size:18px;">Formato FC8:</span></td>
+<td><input type="text" name="formatofc8" id="formatofc8"/></td>
+<td></td>
+<td></td>
+</tr>
+
+
+<tr>
+<td><span style="font-weight:500; font-size:18px;">Folio Acta MP:</span></td>
+<td><input type="text" name="folioactamp" id="folioactamp"/></td>
+<td></td>
+<td></td>
+</tr>
+
+
+
+<tr>
+<td colspan="4"><span style="font-weight:500; font-size:18px;">Detalles:</span></td>
+</tr>
+
+
+<tr>
+<td colspan="4">
+<textarea name="detallesincidencia" id="detallesincidencia" cols="8" style="width:200%; height:150px;"></textarea>
+</td>
+</tr>
+
+</table>
+
+
+
+<a class="btn btn-success btn-block" href="javascript:void(0)" onClick="RegistrarIncidenciaBoleto()"><i class="fa fa-save"></i> Registar Reporte de Incidencia</a>
+<a class="btn btn-inverse btn-block" href="javascript:void(0)" onClick="CancelarventaBoleto()">Cancelar</a>
+
+</div>
+											
+											<!-- EXTRAVIO BOLETO -->
+										
+										
+										</div>
+										<div class="modal-footer">
+											<a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cerrar</a>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+		<!-- END DETALLE BOLETO-->
+		<!-- begin #sidebar -->
+		<div id="sidebar" class="sidebar">
+			<!-- begin sidebar scrollbar -->
+			<div data-scrollbar="true" data-height="100%">
+				<!-- begin sidebar user -->
+				<ul class="nav">
+					<li class="nav-profile">
+						#INFOUSER#
+					</li>
+				</ul>
+				<!-- end sidebar user -->
+				<!-- begin sidebar nav -->
+				#MENU#
+				<!-- end sidebar nav -->
+			</div>
+			<!-- end sidebar scrollbar -->
+		</div>
+		<div class="sidebar-bg"></div>
+		<!-- end #sidebar -->
+		
+		<!-- begin #content -->
+		<div class="content" id="content">
+    <!-- begin breadcrumb -->
+    <ol class="breadcrumb pull-right">
+       <!--   <li><a href="Dashboard.do">Dashboard</a></li>-->
+        <li><a href="Sorteos.do">Sorteos</a></li>
+        <li><a href="#URLSECTORES#">Sectores</a></li>
+        <li><a href="#URLTALONARIO#">Talonarios</a></li>
+        
+    </ol>
+    <!-- end breadcrumb -->
+    <!-- begin page-header -->
+    <h1 class="page-header"><span style="color:Orange;">&#8226;</span> #SORTEO#</h1>
+    <h1 class="page-header"><span style="color:Orange;">&#8226;</span> #SECTOR#</h1>
+    <h1 class="page-header">&nbsp;&nbsp;Talonarios asignados: <span id="numTal"></span> <small>encontrados</small></h1>
+   
+    <!-- end page-header -->
+    
+    <!-- begin row -->
+    <div class="row">
+        <!-- begin col-12 -->
+        <div class="col-md-12">
+            <div class="result-container">
+                <div class="input-group m-b-20">
+                    <input type="text" placeholder="Talonarios a buscar..." id="searchtable" onkeyup="onkeyup_colfield_check(event)" class="form-control input-white">
+                    <div class="input-group-btn">
+                        <button class="btn btn-inverse" type="button"><i class="fa fa-search"></i> Buscar</button>
+
+                    </div>
+                </div>
+                
+                
+                
+       <!-- INICIO MODAL  -->
+<div id="myModal" class="modal modal-message fade" style="display: none;" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header" id="instruccionesheader">
+<button class="close" aria-hidden="true" data-dismiss="modal" type="button">×</button>
+<h4 class="modal-title">Carga sembrada de talonarios y boletos</h4>
+</div>
+<div class="modal-body">
+
+<div id="instrucciones">
+<p><strong>FC1; Formato de control 1</strong></p>
+<p></p><p>Un sembrado de talonarios y boletos al sector.</p>
+</div>
+
+
+<div id="formato" style="display:none;">
+ <form  class="form-horizontal" action="/" method="POST" id="formulario" name="formulario" data-parsley-validate="true">
+                               
+                                <fieldset>
+                                
+                          <legend>FC1; Formato de control 1  </legend>
+                                
+                        
+                              
+                         <div class="form-group">
+                            <label class="col-md-3 control-label">Folio de formato:</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="folio" name="folio" style="width: 150px" placeholder="" required>
+                            </div>
+                        </div>        
+                                
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Sorteo:</label>
+                            <div class="col-md-9">
+                            <input type="hidden" id="numsorteo" name="numsorteo" value="#IDSORTEO#"" />
+                                <input type="text"  disabled id="sorteo" style="width:300px" name="sorteo"   value="#SORTEO#" class="form-control" style="width: 150px" placeholder="" required>
+                            </div>
+                        </div>
+                        
+                                              
+                       </fieldset>
+                    
+                    </form>
+
+
+</div>
+
+
+<div id="formtalonarios" style="display:none;">
+
+<fieldset>
+<legend>Talonarios: (<span id="numtalonarios" style="font-weight:bold;"></span> - <span id="numtalonariosadd" style="font-weight:bold; color:blue;">0</span>)  Boletos de cada Talonario: <span id="numboletos" style="font-weight:bold;"></span></legend>
+
+                        
+                                  <div class="form-group">
+                                        <label class="col-md-4 control-label" style="width:120px; margin-top:7px;">Talonario <span id="spannumtalonario" style="font-weight:bold; color:blue;">1</span>:</label>
+                                        <div class="col-md-8" style="width:120px;">
+                                           <input type="hidden" name="hnumtalonario" id="hnumtalonario">
+                                           <input type="text"  id="barcodetalonario" name="barcodetalonario" onkeyup="onkeyup_talonario_check(event)"  class="form-control" style="width: 100px" placeholder="# Talonario" required>
+                                        </div>
+                                        <div class="col-md-8" style="width:100px;">
+                                           <input type="button" class="btn btn-sm btn-primary" id="btntalonario" value="Agregar" />
+                                        </div>
+                                        
+                                        <div id="colboletos" style="display:none;">
+                                        <label class="col-md-4 control-label" style="width:120px; margin-top:7px;">Boleto <span id="numboleto" style="font-weight:bold; color:blue;">1</span> de <span id="totalnumboleto" style="font-weight:bold;">11</span>:</label>
+                                              <div class="col-md-8" style="width:120px;">
+                                           <input type="text"  id="barcodeboleto" name="barcodeboleto" onkeyup="onkeyup_boleto_check(event)"  class="form-control" style="width: 100px" placeholder="# Boleto" required>
+                                        </div>
+                                        <div class="col-md-8" style="width:100px;">
+                                           <input type="button" class="btn btn-sm btn-primary" id="btnboleto" value="Agregar" />
+                                        </div>
+                                        
+                                        </div>
+                                        
+                                    </div>
+                                    
+
+</fieldset>
+</div>
+
+                                    <div class="result-info" id="numboletosadd" style="display:none;">
+                                    <legend><small>Boletos de Talonario:</small> </legend>
+                                    <p id="btlnm"  class="location btlnm">
+                                     
+                                     </p>
+                                    </div>
+                                    
+                                    
+                                    
+                                    <div class="jumbotron m-b-0 text-center" id="cargacompleta" style="display:none;">
+                                            <h1>Talonarios y Boletos cargados Exitosamente!!</h1><br>
+                                            <p>Se han agregado <span id="talonarioscomplete"> 1</span>  Talonarios y <span id="boletoscomplete"> 1</span> Boletos de cada Talonario, Total: <span id="totalboletoscomplete"> 1</span> Boletos, con numero de formato de control Folio: <span id="folioformato"> 1</span></p>
+                                            <p><a href="javascript:void(0)" role="button" class="btn btn-success btn-lg">Proceder con nueva carga</a></p>
+                                        </div>
+
+
+
+
+
+
+<!-- begin row -->
+    <div class="row" id="asignacion" style="display:none;" >
+    
+    
+    
+    
+    <!-- INICIO DE TABS -->    
+    
+    <div class="md-6">
+					<ul class="nav nav-tabs">
+						<li class="active" id="talonariosTab"><a id="tallink" data-toggle="tab" href="#default-tab-1">Talonarios</a></li>
+						<li class="" id="boletosTab"><a id="bollink" data-toggle="tab" href="#default-tab-2">Boletos</a></li>
+						
+					</ul>
+					<div class="tab-content">
+						<div id="default-tab-1" class="tab-pane fade active in">
+							
+							   <div class="col-md-12 ui-sortable">
+			       
+                    <div class="panel panel-inverse">
+                        <div class="panel-heading">
+                           
+                            <h4 class="panel-title">Lista de Talonarios</h4>
+                        </div>
+                     
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <div id="data-table_wrapper" class="dataTables_wrapper no-footer"><div class="dataTables_length" id="data-table_length"><label>Mostrar: <select name="data-table_lengthM" onChange="changeShowModal()" id="data-elements-lengthM" aria-controls="data-table" class=""><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> </label></div>
+                                <div id="data-table_filter" class="dataTables_filter"><label>Buscar:<input type="search" class="" id="searchtableM" placeholder="" onkeyup="onkeyup_colfield_checkModal(event)" aria-controls="data-table"></label></div>
+                                
+                                
+                              <form action="/" method="POST" id="formulario" name="formulario">
+                              <input type="hidden" id="idsTalonarios">
+                              
+                              </form>
+                                
+                                <div id="listresultados2" style="min-height:300px;"  class="block"></div>
+                                
+                               
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                       
+                    </div>
+                    
+                   
+                </div>
+              
+							
+						</div>
+						<div id="default-tab-2" class="tab-pane fade">
+						
+						   <div class="col-md-12 ui-sortable">
+			       
+                    <div class="panel-inverse">
+                        <div class="panel-heading">
+                           
+                            <h4 class="panel-title">Lista de Boletos</h4>
+                        </div>
+                     
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <div id="data-table_wrapper" class="dataTables_wrapper no-footer"><div class="dataTables_length" id="data-table_length"><label>Mostrar: <select name="data-table_lengthMBoletos" onChange="changeShowModalBoletos()" id="data-elements-lengthMBoletos" aria-controls="data-table" class=""><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> </label></div>
+                                <div id="data-table_filter" class="dataTables_filter"><label>Buscar:<input type="search" class="" id="searchtableMBoletos" placeholder="" onkeyup="onkeyup_colfield_checkModalBoletos(event)" aria-controls="data-table"></label></div>
+                                
+                                
+                              <form action="/" method="POST" id="formulario3" name="formulario3">
+                              <input type="hidden" id="idboletos">
+                              <input type="hidden" id="foltalonarios">
+                              </form>
+                                
+                                <div id="listresultados3" style="min-height:300px;"  class="block"></div>
+                                
+                               
+                                </div>
+                            </div>
+                        </div></br>
+                      
+                    </div>
+                  
+                </div>
+						
+							
+							
+							
+							
+						</div>
+						
+			  </div>
+    
+    
+    
+    </div>
+    
+    
+    
+    
+    <!-- FIN TABS -->
+    
+    
+             
+                
+                
+            </div>
+
+
+
+
+</div>
+<div class="modal-footer">
+<a class="btn btn-sm btn-white" data-dismiss="modal" href="javascript:;">Cancelar</a>
+<a class="btn btn-sm btn-primary" id="aceptarmodal" href="javascript:void(0)" onClick="mostrarFormato();">Siguiente</a>
+</div>
+</div>
+</div>
+</div>                
+        <!-- FIN MODAL  -->
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+              <!-- INICIO MODAL FC4  -->
+        
+						<div id="myModal_FC4" class="modal modal-message fade"
+							style="display: none;" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header" id="instruccionesheader_FC4">
+										<button class="close" aria-hidden="true" data-dismiss="modal"
+											type="button">×</button>
+										<h4 class="modal-title">Retorno de Talonarios y boletos</h4>
+									</div>
+									<div class="modal-body">
+
+										<div>
+											<p>
+												<strong>FC4; Formato de control 4</strong>
+											</p>
+											<p></p>
+											<p>Es el Retorno de un Talonario de boletos TOTALMENTE vendidos.</p>
+										</div>
+										<br>
+										
+										 <div class="form-group">
+                            <label class="col-md-3 control-label">Folio de formato:</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="foliofc4" name="foliofc4" style="width: 150px" placeholder="" required>
+                            </div>
+                        </div>   
+
+									</div>
+									<div class="modal-footer">
+										<a class="btn btn-sm btn-white" data-dismiss="modal"
+											href="javascript:;">Cancelar</a>
+										<a class="btn btn-sm btn-primary" id="aceptarmodalfc4"
+											href="javascript:RetornoTalonariosFC4();">Siguiente</a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+        <!-- END MODAL FC4 -->
+
+
+
+
+
+
+        <!-- INICIO MODAL FC5  -->
+        
+						<div id="myModal_FC5" class="modal modal-message fade"
+							style="display: none;" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header" id="instruccionesheader_FC5">
+										<button class="close" aria-hidden="true" data-dismiss="modal"
+											type="button">×</button>
+										<h4 class="modal-title">Devoluci&oacute;n de talonarios y
+											boletos</h4>
+									</div>
+									<div class="modal-body">
+
+										<div id="instrucciones_FC5">
+											<p>
+												<strong>FC5; Formato de control 5</strong>
+											</p>
+											<p></p>
+											<p>Devoluci&oacute;n de un talonario <b>sin</b> vender ni un solo boleto.</p>
+										</div><br>
+										
+										
+											
+										 <div class="form-group">
+                            <label class="col-md-3 control-label">Folio de formato:</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="foliofc5" name="foliofc5" style="width: 150px" placeholder="" required>
+                            </div>
+                        </div>   
+										
+
+									</div>
+									<div class="modal-footer">
+										<a class="btn btn-sm btn-white" data-dismiss="modal"
+											href="javascript:;">Cancelar</a>
+										<a class="btn btn-sm btn-primary" id="aceptarmodal"
+											href="javascript:DevolverTalonarioFc5()" >Siguiente</a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+        <!-- INICIO MODAL FC5 -->
+        
+        
+        
+           <!-- INICIO MODAL FC5B  -->
+        
+						<div id="myModal_FC5B" class="modal modal-message fade"
+							style="display: none;" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header" id="instruccionesheader_FC5B">
+										<button class="close" aria-hidden="true" data-dismiss="modal"
+											type="button">×</button>
+										<h4 class="modal-title">Devoluci&oacute;n de boletos</h4>
+									</div>
+									<div class="modal-body">
+
+										<div id="instrucciones_FC5">
+											<p>
+												<strong>FC5B; Formato de control 5B</strong>
+											</p>
+											<p></p>
+											<p>Devoluci&oacute;n de un boletos <b>no</b> vendidos.</p>
+										</div><br>
+										
+										
+											
+										 <div class="form-group">
+                            <label class="col-md-3 control-label">Folio de formato:</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="foliofc5B" name="foliofc5B" style="width: 150px" placeholder="" required>
+                            </div>
+                        </div>   
+										
+
+									</div>
+									<div class="modal-footer">
+										<a class="btn btn-sm btn-white" data-dismiss="modal"
+											href="javascript:;">Cancelar</a>
+										<a class="btn btn-sm btn-primary" id="aceptarmodal"
+											href="javascript:DevolverTalonarioFc5B();">Siguiente</a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+        <!-- INICIO MODAL FC5B -->
+        
+    
+      <!-- INICIO MODAL ALERTA -->
+    <div id="modal-alert" class="modal fade" style="display: none;" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<button class="close" aria-hidden="true" data-dismiss="modal" type="button">×</button>
+<h4 class="modal-title" id="alerta-title">Alert Header</h4>
+</div>
+<div class="modal-body">
+<div class="alert alert-danger m-b-0">
+<h4>
+<i class="fa fa-info-circle"></i>
+Alert Header
+</h4>
+<p 	id="bodyAlerta">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+</div>
+</div>
+<div class="modal-footer">
+<a class="btn btn-sm btn-white" data-dismiss="modal" href="javascript:;">Close</a>
+<a class="btn btn-sm btn-danger" data-dismiss="modal" href="javascript:;">Action</a>
+</div>
+</div>
+</div>
+</div>
+			            
+           <!-- FIN MODAL ALERTA -->  
+           
+                
+              
+                <div class="dropdown pull-left">
+                 <!--    <a href="listsorteos.html" class="btn btn-white"><i class="fa fa-arrow-left"></i> Sorteos</a>-->
+                  #BTNASIGNA#
+                    
+                </div>
+                
+                
+                <div class="btn-group m-l-10 m-b-20">
+                    <a class="btn btn-white btn-white-without-border" href="javascript:;"><i class="fa fa-list"></i></a>
+                    <a class="btn btn-white btn-white-without-border" href="javascript:;"><i class="fa fa-th"></i></a>
+                    <a class="btn btn-white btn-white-without-border" href="javascript:;"><i class="fa fa-th-large"></i></a>
+                </div>
+                 
+                        
+                <div id="listresultados" style="min-height:300px;"  class="block">
+                
+                
+                </div>
+                
+                
+                
+                
+                
+            </div>
+        </div>
+        <!-- end col-12 -->
+    </div>
+    <!-- end row -->
+</div>
+			<!-- end row -->
+			
+		</div>
+		<!-- end #content -->
+		
+		<!-- begin scroll to top btn -->
+		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+		<!-- end scroll to top btn -->
+	</div>
+	<!-- end page container -->
+	
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="assets/plugins/jquery/jquery-1.9.1.min.js"></script>
+	<script src="assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
+	<script src="assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+	<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<!--[if lt IE 9]>
+		<script src="assets/crossbrowserjs/html5shiv.js"></script>
+		<script src="assets/crossbrowserjs/respond.min.js"></script>
+		<script src="assets/crossbrowserjs/excanvas.min.js"></script>
+	<![endif]-->
+	<script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="assets/plugins/jquery-cookie/jquery.cookie.js"></script>
+	<!-- ================== END BASE JS ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<script src="assets/plugins/gritter/js/jquery.gritter.js"></script>
+	<script src="assets/plugins/DataTables/media/js/jquery.dataTables.js"></script>
+	<script src="assets/plugins/sparkline/jquery.sparkline.js"></script>
+	<script src="assets/js/sorteos/AsignacionTalonarios/list-asignacion-talonarios.min.js"></script>
+	<script src="assets/plugins/jqueryblockUI/jquery.blockUI.js"></script>
+	
+	
+	<script src="assets/js/apps.min.js"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
+	
+	<script>
+		$(document).ready(function() {
+			// $('#myModal').modal('hide');
+			App.init();
+			Listar.init();
+			
+			$("#talonariosTab").click(function () {
+			//	 $("input:checkbox").prop('checked', false);    
+				$('#aceptarmodal').removeAttr( "onClick" );
+				$("#aceptarmodal").attr("onClick","enviar()");
+				
+				
+				});
+			
+         $("#boletosTab").click(function () {
+        	// $("input:checkbox").prop('checked', false);    
+        	 $('#aceptarmodal').removeAttr( "onClick" );
+     		 $("#aceptarmodal").attr("onClick","enviarBoletos()");
+     		 ListarModalBoletos.init();
+     		 
+     		 
+     		
+				});
+
+
+			
+			
+			
+		/*	$("#marcarTodo").change(function () {
+		    	
+		    	alert('entro');
+		        if ($(this).is(':checked')) {
+		            //$("input[type=checkbox]").prop('checked', true); //todos los check
+		            $("#Habilitados input[type=checkbox]").prop('checked', true); //solo los del objeto #diasHabilitados
+		        } else {
+		            //$("input[type=checkbox]").prop('checked', false);//todos los check
+		            $("#Habilitados input[type=checkbox]").prop('checked', false);//solo los del objeto #diasHabilitados
+		        }
+		    });*/
+			
+		});
+	</script>
+	
+</body>
+</html>

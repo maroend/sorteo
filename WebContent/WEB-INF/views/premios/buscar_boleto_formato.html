@@ -1,0 +1,112 @@
+<html><head>
+<meta https-equiv="Content-Type" content="text/html; charset=utf-8"></head>
+    <style type="text/css">
+        #boleto-logo img {
+            width: auto;
+        }
+
+        #contenido-correo {
+            font-family: Tahoma, Verdana, Arial, sans-serif;
+            text-align: center;
+        }
+
+        #contenido-correo h3 {
+            color: #ea7200;
+            font-style: italic;
+            font-size: 1.1em;
+        }
+
+        #contenido-correo p.boleto-descripcion {
+            color: #666;
+        }
+
+        .boletos-conteo {
+            color: #ea7200;
+        }
+    
+        #boleto-detalle-contenido {
+            margin-top: 1em;
+            text-align: center;
+        }
+
+        .boleto-contacto, .boleto-url {
+            color: #666;
+            font-size: 0.8em;
+        }
+
+        .boleto-contacto span {
+            color: #000;
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+
+        #qrURL-boleto, #reverso-boleto {
+            margin-bottom: 1.2em;
+        }
+
+        #frente-boleto img, #reverso-boleto img {
+            width: 75%;
+        }
+
+    </style>
+<body>
+    <div id="contenido-correo">
+    <p>
+        <div id="boleto-logo"><img src="assets/img/boleto_encabezado.png"></div>
+    </p>
+    <h2 class="talonario-boletos-header con-flecha-llamada">Boleto <span class="boletos-conteo"><!--BOLETO--></span></h2>
+    <h3>¡Felicidades!</h3>
+    <p class="boleto-descripcion">Has comprado el <b>boleto <!--BOLETO--></b> del Sorteo Anáhuac.<br>A continuación te presentamos los datos de tu compra:</p>
+    <div id="boleto-detalle-contenido">
+    <p class="boleto-contacto">
+        Dueño<br>
+        <span><!--NOMBRE--></span>
+    </p>
+    <p class="boleto-contacto">
+        Domicilio:<br>
+        <span><!--CALLE--></span> <span><!--NUMERO--></span><br>
+        <span><!--DELMUN--></span>, <span><!--ESTADO--></span>
+    </p>
+    <p class="boleto-contacto">
+        Teléfono fijo:<br>
+        <span><!--TEL_FIJO--></span>
+    </p>
+    <p class="boleto-contacto">
+        Teléfono móvil:<br>
+        <span><!--TEL_MOVIL--></span>
+    </p>
+    <p class="boleto-contacto">
+        Correo electrónico:<br>
+        <span><!--CORREO--></span>
+    </p>
+    <p class="boleto-contacto">
+        Cuenta bancaria:<br>
+        <span><!--CUENTA_BANCARIA--></span>
+    </p>
+    <p class="boleto-contacto">
+        Referencia bancaria:<br>
+        <span><!--REF_BANCARIA--></span>
+    </p>
+    <!--
+    <p>
+        <div id="qrURL-boleto"><img src="cid:boleto-107619@anahuac.mx"></div>
+    </p>
+    <p class="boleto-contacto">
+        httpss://web-clara-p1.azurewebsites.net/boleto/4EE03129744CDA81646409000E99AEC528FA2B8C75D8D747C181FE920A100A77432545
+    </p>
+    <p>
+        <div id="frente-boleto"><img src="cid:boleto-frente@anahuac.mx"></div>
+        <div id="reverso-boleto"><img src="cid:boleto-reverso@anahuac.mx"></div>
+    </p>
+    -->
+    <p class="boleto-contacto">
+    Para más información, puedes revisar nuestro sitio web en<br><a href="https://www.sorteoanahuac.mx/" target="_blank">https://www.sorteoanahuac.mx/</a>.
+    </p>
+    </div>
+    </div>
+    
+    <script>
+    	window.print();
+    </script>
+</body>
+<html>
